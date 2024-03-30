@@ -1,5 +1,3 @@
-### Project
-
 # Dependencies
 This project requires neovim. Install via your preferred package manager.
 
@@ -11,7 +9,7 @@ This project requires neovim. Install via your preferred package manager.
 
 `brew install neovim`
 
-My config also comes with some languages that are installed via Mason, some of which require Npm to install. If you wish to use any of the languages I use, download Npm, or change the lpsconfig.lua after installation.
+My config also comes with some languages that are installed via Mason, some of which require Npm. If you wish to use any of the languages I use, download Npm, otherwise change the LSPs listed in the lpsconfig.lua after installation.
 
 Install via your preferred package manager.
 
