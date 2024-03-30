@@ -46,16 +46,16 @@ keymap("n", "<leader>w", ":lua vim.wo.wrap = not vim.wo.wrap<CR>", opts)
 -- Copy and Paste Functionality
 vim.opt.clipboard:append("unnamedplus")
 -- Copy and Paste for Linux
-vim.g.clipboard = {
-  name = 'xclip',
-  copy = {
-    ['+'] = 'xclip -selection clipboard',
-    ['*'] = 'xclip -selection clipboard',
-  },
-  paste = {
-    ['+'] = 'xclip -selection clipboard -o',
-    ['*'] = 'xclip -selection clipboard -o',
-  },
-}
+--vim.g.clipboard = {
+  --name = 'xclip',
+  --copy = {
+    --['+'] = 'xclip -selection clipboard',
+    --['*'] = 'xclip -selection clipboard',
+  --},
+  --paste = {
+    --['+'] = 'xclip -selection clipboard -o',
+    --['*'] = 'xclip -selection clipboard -o',
+  --},
+--}
 
 vim.api.nvim_set_keymap('t', '<C-;>', '<C-\\><C-n>', opts)
