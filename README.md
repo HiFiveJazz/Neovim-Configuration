@@ -5,6 +5,7 @@
 In order to install, clone the project.
 
 `git clone https://github.com/HiFiveJazz/Neovim-Config`
+
 `mv Neovim-Config/* ~/.config/nvim/`
 
 2. Install Dependencies
