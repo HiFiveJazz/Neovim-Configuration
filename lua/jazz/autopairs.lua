@@ -11,7 +11,7 @@ M.config = function()
   local npairs = require('nvim-autopairs')
   npairs.add_rules {
     Rule("$","$",{"tex", "latex"}),
-    Rule("<",">",{"html", "javascriptreact", "xml"})
+    Rule("<",">",{"html", "javascriptreact", "xml", "typescriptreact"})
   }
 
 end
