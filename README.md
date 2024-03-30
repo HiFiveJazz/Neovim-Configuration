@@ -3,7 +3,9 @@
 # Installation
 1. Clone Repository:
 In order to install, clone the project.
-git clone https://github.com/HiFiveJazz/Neovim-Config
+
+'git clone https://github.com/HiFiveJazz/Neovim-Config'
+
 2. Install Dependencies
 This project requires neovim
 sudo pacman -S neovim
