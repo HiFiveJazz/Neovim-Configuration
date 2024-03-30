@@ -26,10 +26,10 @@ Install via your preferred package manager.
 
 In order to install, clone the repository.
 
-`git clone https://github.com/HiFiveJazz/Neovim-Config`
+`git clone https://github.com/HiFiveJazz/NeoVim-Config`
 
 2. Move into the Neovim .config directory:
 
-`mv Neovim-Config/* ~/.config/nvim/`
+`mv NeoVim-Config/* ~/.config/nvim/`
 
 You're all done!
