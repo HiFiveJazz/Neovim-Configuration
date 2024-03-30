@@ -1,5 +1,5 @@
 # Dependencies
-This project requires neovim. Install via your preferred package manager.
+This project requires NeoVim. Install via your preferred package manager.
 
 ***Arch Linux***
 
