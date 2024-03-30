@@ -62,6 +62,7 @@ function M.config()
 
   local servers = { --remember to update when changing/adding language servers
     "lua_ls",
+    "bashls",
     "cssls",
     "html",
     "tsserver",
@@ -74,6 +75,10 @@ function M.config()
     "rust_analyzer",
     "texlab",
     "tailwindcss",
+    "csharp_ls",
+    "vimls",
+    "vale",
+    "flake8",
   }
 
   local default_diagnostic_config = {
