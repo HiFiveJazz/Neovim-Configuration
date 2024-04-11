@@ -3,7 +3,8 @@ This project requires NeoVim. Install via your preferred package manager.
 
 ***Arch Linux***
 
-`sudo pacman -S neovim`
+<kbd>sudo pacman -S neovim</kbd>
+
 
 ***macOS***
 
