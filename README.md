@@ -8,7 +8,9 @@ This project requires NeoVim. Install via your preferred package manager.
 
 ***macOS***
 
-`brew install neovim`
+```md
+brew install neovim
+```
 
 My config also comes with some languages that are installed via Mason, some of which require Npm. If you wish to use any of the languages I use, download Npm, otherwise remove the LSPs listed in the lspconfig.lua file after installation.
 
