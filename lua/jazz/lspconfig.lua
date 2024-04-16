@@ -22,9 +22,14 @@ end
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
-  if client.supports_method "textDocument/inlayHint" then
-    vim.lsp.inlay_hint.enable(bufnr)
+  if client.supports_method("textDocument/inlayHint") then
+    vim.lsp.inlay_hint.enable(bufnr, true)
   end
+end
+
+M.toggle_inlay_hints = function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
 end
 
 function M.common_capabilities()
@@ -34,8 +39,8 @@ function M.common_capabilities()
 end
 
 function M.config()
-  local wk = require "which-key"
-  wk.register {
+  local wk = require("which-key")
+  wk.register({
     ["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     ["<leader>lf"] = {
       "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>",
@@ -48,37 +53,50 @@ function M.config()
     ["<leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     ["<leader>lq"] = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
     ["<leader>lr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-  }
+  })
 
-  wk.register {
+  wk.register({
     ["<leader>la"] = {
       name = "LSP",
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
     },
-  }
+  })
 
-  local lspconfig = require "lspconfig"
-  local icons = require "jazz.icons"
+  local lspconfig = require("lspconfig")
+  local icons = require("jazz.icons")
 
   local servers = { --remember to update when changing/adding language servers
-    "lua_ls",
-    "bashls",
-    "cssls",
-    "html",
-    "tsserver",
-    "eslint",
-    "pyright",
-    "bashls",
-    "jsonls",
-    "matlab_ls",
-    "ltex",
-    "rust_analyzer",
-    "texlab",
-    "tailwindcss",
-    "csharp_ls",
-    "vimls",
-    "vale",
-    "flake8",
+    --Lua
+    "lua_ls",      --Lua LSP
+    "stylua",      -- Lua Linter
+    --Code Formatter
+    "Prettier",    --Formatter
+    --Python
+    "pyright",     --Static Type Chrcker
+    "flake8",      -- Python Linter
+    "black",       -- Python
+    "debugpy",     -- Python DAP
+    --Web Development
+    "cssls",       --CSS LSP
+    "html",        --HTML Language Server
+    "tsserver",    --TypeScript LSP
+    "eslint",      --JavaScript and TypeScript LSP
+    "tailwindcss", --TailwindCSS LSP
+    "jsonls",      --JSON LSP
+    --Bash
+    "bashls",      --Bash LSP
+    "matlab_ls",   --MatLab LSP
+    --C,C++,Rust, and Zig
+    "codelldb",    --C,C++,Rust DAP
+    "csharp_ls",   --C# LSP
+    "rust_analyzer", -- Rust LSP
+    "zls",         --Zig LSP
+    --Latex/Markdown
+    "ltex",        --Latex LSP
+    "texlab",      --Latex LSP
+    "vale",        --Markdown and Latex
+    -- Vim
+    "vimls",       --Vim LSP
   }
 
   local default_diagnostic_config = {
@@ -86,9 +104,9 @@ function M.config()
       active = true,
       values = {
         { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+        { name = "DiagnosticSignWarn",  text = icons.diagnostics.Warning },
+        { name = "DiagnosticSignHint",  text = icons.diagnostics.Hint },
+        { name = "DiagnosticSignInfo",  text = icons.diagnostics.Information },
       },
     },
     virtual_text = false,
@@ -112,7 +130,8 @@ function M.config()
   end
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+  vim.lsp.handlers["textDocument/signatureHelp"] =
+      vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
   require("lspconfig.ui.windows").default_options.border = "rounded"
 
   for _, server in pairs(servers) do
@@ -127,7 +146,7 @@ function M.config()
     end
 
     if server == "lua_ls" then
-      require("neodev").setup {}
+      require("neodev").setup({})
     end
 
     lspconfig[server].setup(opts)
