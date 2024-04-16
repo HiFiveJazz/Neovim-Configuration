@@ -44,7 +44,7 @@ spec ("jazz.extras.fidget") --shows language server loading in bottom right on f
 -- LaTex Documents
 spec ("jazz.extras.vimtex")
 spec ("jazz.extras.ultisnips")
-spec ("jazz.extras.tex-concel")
+spec ("jazz.extras.tex-conceal")
 -- spec ("jazz.extras.codeium")
 -- spec ("jazz.project")
 require ("jazz.lazy") --Adds in LazyVim Plugin manager, can set colorscheme in there
