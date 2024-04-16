@@ -28,6 +28,7 @@ spec ("jazz.indentline") -- Adds in indent lines on the left side for functions 
 spec ("jazz.toggleterm") -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
 spec ("jazz.bqf") --"Ctrl-q" while in telescope to add files to harpoon easily
 spec ("jazz.dap")
+spec ("jazz.markdown")
 --Extras--
 -- spec ("jazz.extras.copilot") -- Adds Github Copilot (requires subscription)
 spec ("jazz.extras.tabby") -- Creates tabs for switching between split files
@@ -40,7 +41,10 @@ spec ("jazz.extras.tabnine") --AI autocompletions (shown as purple robot)
 spec ("jazz.extras.dressing") --When creating files in nvim-tree, shows dialog box at the top
 spec ("jazz.extras.modicator") --Bolds the line number you are currently on
 spec ("jazz.extras.fidget") --shows language server loading in bottom right on file open
+-- LaTex Documents
 spec ("jazz.extras.vimtex")
+spec ("jazz.extras.ultisnips")
+spec ("jazz.extras.tex-concel")
 -- spec ("jazz.extras.codeium")
 -- spec ("jazz.project")
 require ("jazz.lazy") --Adds in LazyVim Plugin manager, can set colorscheme in there
