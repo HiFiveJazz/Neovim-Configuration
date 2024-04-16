@@ -17,16 +17,17 @@ spec ("jazz.comment") -- In Visual Mode, "_/" comments out all lines"
 spec ("jazz.lualine") -- Makes Line at bottom look better, uses devicons.lua
 spec ("jazz.navic")
 spec ("jazz.breadcrumbs")
-spec ("jazz.harpoon") -- Enables harpooning, "Tab" in Normal mode, "Ctrl-M" to mark a file 
+spec ("jazz.harpoon") -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec ("jazz.illuminate") -- Enables highlighting entire word on cursor hover
--- spec ("jazz.neotest")
+spec ("jazz.neotest")
 spec ("jazz.gitsigns") --shows green, red, and blue lines on the left side in git files
-spec ("jazz.autopairs") -- Autocomplete pairs for (),{},& [], $$ for LaTex files, < > for html, and react 
+spec ("jazz.autopairs") -- Autocomplete pairs for (),{},& [], $$ for LaTex files, < > for html, and React.js
 spec ("jazz.neogit")
 spec ("jazz.alpha") -- Adds in nice screen when running "nvim" in terminal
 spec ("jazz.indentline") -- Adds in indent lines on the left side for functions and whatnot
 spec ("jazz.toggleterm") -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
 spec ("jazz.bqf") --"Ctrl-q" while in telescope to add files to harpoon easily
+spec ("jazz.dap")
 --Extras--
 -- spec ("jazz.extras.copilot") -- Adds Github Copilot (requires subscription)
 spec ("jazz.extras.tabby") -- Creates tabs for switching between split files
