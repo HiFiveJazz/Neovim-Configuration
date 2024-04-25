@@ -1,4 +1,3 @@
-hi
 return {
   settings = {
     ["rust-analyzer"]= {
