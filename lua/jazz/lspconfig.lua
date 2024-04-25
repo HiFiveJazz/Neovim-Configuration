@@ -67,6 +67,8 @@ function M.config()
 
   local servers = { --remember to update when changing/adding language servers
     --Lua
+    "asm-lsp",
+    "asmfmt",
     "lua_ls",      --Lua LSP
     "stylua",      -- Lua Linter
     --Code Formatter

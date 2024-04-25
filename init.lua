@@ -29,6 +29,7 @@ spec ("jazz.toggleterm") -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and 
 spec ("jazz.bqf") --"Ctrl-q" while in telescope to add files to harpoon easily
 spec ("jazz.dap")
 spec ("jazz.markdown")
+-- spec ("jazz.vim-gas")
 --Extras--
 -- spec ("jazz.extras.copilot") -- Adds Github Copilot (requires subscription)
 spec ("jazz.extras.tabby") -- Creates tabs for switching between split files
