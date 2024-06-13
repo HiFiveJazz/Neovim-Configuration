@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "lir",
     "DressingSelect",
     "tsplayground",
-    "",
+    "query",
   },
   callback = function()
     vim.cmd [[
@@ -39,7 +39,6 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
     vim.cmd "tabdo wincmd ="
   end,
 })
-
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
