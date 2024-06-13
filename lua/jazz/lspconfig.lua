@@ -116,7 +116,7 @@ function M.config()
     "rust_analyzer", -- Rust LSP
     "zls",         --Zig LSP
     --Latex/Markdown
-    "ltex",        --Latex LSP
+    -- "ltex",        --Latex LSP
     "texlab",      --Latex LSP
     "vale",        --Markdown and Latex
     -- Vim

@@ -16,7 +16,7 @@ function M.config()
     "bashls",
     "jsonls",
     "matlab_ls",
-    "ltex",
+    -- "ltex",
     "rust_analyzer",
     "texlab",
     "tailwindcss",
