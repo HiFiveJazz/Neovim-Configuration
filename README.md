@@ -34,13 +34,13 @@ brew install npm
 In order to install, clone the repository.
 
 ```md
-git clone https://github.com/HiFiveJazz/NeoVim-Config
+git clone https://github.com/HiFiveJazz/Neovim-Configuration
 ```
 
 2. Move into the Neovim .config directory:
 
 ```md
-mv NeoVim-Config/* ~/.config/nvim/
+mv Neovim-Configuration/* ~/.config/nvim/
 ```
 
 You're all done!
