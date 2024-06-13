@@ -44,3 +44,4 @@ mv Neovim-Configuration/* ~/.config/nvim/
 ```
 
 You're all done!
+
