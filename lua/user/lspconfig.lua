@@ -113,7 +113,7 @@ function M.config()
     --C,C++,Rust, and Zig
     -- "codelldb",    --C,C++,Rust DAP
     "csharp_ls",   --C# LSP
-    "rust_analyzer", -- Rust LSP
+    -- "rust_analyzer", -- Rust LSP
     "zls",         --Zig LSP
     --Latex/Markdown
     -- "ltex",        --Latex LSP
@@ -121,6 +121,9 @@ function M.config()
     "vale_ls",        --Markdown and Latex
     -- Vim
     "vimls",       --Vim LSP    "vale"
+    "gopls",
+    "templ",
+    "nginx-language-server",
   }
 
   vim.diagnostic.config {
@@ -161,6 +164,10 @@ function M.config()
     end
 
     lspconfig[server].setup(opts)
+
+    if server == "nginx-language-server" then
+        require("lspconfig").nginx_language_server.setup(opts)
+    end
   end
 end
 
