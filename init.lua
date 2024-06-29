@@ -29,8 +29,8 @@ spec "user.netrw"
 spec "user.project"
 spec "user.toggleterm" -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
 spec "user.bufdelete"
-spec "user.luarocks"
-spec "user.image"
+-- spec "user.luarocks"
+-- spec "user.image"
 spec "user.markdown"
 -- Extras
 spec "user.extras.colorizer" --Colors hex color codes

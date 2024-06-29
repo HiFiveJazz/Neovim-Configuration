@@ -52,3 +52,4 @@ vim.cmd [[set iskeyword+=-]]
 
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
+vim.api.nvim_set_keymap('n', '<leader>ls', ':!live-server<CR>', { noremap = true, silent = true })

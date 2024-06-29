@@ -90,16 +90,16 @@ function M.config()
   local servers = {
     --Lua
     "asm-lsp",
-    "asmfmt",
+    -- "asmfmt",
     "lua_ls",      --Lua LSP
-    "stylua",      -- Lua Linter
+    -- "stylua",      -- Lua Linter
     --Code Formatter
-    "Prettier",    --Formatter
+    -- "Prettier",    --Formatter
     --Python
     "pyright",     --Static Type Chrcker
-    "flake8",      -- Python Linter
-    "black",       -- Python
-    "debugpy",     -- Python DAP
+    -- "flake8",      -- Python Linter
+    -- "black",       -- Python
+    -- "debugpy",     -- Python DAP
     --Web Development
     "cssls",       --CSS LSP
     "html",        --HTML Language Server
@@ -111,14 +111,14 @@ function M.config()
     "bashls",      --Bash LSP
     "matlab_ls",   --MatLab LSP
     --C,C++,Rust, and Zig
-    "codelldb",    --C,C++,Rust DAP
+    -- "codelldb",    --C,C++,Rust DAP
     "csharp_ls",   --C# LSP
     "rust_analyzer", -- Rust LSP
     "zls",         --Zig LSP
     --Latex/Markdown
     -- "ltex",        --Latex LSP
     "texlab",      --Latex LSP
-    "vale",        --Markdown and Latex
+    "vale_ls",        --Markdown and Latex
     -- Vim
     "vimls",       --Vim LSP    "vale"
   }
