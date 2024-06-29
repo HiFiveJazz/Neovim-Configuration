@@ -89,7 +89,7 @@ function M.config()
 
   local servers = {
     --Lua
-    "asm-lsp",
+    -- "asm-lsp",
     -- "asmfmt",
     "lua_ls",      --Lua LSP
     -- "stylua",      -- Lua Linter
