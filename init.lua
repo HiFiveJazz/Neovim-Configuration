@@ -41,7 +41,7 @@ spec "user.extras.bqf" --"Ctrl-q" while in telescope to add files to harpoon eas
 spec "user.extras.nui"
 spec "user.extras.ufo" --Fold "za",open all folds with "zR", close all folds "zM" 
 spec "user.extras.dressing" --When creating files in nvim-tree, shows dialog box at the top
--- spec "user.extras.surround" KEEP
+spec "user.extras.surround" --KEEP
 spec "user.extras.eyeliner" --Highlights ....
 spec "user.extras.numb"
 spec "user.extras.jaq"

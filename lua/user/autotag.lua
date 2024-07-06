@@ -29,6 +29,8 @@ function M.config()
       "hbs",
     },
   }
+
 end
 
 return M
+
