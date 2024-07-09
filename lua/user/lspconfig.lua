@@ -92,7 +92,7 @@ function M.config()
     -- "asm-lsp",
     -- "asmfmt",
     "lua_ls",      --Lua LSP
-    -- "stylua",      -- Lua Linter
+    "stylua",      -- Lua Linter
     --Code Formatter
     -- "Prettier",    --Formatter
     --Python

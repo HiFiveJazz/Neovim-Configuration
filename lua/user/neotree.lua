@@ -8,10 +8,13 @@ local M = {
   },
   opts = {
     event_handlers = {
-      event = "neo_tree_buffer_enter",
-      handler = function ()
-        vim.opt_local.relativenumber = true
-      end,
+      {
+        event = "neo_tree_buffer_enter",
+        handler = function ()
+          vim.opt_local.number = true
+          vim.opt_local.relativenumber = true
+        end,
+      },
     },
   },
 }
@@ -202,3 +205,4 @@ function M.config()
 end
 
 return M
+

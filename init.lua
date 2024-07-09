@@ -58,7 +58,7 @@ spec "user.extras.oil" --Enables mass creating files with "-" in Normal Mode
 spec "user.extras.noice" --Experimental plugin that replaces the command line of neovim, making it look very clean
 spec "user.extras.fidget" --shows language server loading in bottom right on file open
 spec "user.extras.neotab"
--- spec "user.extras.cmp-tabnine"--AI autocompletions (shown as purple robot)
+spec "user.extras.cmp-tabnine"--AI autocompletions (shown as purple robot)
 spec "user.extras.tabby"-- Creates tabs for switching between split files
 spec "user.extras.various-textobjs"
 -- spec "user.extras.spider"

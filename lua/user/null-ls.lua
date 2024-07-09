@@ -16,12 +16,6 @@ function M.config()
       formatting.black,
       formatting.shfmt,
       diagnostics.shellcheck,
-      -- formatting.prettier.with {
-      --   extra_filetypes = { "toml" },
-      --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-      -- },
-      -- formatting.eslint,
-      -- null_ls.builtins.diagnostics.eslint,
       null_ls.builtins.completion.spell,
     },
   }
