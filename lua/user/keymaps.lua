@@ -47,3 +47,7 @@ keymap("n", "<leader>w", ":lua vim.wo.wrap = not vim.wo.wrap<CR>", opts)
 
 
 vim.api.nvim_set_keymap('t', '<C-;>', '<C-\\><C-n>', opts)
+-- Bind <Leader>r to start recording a macro in register q
+vim.api.nvim_set_keymap('n', '<Leader>r', ':normal! qQ<CR>', { noremap = true, silent = true })
+-- Bind <Leader>s to stop recording the macro
+vim.api.nvim_set_keymap('n', '<Leader>s', ':normal! q<CR>', { noremap = true, silent = true })

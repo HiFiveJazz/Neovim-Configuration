@@ -2,6 +2,7 @@ local M = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "AndreM222/copilot-lualine",
+    "ecthelionvi/Neocomposer.nvim",
   },
 }
 
@@ -42,6 +43,19 @@ function M.config()
     end,
   }
 
+  local neo_composer_status = {
+    function()
+      return require('NeoComposer.ui').status_recording()
+    end,
+    update = {
+      "User",
+      pattern = { "NeoComposerRecordingSet", "NeoComposerPlayingSet", "NeoComposerDelaySet" },
+      callback = function(self)
+        self.status = require("NeoComposer.ui").status_recording()
+      end,
+    },
+  }
+
   require("lualine").setup {
     options = {
       -- theme = "neovim",
@@ -51,8 +65,8 @@ function M.config()
     },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { {"branch", icon =""} },
-      lualine_c = { diagnostics },
+      lualine_b = { { "branch", icon = "" } },
+      lualine_c = { diagnostics, neo_composer_status },
       lualine_x = { diff, filetype },
       lualine_y = { "progress" },
       lualine_z = {},
@@ -63,3 +77,4 @@ function M.config()
 end
 
 return M
+

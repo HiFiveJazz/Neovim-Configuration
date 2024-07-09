@@ -1,3 +1,4 @@
+-- hover your curosor over a file name in quotations and press "gd" to teleport to the config file
 require "user.launch"-- Defines spec function used in this file for LazyVim 
 require "user.options"-- General, Neovim settings, such as relative line numbers, etc.
 require "user.keymaps"-- Basic, general, keybindings
@@ -25,13 +26,14 @@ spec "user.comment" --In Visual Mode, "_/" comments out all lines"
 spec "user.gitsigns" --shows green, red, and blue lines on the left side in git files
 spec "user.indentline" --Adds in indent lines on the left side for functions and whatnot
 spec "user.alpha" --Adds in nice screen when running "nvim" in terminal
-spec "user.netrw"
+spec "user.netrw" -- Dependency for other packages, specifically for file managing
 spec "user.project" -- Open up recent projects via telescope using "Ctrl-p", moving up and down with "Ctrl-j" and "Ctrl-k"
 spec "user.toggleterm" -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
 spec "user.bufdelete" -- Delete current buffer by pressing "Q"
--- spec "user.luarocks"
--- spec "user.image"
+spec "user.luarocks"
+spec "user.image"
 spec "user.markdown" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
+spec "user.neocomposer"
 -- Extras
 spec "user.extras.colorizer" --Colors hex color codes
 spec "user.extras.neoscroll" -- Scroll through files using "Ctrl-J" and "Ctrl-K"
@@ -85,3 +87,4 @@ spec "user.extras.vimtex" -- Allows continous compilation of latex document and 
 spec "user.extras.ultisnips" -- Adds in many different latex shorrcuts
 spec "user.extras.tex-conceal" -- Conceals latex text in neovim, making it appear like it would in a latex document
 require "user.lazy"--Adds in LazyVim Plugin manager, can set colorscheme in there
+
