@@ -59,7 +59,7 @@ spec "user.extras.noice" --Experimental plugin that replaces the command line of
 spec "user.extras.fidget" --shows language server loading in bottom right on file open
 spec "user.extras.neotab"
 spec "user.extras.cmp-tabnine"--AI autocompletions (shown as purple robot)
-spec "user.extras.tabby"-- Creates tabs for switching between split files
+spec "user.extras.tabby"-- Creates tabs for switching between split files, open using "_;"
 spec "user.extras.various-textobjs"
 -- spec "user.extras.spider"
 spec "user.extras.harpoon" -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
