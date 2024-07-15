@@ -33,7 +33,7 @@ spec "user.bufdelete" -- Delete current buffer by pressing "Q"
 spec "user.luarocks"
 spec "user.image"
 spec "user.markdown" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
-spec "user.neocomposer"
+spec "user.neocomposer" -- Used for macros, press "q" toggle recording and finishing a macro, "Alt-q" to open the macro menu  
 -- Extras
 spec "user.extras.colorizer" --Colors hex color codes
 spec "user.extras.neoscroll" -- Scroll through files using "Ctrl-J" and "Ctrl-K"
@@ -41,7 +41,7 @@ spec "user.extras.modicator" --Bolds the line number you are currently on
 spec "user.extras.rainbow"
 spec "user.extras.bqf" --"Ctrl-q" while in telescope to add files to harpoon easily
 spec "user.extras.nui" -- UI components library used in many other plugins
-spec "user.extras.ufo" --Fold "za",open all folds with "zR", close all folds "zM" 
+spec "user.extras.ufo" --Toggle fold with "za",open all folds with "zR", close all folds "zM" 
 spec "user.extras.dressing" --When creating files in nvim-tree, shows dialog box at the top
 spec "user.extras.surround" -- Helps with HTML tags!
 -- ssi for custom tags!
