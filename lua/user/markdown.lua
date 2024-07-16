@@ -7,7 +7,7 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.register {
+  wk.add {
     ["<leader>m"] = { "<cmd>MarkdownPreviewToggle<cr>", "Toggle Markdown Preview" },
   }
 end
