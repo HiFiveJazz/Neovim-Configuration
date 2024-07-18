@@ -15,7 +15,7 @@ function M.config()
       formatting.prettier,
       formatting.black,
       formatting.shfmt,
-      diagnostics.shellcheck,
+      -- diagnostics.shellcheck,
       null_ls.builtins.completion.spell,
     },
   }
