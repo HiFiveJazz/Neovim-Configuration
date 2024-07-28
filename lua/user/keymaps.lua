@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
+keymap("v", "X", '"_d', opts) -- binds X to delete into black hole register
 keymap("n", "<C-i>", "<C-i>", opts)
 
 -- Better window navigation

@@ -187,6 +187,12 @@ function M.config()
     cargo_run:toggle()
   end
 
+  local wk = require "which-key"
+  wk.add{
+    { "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", desc = "Lazy Git" },
+    { "<leader>co", "<cmd>lua _bun_outdated()<CR>", desc = "Update Bun" },
+    { "<leader>cr", "<cmd>lua _cargo_run()<CR>", desc = "Cargo Run" },
+  }
   -- vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
   -- vim.api.nvim_set_keymap("n", "<leader>co", "<cmd>lua _bun_outdated()<CR>", { noremap = true, silent = true })
   -- vim.api.nvim_set_keymap("n", "<leader>cr", "<cmd>lua _cargo_run()<CR>", { noremap = true, silent = true })
