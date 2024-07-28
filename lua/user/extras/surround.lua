@@ -20,7 +20,7 @@ function M.config()
     },
   }
 
-  vim.cmd [[nmap <leader>' siw']]
+  -- vim.cmd [[nmap <leader>' siw']]
 end
 
 return M

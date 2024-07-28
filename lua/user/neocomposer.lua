@@ -1,12 +1,32 @@
 local M = {
   "ecthelionvi/NeoComposer.nvim",
-  dependencies = { 
-    "kkharji/sqlite.lua", 
+  dependencies = {
+    "kkharji/sqlite.lua",
     "nvim-telescope/telescope.nvim",
   },
   opts = {}
 }
 
+local wk = require "which-key"
+
+wk.add {
+{
+  "mr",
+  desc = "Record Macro",
+},
+{
+  "mr",
+  desc = "Play Macro",
+},
+{
+  "ms",
+  desc = "Stop Macro",
+},
+{
+  "mm",
+  desc = "Macro Menu",
+},
+}
 function M.config()
   local config = {
     notify = true,
@@ -22,22 +42,19 @@ function M.config()
     },
     colors = {
       bg = "#000000",
+      status_bg = "#999123",
       fg = "#ff9e64",
       red = "#ec5f67",
       blue = "#5fb3b3",
       green = "#99c794",
     },
     keymaps = {
-      play_macro = "m",
-      yank_macro = "yq",
-      stop_macro = "cq",
-      toggle_record = "q",
-      cycle_next = "<c-n>",
-      cycle_prev = "<c-p>",
-      toggle_macro_menu = "<m-q>",
+      toggle_record = "mr",
+      play_macro = "mp",
+      stop_macro = "ms",
+      toggle_macro_menu = "mm",
     },
   }
   require("NeoComposer").setup(config)
 end
-
 return M

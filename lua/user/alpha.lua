@@ -9,28 +9,52 @@ function M.config()
 
   local function button(sc, txt, keybind, keybind_opts)
     local b = dashboard.button(sc, txt, keybind, keybind_opts)
-    b.opts.hl_shortcut = "Function"
+    b.opts.hl_shortcut = "Boolean"
     return b
   end
 
   dashboard.section.header.val = {
-    [[       .;:;:;;::....:::;::;;:;;;;:;:::;;;;++xXxXXxxx+x;      ]], 
-    [[      .:;;:;;;:........::.:;;;;;;:::::;:;;;+;xxxXXxxxx;      ]], 
-    [[      .:;:;;;...:x:;;;;;+;;.;;;;::;;++xx+x++;+xxXxXXXx+:     ]], 
-    [[      .:+;x:.;X$XXXxxXX$Xxx;x++;:+xXX$XXxXxXX$$xxXXXXxx;     ]], 
-    [[      .;++;;$X$$XXXXxXXXXx;;+:;;XX$$$$$$XXXXXxx+;xXXXx+;     ]], 
-    [[      :;;+.+XX$XXXXxX$X$$x;;.::+Xx$X$$$$$Xxx+;;;;;XxXxx:     ]], 
-    [[      .;;;.;xXXxxxx+xx$$$;+:;.:;xXX$$$$$$xx;;;;;:;XxXx+      ]], 
-    [[       ;+:..xXXXxxx++xX;;;.:.XXx$XXX$X$$Xx+;;;+..+Xxxx;      ]], 
-    [[       :;.:..+XX$$$xxxx...:.XxXXXXXxx;;xxx+XXx::;xXX+x       ]], 
-    [[       ::..:.....:.;....::.$X$$$x$;x++;;;;;+::;+xXXXxx+      ]], 
-    [[       .;....;;;;;+x;;;;:.xx$$X$$+;Xx+;xX;x++xx;xxXXxx       ]], 
-    [[         ;:.::;;;;;;;;;;:;$x$$+$$+Xx+xxxx;+;;;;;xxXx:        ]], 
-    [[         .:x+xxxx;::;;;::;+$$$+x&&;xxx+x++xxXxxxXXx;         ]], 
-    [[           ;+;;xxxx::;.;:.:::.:+;;;;xxxxxXXxxXX$Xx;          ]], 
-    [[            +;;x;  ;::.;.....::::+;;+xxXxX   X$xx;           ]], 
-  }
+  --   [[       .;:;:;;::....:::;::;;:;;;;:;:::;;;;++xXxXXxxx+x;      ]], 
+  --   [[      .:;;:;;;:........::.:;;;;;;:::::;:;;;+;xxxXXxxxx;      ]], 
+  --   [[      .:;:;;;...:x:;;;;;+;;.;;;;::;;++xx+x++;+xxXxXXXx+:     ]], 
+  --   [[      .:+;x:.;X$XXXxxXX$Xxx;x++;:+xXX$XXxXxXX$$xxXXXXxx;     ]], 
+  --   [[      .;++;;$X$$XXXXxXXXXx;;+:;;XX$$$$$$XXXXXxx+;xXXXx+;     ]], 
+  --   [[      :;;+.+XX$XXXXxX$X$$x;;.::+Xx$X$$$$$Xxx+;;;;;XxXxx:     ]], 
+  --   [[      .;;;.;xXXxxxx+xx$$$;+:;.:;xXX$$$$$$xx;;;;;:;XxXx+      ]], 
+  --   [[       ;+:..xXXXxxx++xX;;;.:.XXx$XXX$X$$Xx+;;;+..+Xxxx;      ]], 
+  --   [[       :;.:..+XX$$$xxxx...:.XxXXXXXxx;;xxx+XXx::;xXX+x       ]], 
+  --   [[       ::..:.....:.;....::.$X$$$x$;x++;;;;;+::;+xXXXxx+      ]], 
+  --   [[       .;....;;;;;+x;;;;:.xx$$X$$+;Xx+;xX;x++xx;xxXXxx       ]], 
+  --   [[         ;:.::;;;;;;;;;;:;$x$$+$$+Xx+xxxx;+;;;;;xxXx:        ]], 
+  --   [[         .:x+xxxx;::;;;::;+$$$+x&&;xxx+x++xxXxxxXXx;         ]], 
+  --   [[           ;+;;xxxx::;.;:.:::.:+;;;;xxxxxXXxxXX$Xx;          ]], 
+  --   [[            +;;x;  ;::.;.....::::+;;+xxXxX   X$xx;           ]], 
+  -- }
 
+[[⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣠⣤⣤⣼⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠘⣿⣿⣿⣿⠟⠁⠀⠀⠀⠹⣿⣿⣿⣿⣿⠟⠁⠀⠀⠹⣿⣿⡿⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⣿⣿⣿⡇⠀⠀⠀⢼⣿⠀⢿⣿⣿⣿⣿⠀⣾⣷⠀⠀⢿⣿⣷⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⢠⣿⣿⣿⣷⡀⠀⠀⠈⠋⢀⣿⣿⣿⣿⣿⡀⠙⠋⠀⢀⣾⣿⣿⠀⠀⠀⠀⠀]],
+[[⢀⣀⣀⣀⣿⣿⣿⣿⣿⣶⣶⣶⣶⣿⣿⣿⣿⣾⣿⣷⣦⣤⣴⣿⣿⣿⣿⣤⠤⢤⣤⡄]],
+[[⠈⠉⠉⢉⣙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⣀⣀⣀⡀⠀]],
+[[⠐⠚⠋⠉⢀⣬⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣥⣀⡀⠈⠀⠈⠛]],
+[[⠀⠀⠴⠚⠉⠀⠀⠀⠉⠛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠋⠁⠀⠀⠀⠉⠛⠢⠀⠀]],
+[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀]],
+[[⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀]],
+}
   dashboard.section.buttons.val = {
     button("f", icons.ui.Files .. "  Find file", ":Telescope find_files <CR>"),
     button("n", icons.ui.NewFile .. "  New file", ":ene <BAR> startinsert <CR>"),
@@ -48,7 +72,7 @@ function M.config()
   dashboard.section.footer.val = footer()
 
   dashboard.section.header.opts.hl = "Function"
-  dashboard.section.buttons.opts.hl = "Type"
+  dashboard.section.buttons.opts.hl = "Boolean"
   dashboard.section.footer.opts.hl = "@keyword.return"
 
   dashboard.opts.opts.noautocmd = true

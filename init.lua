@@ -4,7 +4,8 @@ require "user.options"-- General, Neovim settings, such as relative line numbers
 require "user.keymaps"-- Basic, general, keybindings
 require "user.autocmds"
 spec "user.colorscheme"-- Where permanent ColorScheme is initalized
-spec "user.devicons"-- Adds many different icons used for filetypes, GitHub, etc. Referenced in many different plugins
+-- spec "user.devicons"-- Adds many different icons used for filetypes, GitHub, etc. Referenced in many different plugins
+spec "user.miniicons"-- Adds many different icons used for filetypes, GitHub, etc. Referenced in many different plugins
 spec "user.treesitter"-- Enables better syntax highlighting using LSPs
 spec "user.mason"-- Easily install binaries, such as LSPs, Linters, etc.
 spec "user.schemastore"--Shown as wrench in autocomplete, Gives .json, .yaml schemas and provides autocompletes for those things
@@ -33,7 +34,7 @@ spec "user.bufdelete" -- Delete current buffer by pressing "Q"
 spec "user.luarocks"
 spec "user.image"
 spec "user.markdown" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
-spec "user.neocomposer" -- Used for macros, press "q" toggle recording and finishing a macro, "Alt-q" to open the macro menu  
+spec "user.neocomposer" -- Used for macros, press "mr" toggle recording and finishing a macro, "mm" to open the macro menu  
 -- Extras
 spec "user.extras.colorizer" --Colors hex color codes
 spec "user.extras.neoscroll" -- Scroll through files using "Ctrl-J" and "Ctrl-K"
@@ -50,6 +51,7 @@ spec "user.extras.surround" -- Helps with HTML tags!
 -- SS for an entire line
 -- ds to delete the surrounding tags
 -- cs to change the tags to something different
+-- spec "user.extras.notify"
 spec "user.extras.eyeliner" --Highlights characters when using "f" and "F" commands in Neovim for faster jumping
 spec "user.extras.numb" -- Linepeeker that doesn't force you to move all the way down to the line, if you want to peek line 356, type ":356" for example
 spec "user.extras.jaq" -- Use "Alt-r" to run code quickly! Opens up output on the side!
@@ -82,6 +84,7 @@ spec "user.extras.todo-comments" -- Adds in various comments, such as the follow
 spec "user.extras.trouble"
 spec "user.extras.rustacean"
 spec "user.extras.crates"
+spec "user.extras.gp"
 --Latex Documents
 spec "user.extras.vimtex" -- Allows continous compilation of latex document and neovim editing
 spec "user.extras.ultisnips" -- Adds in many different latex shorrcuts

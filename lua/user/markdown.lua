@@ -8,8 +8,7 @@ local M = {
 function M.config()
   local wk = require "which-key"
   wk.add {
-    -- ["<leader>m"] = { "<cmd>MarkdownPreviewToggle<cr>", "" },
-    { "<leader>m", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Preview" },
+    { "<leader>M", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Preview" },
   }
 end
 
