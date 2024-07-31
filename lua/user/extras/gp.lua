@@ -2,7 +2,7 @@ return {
   "robitx/gp.nvim",
   config = function()
     require("gp").setup {
-      openai_api_key = { "cat", "/home/jazz/chatgptaikey.txt"},
+      openai_api_key = { "pass", "show", "open_ai_api_key"},
       open_api_endpoint = "https://api.githubcopilot.com/chat/completions",
       model = "gpt-4o",
       -- providers = {
