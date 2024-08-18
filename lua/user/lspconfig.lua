@@ -106,7 +106,7 @@ function M.config()
     "bashls",      --Bash LSP
     "matlab_ls",   --MatLab LSP
     --C,C++,Rust, and Zig
-    -- "codelldb",    --C,C++,Rust DAP
+    "codelldb",    --C,C++,Rust DAP
     "csharp_ls",   --C# LSP
     -- "rust_analyzer", -- Rust LSP
     "zls",         --Zig LSP
@@ -118,6 +118,7 @@ function M.config()
     "vimls",       --Vim LSP    "vale"
     "gopls",
     "templ",
+    "biome",
     "nginx-language-server",
   }
 

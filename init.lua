@@ -1,4 +1,4 @@
--- hover your curosor over a file name in quotations and press "gd" to teleport to the config file
+-- hover your cursor over a file name in quotations and press "gd" to teleport to the config file
 require "user.launch"-- Defines spec function used in this file for LazyVim 
 require "user.options"-- General, Neovim settings, such as relative line numbers, etc.
 require "user.keymaps"-- Basic, general, keybindings
@@ -84,8 +84,9 @@ spec "user.extras.todo-comments" -- Adds in various comments, such as the follow
 spec "user.extras.trouble"
 spec "user.extras.rustacean"
 spec "user.extras.crates"
-spec "user.extras.gp"
-spec "user.extras.chatgpt"
+-- AI Components
+-- spec "user.extras.gp"
+-- spec "user.extras.chatgpt"
 --Latex Documents
 spec "user.extras.vimtex" -- Allows continous compilation of latex document and neovim editing
 spec "user.extras.ultisnips" -- Adds in many different latex shorrcuts
