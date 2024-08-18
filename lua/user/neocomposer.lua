@@ -7,26 +7,6 @@ local M = {
   opts = {}
 }
 
-local wk = require "which-key"
-
-wk.add {
-{
-  "mr",
-  desc = "Record Macro",
-},
-{
-  "mr",
-  desc = "Play Macro",
-},
-{
-  "ms",
-  desc = "Stop Macro",
-},
-{
-  "mm",
-  desc = "Macro Menu",
-},
-}
 function M.config()
   local config = {
     notify = true,
@@ -55,6 +35,13 @@ function M.config()
       toggle_macro_menu = "mm",
     },
   }
-  require("NeoComposer").setup(config)
+require("NeoComposer").setup(config)
+  local wk = require "which-key"
+  wk.add {
+    {"mr", desc = "Toggle Recording Macro",},
+    {"mp",desc = "Play Macro",},
+    {"ms",desc = "Stop Macro",},
+    {"mm",desc = "Macro Menu",},
+  }
 end
 return M
