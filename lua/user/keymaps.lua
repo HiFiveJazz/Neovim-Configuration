@@ -1,12 +1,11 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
-
 keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 keymap("v", "X", '"_d', opts) -- binds X to delete into black hole register
+keymap("n", "X", '"_dd', opts) -- binds X to delete into black hole register
 keymap("n", "<C-i>", "<C-i>", opts)
-
 -- Better window navigation
 -- When using :vsplit, rebinds, default window moving keys
 -- to alt-h, alt-j, alt-k, alt-l based on the window location 
