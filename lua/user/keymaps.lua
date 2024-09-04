@@ -46,3 +46,18 @@ keymap("n", "<leader>w", ":lua vim.wo.wrap = not vim.wo.wrap<CR>", opts)
 
 
 vim.api.nvim_set_keymap('t', '<C-;>', '<C-\\><C-n>', opts)
+
+function find_and_replace()
+    -- Prompt user for search term
+    local search_term = vim.fn.input('Find: ')
+    -- Prompt user for replace term
+    local replace_term = vim.fn.input('Replace with: ')
+    
+    -- Construct the substitution command
+    local command = string.format('%%s/%s/%s/g', search_term, replace_term)
+    
+    -- Execute the substitution command
+    vim.cmd(command)
+end
+
+vim.api.nvim_set_keymap('n', '<Leader>r', [[:lua find_and_replace()<CR>]], opts)
