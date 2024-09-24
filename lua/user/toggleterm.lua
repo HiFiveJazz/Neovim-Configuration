@@ -79,6 +79,7 @@ function M.config()
     insert_mappings = true, -- whether or not the open mapping applies in insert mode
     persist_size = false,
     direction = "float",
+    autochdir = true,
     close_on_exit = true, -- close the terminal window when the process exits
     shell = nil, -- change the default shell
     float_opts = {
