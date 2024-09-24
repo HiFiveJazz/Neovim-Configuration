@@ -185,13 +185,18 @@ function M.config()
   end
 
   function _cargo_run()
-    cargo_run:toggle()
+    vim.cmd('TermExec cmd="cargo run -q"')
+    -- vim.api.nvim_set_keymap('n', '<leader>lg', ':TermExec cmd="echo hi"<CR>', { noremap = true, silent = true })
+    -- cargo_run:toggle()
   end
+
+  -- Key mapping to run echo hi
+  vim.api.nvim_set_keymap('n', '<leader>lg', ':TermExec cmd="echo hi"<CR>', { noremap = true, silent = true })
 
   local wk = require "which-key"
   wk.add{
     { "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", desc = "Lazy Git" },
-    { "<leader>co", "<cmd>lua _bun_outdated()<CR>", desc = "Update Bun" },
+    -- { "<leader>co", "<cmd>lua _bun_outdated()<CR>", desc = "Update Bun" },
     { "<leader>cr", "<cmd>lua _cargo_run()<CR>", desc = "Cargo Run" },
   }
   -- vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
