@@ -3,8 +3,7 @@ This project requires NeoVim. Install via your preferred package manager.
 
 ***Arch Linux***
 ```md
-sudo pacman -S neovim sox cargo ripgrep noto-fonts-emoji imagemagick curl shfmt
-yay -S lua51
+sudo pacman -S neovim sox cargo ripgrep noto-fonts-emoji imagemagick curl shfmt luarocks
 ```
 
 ***macOS***
