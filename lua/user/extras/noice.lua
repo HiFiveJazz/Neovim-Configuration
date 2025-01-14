@@ -15,6 +15,9 @@ local M = {
 }
 
 function M.config()
+  require("notify").setup{
+    timeout = 250, -- Duration in milliseconds, half a second
+  }
   require("noice").setup {
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
