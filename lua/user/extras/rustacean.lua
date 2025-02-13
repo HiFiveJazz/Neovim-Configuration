@@ -19,6 +19,13 @@ function M.config()
 
       settings = {
         ["rust-analyzer"] = {
+          -- embedded rust for microbit 
+          check = {
+            allTargets = false, -- Avoid checking all targets
+          },
+          cargo = {
+            target = "thumbv7em-none-eabihf", -- Set embedded Rust target
+          },
           inlayHints = {
             chainingHints = {
               bindingModeHints = {
