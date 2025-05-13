@@ -39,7 +39,7 @@ spec "user.neocomposer" -- Used for macros, press "mr" toggle recording and fini
 spec "user.extras.colorizer" --Colors hex color codes
 spec "user.extras.neoscroll" -- Scroll through files using "Ctrl-J" and "Ctrl-K"
 spec "user.extras.modicator" --Bolds the line number you are currently on
-spec "user.extras.rainbow"
+-- spec "user.extras.rainbow"
 spec "user.extras.bqf" --"Ctrl-q" while in telescope to add files to harpoon easily
 spec "user.extras.nui" -- UI components library used in many other plugins
 spec "user.extras.ufo" --Toggle fold with "za",open all folds with "zR", close all folds "zM" 
@@ -89,7 +89,7 @@ spec "user.extras.crates"
 -- spec "user.extras.chatgpt"
 --Latex Documents
 spec "user.extras.vimtex" -- Allows continous compilation of latex document and neovim editing
-spec "user.extras.ultisnips" -- Adds in many different latex shorrcuts
+-- spec "user.extras.ultisnips" -- Adds in many different latex shorrcuts
 spec "user.extras.tex-conceal" -- Conceals latex text in neovim, making it appear like it would in a latex document
 require "user.lazy"--Adds in LazyVim Plugin manager, can set colorscheme in there
 
