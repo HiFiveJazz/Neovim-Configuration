@@ -87,7 +87,6 @@ function M.config()
     "asm_lsp", --Assembly LSP
     -- "asmfmt",
     "lua_ls",      --Lua LSP
-    "stylua",      -- Lua Linter
     --Code Formatter
     -- "Prettier",    --Formatter
     --Python
@@ -98,7 +97,7 @@ function M.config()
     --Web Development
     "cssls",       --CSS LSP
     "html",        --HTML Language Server
-    "tsserver",    --TypeScript LSP
+    "ts_ls",    --TypeScript LSP
     "eslint",      --JavaScript and TypeScript LSP
     "tailwindcss", --TailwindCSS LSP
     "jsonls",      --JSON LSP
@@ -106,7 +105,6 @@ function M.config()
     "bashls",      --Bash LSP
     "matlab_ls",   --MatLab LSP
     --C,C++,Rust, and Zig
-    "codelldb",    --C,C++,Rust DAP
     "csharp_ls",   --C# LSP
     -- "rust_analyzer", -- Rust LSP
     "zls",         --Zig LSP
