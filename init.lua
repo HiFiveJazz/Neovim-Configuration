@@ -60,7 +60,7 @@ spec "user.extras.oil" --Enables mass creating files with "-" in Normal Mode
 spec "user.extras.noice" --Experimental plugin that replaces the command line of neovim, making it look very clean
 spec "user.extras.fidget" --shows language server loading in bottom right on file open
 spec "user.extras.neotab"
-spec "user.extras.cmp-tabnine"--AI autocompletions (shown as purple robot)
+-- spec "user.extras.cmp-tabnine"--AI autocompletions (shown as purple robot)
 spec "user.extras.tabby"-- Creates tabs for switching between split files, open using "_;"
 spec "user.extras.various-textobjs"
 -- spec "user.extras.spider"
@@ -88,8 +88,8 @@ spec "user.extras.crates"
 -- spec "user.extras.gp"
 -- spec "user.extras.chatgpt"
 --Latex Documents
-spec "user.extras.vimtex" -- Allows continous compilation of latex document and neovim editing
+-- spec "user.extras.vimtex" -- Allows continous compilation of latex document and neovim editing
 -- spec "user.extras.ultisnips" -- Adds in many different latex shorrcuts
-spec "user.extras.tex-conceal" -- Conceals latex text in neovim, making it appear like it would in a latex document
+-- spec "user.extras.tex-conceal" -- Conceals latex text in neovim, making it appear like it would in a latex document
 require "user.lazy"--Adds in LazyVim Plugin manager, can set colorscheme in there
 
