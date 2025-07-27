@@ -7,16 +7,16 @@ local M = {
 }
 
 M.execs = {
-  "lua_ls",
+  -- "lua_ls",
   "cssls",
   "html",
   "pyright",
   "bashls",
   "jsonls",
-  "matlab_ls",
+  -- "matlab_ls",
   "rust_analyzer",
-  "ltex",
-  "texlab",
+  -- "ltex",
+  -- "texlab",
 }
 
 function M.config()
