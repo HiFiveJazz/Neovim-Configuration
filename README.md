@@ -21,7 +21,7 @@ Install Npm via your preferred package manager.
 ```md
 sudo pacman -S npm jdk-openjdk python 
 npm install -g neovim tree-sitter-cli prettier
-tree-sitter generate regex rust
+tree-sitter generate regex rust rust-src
 cargo install stylua 
 ```
 
