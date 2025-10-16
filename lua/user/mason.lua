@@ -14,7 +14,7 @@ M.execs = {
   "bashls",
   "jsonls",
   -- "matlab_ls",
-  "rust_analyzer",
+  -- "rust_analyzer",
   -- "ltex",
   -- "texlab",
 }
