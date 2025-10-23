@@ -34,8 +34,8 @@ return {
     -- your keymaps
     local wk = require "which-key"
     wk.add({
-      { "<leader>aa", "<cmd>GpChatToggle vsplit<cr>", desc = "Toggle Chat" },
-      { "<leader>an", "<cmd>GpChatNew vsplit<cr>",    desc = "New Chat" },
+      { "<leader>aa", "<cmd>GpChatToggle popup<cr>", desc = "Toggle Chat" },
+      { "<leader>an", "<cmd>GpChatNew popup<cr>",    desc = "New Chat" },
       { "<leader>af", "<cmd>GpChatFinder<cr>",        desc = "Find Chat" },
       { "<leader>ar", "<cmd>GpChatRespond<cr>",       desc = "Respond" },
       { "<leader>aw", "<cmd>GpRewrite<cr>",           desc = "Rewrite", mode = { "n", "v" } },
