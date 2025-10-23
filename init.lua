@@ -86,7 +86,7 @@ spec "user.extras.trouble"
 spec "user.extras.rustacean"
 spec "user.extras.crates"
 -- AI Components
--- spec "user.extras.gp"
+spec "user.extras.gp"
 -- spec "user.extras.chatgpt"
 --Latex Documents
 spec "user.extras.vimtex" -- Allows continous compilation of latex document and neovim editing
