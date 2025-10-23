@@ -1,4 +1,3 @@
--- https://github.com/mrcjkb/rustaceanvim/tree/master
 local M = {
   "mrcjkb/rustaceanvim",
   version = "^6",
@@ -8,14 +7,21 @@ local M = {
 
 function M.config()
   local lspconfig = require "user.lspconfig"
+
   vim.g.rustaceanvim = {
     tools = {},
     server = {
       on_attach = function(client, bufnr)
+        -- your global LSP setup (keymaps, etc.)
         lspconfig.on_attach(client, bufnr)
+        -- enable native inlay hints (new API: enable(boolean, {bufnr=...}))
+        pcall(vim.lsp.inlay_hint.enable, true, { bufnr = bufnr })
       end,
 
       capabilities = lspconfig.common_capabilities(),
+
+      -- 🔇 disable rust-analyzer status popups (e.g. workspace discovery)
+      status_notify_level = false,  -- same as require("rustaceanvim").disable
 
       settings = {
         ["rust-analyzer"] = {
@@ -27,58 +33,32 @@ function M.config()
           --   target = "thumbv7em-none-eabihf", -- Set embedded Rust target
           -- },
           -- -- END: MICROBIT RUST SETTINGS
+
+          -- run checks on save; choose command via `check.command`
+          checkOnSave = true,
+          check = { command = "clippy" }, -- or "check"
+
+          lens = { enable = true },
+
+          -- FLAT inlayHints schema (so hints actually render)
           inlayHints = {
-            chainingHints = {
-              bindingModeHints = {
-                enable = true,
-              },
-              chainingHints = {
-                enable = true,
-              },
-              closingBraceHints = {
-                enable = true,
-                minLines = 25,
-              },
-              closureCaptureHints = {
-                enable = true,
-              },
-              closureReturnTypeHints = {
-                enable = "always", -- "never"
-              },
-              closureStyle = "impl_fn",
-              discriminantHints = {
-                enable = "always", -- "never"
-              },
-              expressionAdjustmentHints = {
-                hideOutsideUnsafe = false,
-                mode = "prefix",
-              },
-              implicitDrops = {
-                enable = true,
-              },
-              lifetimeElisionHints = {
-                enable = "always", -- "never"
-                useParameterNames = true,
-              },
-              maxLength = 25,
-              parameterHints = {
-                enable = true,
-              },
-              rangeExclusiveHints = {
-                enable = true,
-              },
-              renderColons = {
-                enable = true,
-              },
-              typeHints = {
-                enable = true,
-                hideClosureInitialization = false,
-                hideNamedConstructor = false,
-              },
-            },
-          },
-          lens = {
             enable = true,
+
+            -- core toggles
+            chainingHints  = true,
+            parameterHints = true,
+            typeHints      = true,
+
+            -- fine-tuning
+            renderColons   = true,
+            maxLength      = 25,
+            lifetimeElisionHints       = { enable = "always", useParameterNames = true },
+            closureReturnTypeHints     = { enable = "always" },
+            discriminantHints          = { enable = "always" },
+            expressionAdjustmentHints  = { mode = "prefix", hideOutsideUnsafe = false },
+            rangeExclusiveHints        = true,
+            implicitDrops              = { enable = true },
+            closingBraceHints          = { enable = true, minLines = 25 },
           },
         },
       },
@@ -89,3 +69,4 @@ function M.config()
 end
 
 return M
+
