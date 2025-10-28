@@ -2,9 +2,9 @@ local M = {
   "toppair/peek.nvim",
   event = { "VeryLazy" },
   build = "deno task --quiet build:fast",
-  -- config = function()
-  --   M.config()
-  -- end,
+  config = function()
+    M.config()
+  end,
 }
 
 function M.config()
