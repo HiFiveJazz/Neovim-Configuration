@@ -33,6 +33,7 @@ spec "user.toggleterm" -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "C
 spec "user.bufdelete" -- Delete current buffer by pressing "Q"
 spec "user.luarocks"
 spec "user.image"
+spec "user.csv"
 spec "user.peek" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
 -- spec "user.markdown" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
 spec "user.neocomposer" -- Used for macros, press "mr" toggle recording and finishing a macro, "mm" to open the macro menu, 
