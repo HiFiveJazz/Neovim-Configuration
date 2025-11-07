@@ -37,6 +37,7 @@ spec "user.csv"
 spec "user.peek" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
 -- spec "user.markdown" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
 spec "user.neocomposer" -- Used for macros, press "mr" toggle recording and finishing a macro, "mm" to open the macro menu, 
+spec "user.smear"
  -- "mp" to play macro, "ms" to stop a macro!  
 -- Extras
 spec "user.extras.colorizer" --Colors hex color codes
