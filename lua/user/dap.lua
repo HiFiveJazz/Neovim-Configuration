@@ -114,6 +114,98 @@ function M.config()
     },
   }
 
+  -- Rust Language
+  local mason = vim.fn.stdpath("data") .. "/mason"
+  local codelldb = mason .. "/bin/codelldb"  -- Mason shim
+
+  dap.adapters.codelldb = {
+    type = "server",
+    port = "${port}",
+    executable = {
+      command = codelldb,
+      args = { "--port", "${port}" },
+    },
+  }
+
+  -- Helper: build Cargo project and return path to produced executable
+  local function cargo_build_and_get_exe()
+    -- Build quietly and emit machine-readable JSON
+    local cmd = { "cargo", "build", "--message-format=json", "-q" }
+    local lines = vim.fn.systemlist(table.concat(cmd, " "))
+    local exe
+    for _, line in ipairs(lines) do
+      -- Many lines aren't JSON; ignore decode errors
+      local ok, j = pcall(vim.fn.json_decode, line)
+      if ok and j and j.reason == "compiler-artifact" then
+        -- For binaries only, j.executable is present
+        if j.executable and #j.executable > 0 then
+          exe = j.executable
+        end
+      end
+    end
+    return exe
+  end
+
+  -- Helper: build current single Rust file with rustc and return path
+  local function rustc_build_current_file()
+    local file = vim.fn.expand("%:p")                 -- /path/to/main.rs
+    local out  = vim.fn.expand("%:p:r") .. ".out"     -- /path/to/main.out
+    -- Debug info + no opts for clean stepping
+    local result = vim.fn.system({
+      "rustc", "-g", "-C", "opt-level=0", "-C", "debuginfo=2",
+      "-C", "force-frame-pointers=yes",
+      file, "-o", out
+    })
+    if vim.v.shell_error ~= 0 then
+      vim.notify("rustc build failed:\n" .. result, vim.log.levels.ERROR)
+      return nil
+    end
+    return out
+  end
+
+  dap.configurations.rust = {
+    {
+      name = "Rust (Cargo) – auto build & run",
+      type = "codelldb",
+      request = "launch",
+      program = function()
+        -- Build and auto-detect the binary
+        local exe = cargo_build_and_get_exe()
+        if not exe or exe == "" then
+          -- Fallback to manual pick if detection failed
+          vim.notify("Could not detect Cargo binary; pick it manually.", vim.log.levels.WARN)
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+        end
+        return exe
+      end,
+      cwd = "${workspaceFolder}",
+      stopOnEntry = false,
+      setupCommands = {
+        { text = "settings set target.x86-disassembly-flavor intel" },
+      },
+      -- args = { },  -- put your program args here if needed
+    },
+    {
+      name = "Rust (single file via rustc)",
+      type = "codelldb",
+      request = "launch",
+      program = function()
+        local exe = rustc_build_current_file()
+        if not exe then
+          -- If rustc build failed, let user choose something manually
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end
+        return exe
+      end,
+      cwd = function()
+        return vim.fn.expand("%:p:h")
+      end,
+      stopOnEntry = false,
+      setupCommands = {
+        { text = "settings set target.x86-disassembly-flavor intel" },
+      },
+    },
+  }
   local wk = require "which-key"
   wk.add {
     { "<leader>dC", "<cmd>lua require'dap'.run_to_cursor()<cr>", desc = "Run To Cursor" },
