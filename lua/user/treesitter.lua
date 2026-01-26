@@ -1,70 +1,111 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
-  -- event = { "BufReadPost", "BufNewFile" },
   build = ":TSUpdate",
-  dependencies = {
-    {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      -- event = "VeryLazy",
-    },
-  },
-}
+  event = { "BufReadPre", "BufNewFile" },
+  -- dependencies = {
+  --   {
+  --     "nvim-treesitter/nvim-treesitter-textobjects",
+  --     after = "nvim-treesitter", -- ensure this loads after treesitter
+  --   },
+  -- },
+  config = function()
+    local ok, ts_configs = pcall(require, "nvim-treesitter.configs")
+    if not ok then
+      vim.notify("nvim-treesitter not found!", vim.log.levels.WARN)
+      return
+    end
 
-function M.config()
-  local wk = require "which-key"
-  wk.add {
-    { "<leader>Ti", "<cmd>TSConfigInfo<CR>", desc = "Info", hidden=true, },
-  }
-
-  require("nvim-treesitter.configs").setup {
-    ensure_installed = {"lua", "markdown", "markdown_inline","bash","python","c","cpp","css","html","asm","regex","typescript","tsx","javascript","rust"}, -- put the language you want in this array
-    ignore_install = { "" },
-    sync_install = false,
-    highlight = {
-      enable = true,
-      -- disable = { "markdown" },
-      additional_vim_regex_highlighting = false,
-    },
-    auto_install = true,
-    modules = {},
-    indent = {
-      enable = true,
-      disable = { "yaml" },
-    },
-    autopairs = { enable = true },
-    textobjects = {
-      select = {
+    ts_configs.setup({
+      highlight = {
         enable = true,
-        -- Automatically jump forward to textobj, similar to targets.vim
-        lookahead = true,
+        disable = function(_, buf)
+          local max_filesize = 100 * 1024 -- 100 KB
+          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+          return ok and stats and stats.size > max_filesize
+        end,
+        additional_vim_regex_highlighting = false,
+      },
+
+      indent = {
+        enable = true,
+        disable = { "yaml" },
+      },
+
+      ensure_installed = {
+        "json",
+        "javascript",
+        "typescript",
+        "tsx",
+        "yaml",
+        "html",
+        "css",
+        "prisma",
+        "markdown",
+        "markdown_inline",
+        "svelte",
+        "graphql",
+        "bash",
+        "lua",
+        "vim",
+        "dockerfile",
+        "gitignore",
+        "query",
+        "vimdoc",
+        "python",
+        "go",
+        "rust",
+        "c",
+        "cpp",
+      },
+
+      auto_install = true,
+
+      incremental_selection = {
+        enable = true,
         keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["at"] = "@class.outer",
-          ["it"] = "@class.inner",
-          ["ac"] = "@call.outer",
-          ["ic"] = "@call.inner",
-          ["aa"] = "@parameter.outer",
-          ["ia"] = "@parameter.inner",
-          ["al"] = "@loop.outer",
-          ["il"] = "@loop.inner",
-          ["ai"] = "@conditional.outer",
-          ["ii"] = "@conditional.inner",
-          ["a/"] = "@comment.outer",
-          ["i/"] = "@comment.inner",
-          ["ab"] = "@block.outer",
-          ["ib"] = "@block.inner",
-          ["as"] = "@statement.outer",
-          ["is"] = "@scopename.inner",
-          ["aA"] = "@attribute.outer",
-          ["iA"] = "@attribute.inner",
-          ["aF"] = "@frame.outer",
-          ["iF"] = "@frame.inner",
+          init_selection = "gnn",
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm",
         },
       },
-    },
-  }
-end
+
+      -- Textobjects only setup if module exists
+      textobjects = (function()
+        local ok2, textobjects = pcall(require, "nvim-treesitter.configs")
+        if ok2 and textobjects then
+          return {
+            select = {
+              enable = true,
+              lookahead = true,
+              keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@call.outer",
+                ["ic"] = "@call.inner",
+                ["aa"] = "@parameter.outer",
+                ["ia"] = "@parameter.inner",
+              },
+            },
+            move = {
+              enable = true,
+              set_jumps = true,
+              goto_next_start = {
+                ["]f"] = "@function.outer",
+                ["]c"] = "@class.outer",
+              },
+              goto_previous_start = {
+                ["[f"] = "@function.outer",
+                ["[c"] = "@class.outer",
+              },
+            },
+          }
+        else
+          return {}
+        end
+      end)(),
+    })
+  end,
+}
 
 return M

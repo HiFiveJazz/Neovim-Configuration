@@ -1,4 +1,5 @@
 -- hover your cursor over a file name in quotations and press "gd" to teleport to the config file
+-- vim.g.netrw_transport = 'sftp'
 require "user.launch"-- Defines spec function used in this file for LazyVim 
 require "user.options"-- General, Neovim settings, such as relative line numbers, etc.
 require "user.keymaps"-- Basic, general, keybindings
@@ -12,7 +13,7 @@ spec "user.schemastore"--Shown as wrench in autocomplete, Gives .json, .yaml sch
 -- spec "user.lspconfig"--issue with hints on part with on attach
 spec "user.navic" -- Navigation Icons
 spec "user.breadcrumbs" -- Works with NavIc to provide context of code
-spec "user.null-ls" -- Use for injecting LSPs into Neovim
+-- spec "user.null-ls" -- Use for injecting LSPs into Neovim
 spec "user.illuminate" -- Enables highlighting entire word on cursor hover
 spec "user.telescope" -- Fuzzy Finder, "_ff", Buffers, "_bb", Colorscheme, "_fc"
 spec "user.telescope-tabs" -- use "_aa for opening telescope in a tab format"
@@ -31,7 +32,7 @@ spec "user.netrw" -- Dependency for other packages, specifically for file managi
 spec "user.project" -- Open up recent projects via telescope using "Ctrl-p", moving up and down with "Ctrl-j" and "Ctrl-k"
 spec "user.toggleterm" -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
 spec "user.bufdelete" -- Delete current buffer by pressing "Q"
-spec "user.luarocks"
+-- spec "user.luarocks"
 spec "user.image"
 spec "user.csv"
 spec "user.peek" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
@@ -70,6 +71,8 @@ spec "user.extras.various-textobjs"
 -- spec "user.extras.spider"
 spec "user.extras.harpoon" -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.package-info"
+spec "user.extras.remote-sshfs"
+spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
 spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
 -- TODO:
 -- HACK:
