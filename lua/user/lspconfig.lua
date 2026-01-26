@@ -1,70 +1,88 @@
 local M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
-  -- dependencies = {
-  --   {
-  --     "folke/neodev.nvim",
-  --   },
-  -- },
+  -- If you actually want treesitter features (folding, etc.), add this:
+  -- dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
 
 local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
-  local keymap = vim.api.nvim_buf_set_keymap
-  keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  keymap(bufnr, "n", "<CR>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  local opts = { noremap = true, silent = true, buffer = bufnr }
+
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+  vim.keymap.set("n", "<CR>", vim.lsp.buf.signature_help, opts)
+  vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+
   vim.keymap.set("n", "K", function()
-    local winid = require("ufo").peekFoldedLinesUnderCursor()
-    if not winid then
-      vim.lsp.buf.hover()
+    local ok, ufo = pcall(require, "ufo")
+    if ok then
+      local winid = ufo.peekFoldedLinesUnderCursor()
+      if winid then
+        return
+      end
     end
-  end)
-  keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    vim.lsp.buf.hover()
+  end, opts)
 end
 
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
-  if client.supports_method "textDocument/inlayHint" then
-    vim.lsp.inlay_hint.enable(true)
+  if client.supports_method and client:supports_method("textDocument/inlayHint") then
+    -- Neovim 0.10/0.11 compatible-ish: try both call shapes
+    pcall(function()
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end)
+    pcall(function()
+      vim.lsp.inlay_hint.enable(bufnr, true)
+    end)
   end
 end
 
 M.toggle_inlay_hints = function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
+  -- Try multiple APIs across 0.10/0.11
+  local ok = pcall(function()
+    local enabled = vim.lsp.inlay_hint.is_enabled({})
+    vim.lsp.inlay_hint.enable(not enabled, {})
+  end)
+  if ok then
+    return
+  end
+
+  pcall(function()
+    local enabled = vim.lsp.inlay_hint.is_enabled()
+    vim.lsp.inlay_hint.enable(not enabled)
+  end)
 end
 
 function M.common_capabilities()
-  local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  if status_ok then
-    return cmp_nvim_lsp.default_capabilities()
+  local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  if ok then
+    local caps = cmp_nvim_lsp.default_capabilities()
+    caps.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
+    return caps
   end
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
+    properties = { "documentation", "detail", "additionalTextEdits" },
   }
-  capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-  }
-
+  capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
   return capabilities
 end
 
 function M.config()
-  local wk = require "which-key"
-  wk.add {
+  local wk = require("which-key")
+  wk.add({
     { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-    { "<leader>lf", "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>", desc = "Format" },
+    {
+      "<leader>lf",
+      "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>",
+      desc = "Format",
+    },
     { "<leader>lh", "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>", desc = "Hints" },
     { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
     { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
@@ -72,55 +90,40 @@ function M.config()
     { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
     { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
     { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
-  }
+  })
 
-  wk.add {
+  wk.add({
     { "<leader>la", group = "LSP" },
     { "<leader>laa", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "v" },
-  }
+  })
 
-  local lspconfig = require "lspconfig"
-  local icons = require "user.icons"
+  local icons = require("user.icons")
 
+  -- NOTE: These names must match nvim-lspconfig server names.
   local servers = {
-    --Lua
-    "asm_lsp", --Assembly LSP
-    -- "asmfmt",
-    "lua_ls",      --Lua LSP
-    --Code Formatter
-    -- "Prettier",    --Formatter
-    --Python
-    "pyright",     --Static Type Chrcker
-    -- "flake8",      -- Python Linter
-    -- "black",       -- Python
-    -- "debugpy",     -- Python DAP
-    --Web Development
-    "cssls",       --CSS LSP
-    "html",        --HTML Language Server
-    "ts_ls",    --TypeScript LSP
-    "eslint",      --JavaScript and TypeScript LSP
-    "tailwindcss", --TailwindCSS LSP
-    "jsonls",      --JSON LSP
-    --Bash
-    "bashls",      --Bash LSP
-    "matlab_ls",   --MatLab LSP
-    --C,C++,Rust, and Zig
-    "csharp_ls",   --C# LSP
-    -- "rust_analyzer", -- Rust LSP
-    "zls",         --Zig LSP
-    --Latex/Markdown
-    -- "ltex",        --Latex LSP
-    "texlab",      --Latex LSP
-    "vale_ls",        --Markdown and Latex
-    -- Vim
-    "vimls",       --Vim LSP    "vale"
+    "asm_lsp",
+    "lua_ls",
+    "pyright",
+    "cssls",
+    "html",
+    "ts_ls",
+    "eslint",
+    "tailwindcss",
+    "jsonls",
+    "bashls",
+    "matlab_ls",
+    "csharp_ls",
+    "zls",
+    "texlab",
+    "vale_ls",
+    "vimls",
     "gopls",
     "templ",
     "biome",
-    "nginx-language-server",
+    "nginx_language_server",
   }
 
-  vim.diagnostic.config {
+  vim.diagnostic.config({
     signs = {
       text = {
         [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
@@ -140,29 +143,31 @@ function M.config()
       header = "",
       prefix = "",
     },
-  }
+  })
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-  require("lspconfig.ui.windows").default_options.border = "rounded"
+  vim.lsp.handlers["textDocument/hover"] =
+    vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+  vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-  for _, server in pairs(servers) do
+  -- Configure each server using Neovim 0.11+ APIs
+  for _, server in ipairs(servers) do
     local opts = {
       on_attach = M.on_attach,
       capabilities = M.common_capabilities(),
     }
 
-    local require_ok, settings = pcall(require, "user.lspsettings." .. server)
-    if require_ok then
-      opts = vim.tbl_deep_extend("force", settings, opts)
+    local ok, settings = pcall(require, "user.lspsettings." .. server)
+    if ok then
+      opts = vim.tbl_deep_extend("force", opts, settings)
     end
 
-    lspconfig[server].setup(opts)
-
-    if server == "nginx-language-server" then
-        require("lspconfig").nginx_language_server.setup(opts)
-    end
+    -- This is the new recommended way (no require("lspconfig") needed)
+    vim.lsp.config(server, opts)
   end
+
+  -- Enable all configured servers
+  vim.lsp.enable(servers)
 end
 
 return M

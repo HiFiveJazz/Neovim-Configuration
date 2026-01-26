@@ -10,10 +10,10 @@ spec "user.miniicons"-- Adds many different icons used for filetypes, GitHub, et
 spec "user.treesitter"-- Enables better syntax highlighting using LSPs
 spec "user.mason"-- Easily install binaries, such as LSPs, Linters, etc.
 spec "user.schemastore"--Shown as wrench in autocomplete, Gives .json, .yaml schemas and provides autocompletes for those things
--- spec "user.lspconfig"--issue with hints on part with on attach
+spec "user.lspconfig"--issue with hints on part with on attach
 spec "user.navic" -- Navigation Icons
 spec "user.breadcrumbs" -- Works with NavIc to provide context of code
--- spec "user.null-ls" -- Use for injecting LSPs into Neovim
+spec "user.null-ls" -- Use for injecting LSPs into Neovim
 spec "user.illuminate" -- Enables highlighting entire word on cursor hover
 spec "user.telescope" -- Fuzzy Finder, "_ff", Buffers, "_bb", Colorscheme, "_fc"
 spec "user.telescope-tabs" -- use "_aa for opening telescope in a tab format"
