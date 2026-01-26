@@ -3,7 +3,7 @@ This project requires NeoVim. Install via your preferred package manager.
 
 ***Arch Linux***
 ```md
-sudo pacman -S neovim sox cargo ripgrep noto-fonts-emoji imagemagick curl shfmt luarocks
+sudo pacman -S --noconfirm wl-clipboard neovim deno lazygit sox cargo ripgrep noto-fonts-emoji imagemagick curl shfmt luarocks lua51 npm jdk-openjdk python tree-sitter-cli sshfs
 ```
 
 ***macOS***
@@ -19,10 +19,10 @@ Install Npm via your preferred package manager.
 ***Arch Linux***
 
 ```md
-sudo pacman -S npm jdk-openjdk python 
-npm install -g neovim tree-sitter-cli prettier
-tree-sitter generate regex rust
-cargo install stylua 
+sudo npm install -g neovim prettier
+sudo pacman -S --noconfirm rustup
+rustup update stable
+cargo install stylua
 ```
 
 ***macOS***
