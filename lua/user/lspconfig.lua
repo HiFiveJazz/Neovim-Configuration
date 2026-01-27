@@ -25,11 +25,37 @@ local function lsp_keymaps(bufnr)
     end
     vim.lsp.buf.hover()
   end, opts)
+
+  -- Optional: quick import-fix keybind (works great for Go)
+  vim.keymap.set("n", "<leader>oi", function()
+    vim.lsp.buf.code_action({
+      context = { only = { "source.organizeImports" } },
+      apply = true,
+    })
+  end, { desc = "Organize Imports", buffer = bufnr, silent = true })
+end
+
+-- Organize imports helper (used in gopls on_attach)
+local function organize_imports(bufnr)
+  local params = vim.lsp.util.make_range_params()
+  params.context = { only = { "source.organizeImports" } }
+
+  local result = vim.lsp.buf_request_sync(bufnr, "textDocument/codeAction", params, 1000)
+  for _, res in pairs(result or {}) do
+    for _, action in pairs(res.result or {}) do
+      if action.edit then
+        vim.lsp.util.apply_workspace_edit(action.edit, "utf-16")
+      elseif action.command then
+        vim.lsp.buf.execute_command(action.command)
+      end
+    end
+  end
 end
 
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
+  -- Inlay hints
   if client.supports_method and client:supports_method("textDocument/inlayHint") then
     -- Neovim 0.10/0.11 compatible-ish: try both call shapes
     pcall(function()
@@ -38,6 +64,23 @@ M.on_attach = function(client, bufnr)
     pcall(function()
       vim.lsp.inlay_hint.enable(bufnr, true)
     end)
+  end
+
+  -- ✅ Go: auto-add / organize imports on save (adds fmt, removes unused, sorts)
+  if client.name == "gopls" then
+    local group = vim.api.nvim_create_augroup("GoImports_" .. bufnr, { clear = true })
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = group,
+      buffer = bufnr,
+      callback = function(args)
+        -- 1) organize imports (adds missing like fmt)
+        organize_imports(args.buf)
+        -- 2) then format (gofmt/gofumpt, etc.)
+        vim.lsp.buf.format({ bufnr = args.buf })
+      end,
+      desc = "Go: organize imports + format on save",
+    })
   end
 end
 
