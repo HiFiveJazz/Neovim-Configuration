@@ -12,6 +12,8 @@ function M.config()
       "javascriptreact",
       "css",
       "html",
+      "toml",
+      "conf",
       "astro",
       "lua",
     },
