@@ -5,18 +5,17 @@ require "user.options"-- General, Neovim settings, such as relative line numbers
 require "user.keymaps"-- Basic, general, keybindings
 require "user.autocmds"
 spec "user.colorscheme"-- Where permanent ColorScheme is initalized
--- spec "user.devicons"-- Adds many different icons used for filetypes, GitHub, etc. Referenced in many different plugins
 spec "user.miniicons"-- Adds many different icons used for filetypes, GitHub, etc. Referenced in many different plugins
 spec "user.treesitter"-- Enables better syntax highlighting using LSPs
 spec "user.mason"-- Easily install binaries, such as LSPs, Linters, etc.
 spec "user.schemastore"--Shown as wrench in autocomplete, Gives .json, .yaml schemas and provides autocompletes for those things
 spec "user.lspconfig"--issue with hints on part with on attach
-spec "user.navic" -- Navigation Icons
-spec "user.breadcrumbs" -- Works with NavIc to provide context of code
+-- spec "user.navic" -- Navigation Icons
+-- spec "user.breadcrumbs" -- Works with NavIc to provide context of code
 spec "user.null-ls" -- Use for injecting LSPs into Neovim
 spec "user.illuminate" -- Enables highlighting entire word on cursor hover
 spec "user.telescope" -- Fuzzy Finder, "_ff", Buffers, "_bb", Colorscheme, "_fc"
-spec "user.telescope-tabs" -- use "_aa for opening telescope in a tab format"
+-- spec "user.telescope-tabs" -- use "_aa for opening telescope in a tab format"
 -- spec "user.neotree" -- use "_e to open up file explorer on the side"
 spec "user.yazi" -- use "_e to open up file explorer on the side" requires yazi package to be installed
 spec "user.lualine" -- Makes Line at bottom look better, uses devicons.lua
@@ -29,11 +28,12 @@ spec "user.comment" --In Visual Mode, "_/" comments out all lines"
 spec "user.gitsigns" --shows green, red, and blue lines on the left side in git files
 spec "user.indentline" --Adds in indent lines on the left side for functions and whatnot
 spec "user.alpha" --Adds in nice screen when running "nvim" in terminal
-spec "user.netrw" -- Dependency for other packages, specifically for file managing
+-- spec "user.netrw" -- Dependency for other packages, specifically for file managing
 spec "user.project" -- Open up recent projects via telescope using "Ctrl-p", moving up and down with "Ctrl-j" and "Ctrl-k"
 spec "user.toggleterm" -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
 spec "user.bufdelete" -- Delete current buffer by pressing "Q"
--- spec "user.luarocks"
+-- TODO: figure out why image processing isn't working 
+spec "user.luarocks"
 spec "user.image" -- allows using neovim to glance at images
 spec "user.csv" -- allows using neovim to edit csv files
 spec "user.peek" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
@@ -62,7 +62,7 @@ spec "user.extras.surround" -- Helps with HTML tags!
 spec "user.extras.eyeliner" --Highlights characters when using "f" and "F" commands in Neovim for faster jumping
 spec "user.extras.numb" -- Linepeeker that doesn't force you to move all the way down to the line, if you want to peek line 356, type ":356" for example
 spec "user.extras.jaq" -- Use "Alt-r" to run code quickly! Opens up output on the side!
-spec "user.extras.navbuddy" -- Opens yazi file explorer, using "Space-o". Use "Alt-s" or "Alt-o" for code exploration!
+-- spec "user.extras.navbuddy" -- Opens yazi file explorer, using "Space-o". Use "Alt-s" or "Alt-o" for code exploration!
 -- spec "user.extras.oil" --Enables mass creating files with "-" in Normal Mode
 spec "user.extras.noice" --Experimental plugin that replaces the command line of neovim, making it look very clean
 spec "user.extras.fidget" --shows language server loading in bottom right on file open
