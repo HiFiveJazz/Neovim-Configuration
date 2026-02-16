@@ -73,7 +73,7 @@ spec "user.extras.various-textobjs"
 -- spec "user.extras.spider"
 spec "user.extras.harpoon" -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.package-info"
-spec "user.extras.remote-sshfs"
+spec "user.extras.remote-sshfs" -- :RemoteSSHFS to use it, uses default .ssh/config
 spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
 -- TODO:
 -- HACK:
