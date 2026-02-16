@@ -3,7 +3,7 @@ This project requires Neovim. Install via your preferred package manager.
 
 ***Arch Linux***
 ```md
-sudo pacman -S --noconfirm wl-clipboard neovim deno lazygit sox cargo ripgrep noto-fonts-emoji imagemagick curl shfmt luarocks lua51 npm jdk-openjdk python tree-sitter-cli sshfs hyperfine
+sudo pacman -S --noconfirm wl-clipboard neovim deno lazygit sox cargo ripgrep noto-fonts-emoji imagemagick curl shfmt luarocks lua51 hyperfine yazi npm jdk-openjdk python tree-sitter-cli sshfs 
 ```
 
 ***macOS***

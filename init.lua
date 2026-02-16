@@ -17,7 +17,8 @@ spec "user.null-ls" -- Use for injecting LSPs into Neovim
 spec "user.illuminate" -- Enables highlighting entire word on cursor hover
 spec "user.telescope" -- Fuzzy Finder, "_ff", Buffers, "_bb", Colorscheme, "_fc"
 spec "user.telescope-tabs" -- use "_aa for opening telescope in a tab format"
-spec "user.neotree" -- use "_e to open up file explorer on the side"
+-- spec "user.neotree" -- use "_e to open up file explorer on the side"
+spec "user.yazi" -- use "_e to open up file explorer on the side" requires yazi package to be installed
 spec "user.lualine" -- Makes Line at bottom look better, uses devicons.lua
 spec "user.whichkey" --Typing "_" shows most of the keybindings
 spec "user.dap" --Debug Adapter Protocol, used for python3
@@ -33,24 +34,25 @@ spec "user.project" -- Open up recent projects via telescope using "Ctrl-p", mov
 spec "user.toggleterm" -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
 spec "user.bufdelete" -- Delete current buffer by pressing "Q"
 -- spec "user.luarocks"
-spec "user.image"
-spec "user.csv"
+spec "user.image" -- allows using neovim to glance at images
+spec "user.csv" -- allows using neovim to edit csv files
 spec "user.peek" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
 -- spec "user.markdown" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
-spec "user.neocomposer" -- Used for macros, press "mr" toggle recording and finishing a macro, "mm" to open the macro menu, 
-spec "user.smear"
- -- "mp" to play macro, "ms" to stop a macro!  
+spec "user.neocomposer" -- Used for macros, press  
+-- "mr" toggle recording and finishing a macro, 
+-- "mm" to open the macro menu,
+-- "mp" to play macro, "ms" to stop a macro!  
+spec "user.smear" 
 -- Extras
 spec "user.extras.colorizer" --Colors hex color codes
 spec "user.extras.neoscroll" -- Scroll through files using "Ctrl-J" and "Ctrl-K"
 spec "user.extras.modicator" --Bolds the line number you are currently on
--- spec "user.extras.rainbow"
 spec "user.extras.bqf" --"Ctrl-q" while in telescope to add files to harpoon easily
 spec "user.extras.nui" -- UI components library used in many other plugins
 spec "user.extras.ufo" --Toggle fold with "za",open all folds with "zR", close all folds "zM" 
 spec "user.extras.dressing" --When creating files in nvim-tree, shows dialog box at the top
 spec "user.extras.surround" -- Helps with HTML tags!
--- ssi for custom tags!
+-- ssi for cstom tags!
 -- sst for HTML tags!
 -- ssb for ()
 -- SS for an entire line
@@ -61,7 +63,7 @@ spec "user.extras.eyeliner" --Highlights characters when using "f" and "F" comma
 spec "user.extras.numb" -- Linepeeker that doesn't force you to move all the way down to the line, if you want to peek line 356, type ":356" for example
 spec "user.extras.jaq" -- Use "Alt-r" to run code quickly! Opens up output on the side!
 spec "user.extras.navbuddy" -- Opens yazi file explorer, using "Space-o". Use "Alt-s" or "Alt-o" for code exploration!
-spec "user.extras.oil" --Enables mass creating files with "-" in Normal Mode
+-- spec "user.extras.oil" --Enables mass creating files with "-" in Normal Mode
 spec "user.extras.noice" --Experimental plugin that replaces the command line of neovim, making it look very clean
 spec "user.extras.fidget" --shows language server loading in bottom right on file open
 spec "user.extras.neotab"
@@ -72,7 +74,6 @@ spec "user.extras.various-textobjs"
 spec "user.extras.harpoon" -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.package-info"
 spec "user.extras.remote-sshfs"
-spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
 spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
 -- TODO:
 -- HACK:
@@ -96,7 +97,7 @@ spec "user.extras.crates"
 -- spec "user.extras.chatgpt"
 --Latex Documents
 spec "user.extras.vimtex" -- Allows continous compilation of latex document and neovim editing
--- spec "user.extras.ultisnips" -- Adds in many different latex shorrcuts
-spec "user.extras.tex-conceal" -- Conceals latex text in neovim, making it appear like it would in a latex document
+-- spec "user.extras.ultisnips" -- Adds in many different latex shortcuts
+spec "user.extras.tex-conceal" -- Conceals latex text in Neovim, making it appear like it would in a latex document
 require "user.lazy"--Adds in LazyVim Plugin manager, can set colorscheme in there
 
