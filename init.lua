@@ -17,6 +17,7 @@ spec "user.telescope" -- Fuzzy Finder, "_ff", Buffers, "_bb", Colorscheme, "_fc"
 -- spec "user.telescope-tabs" -- use "_aa for opening telescope in a tab format"
 -- spec "user.neotree" -- use "_e to open up file explorer on the side"
 spec "user.yazi" -- use "_e to open up file explorer on the side" requires yazi package to be installed
+spec "user.flash" -- enhanced f, F, t, and T keybindings!
 spec "user.lualine" -- Makes Line at bottom look better, uses devicons.lua
 spec "user.whichkey" --Typing "_" shows most of the keybindings
 spec "user.dap" --Debug Adapter Protocol, used for python3
@@ -89,7 +90,7 @@ spec "user.extras.crates"
 -- spec "user.extras.chatgpt"
 --Latex Documents
 spec "user.extras.vimtex" -- Allows continous compilation of latex document and neovim editing
--- spec "user.extras.ultisnips" -- Adds in many different latex shortcuts
-spec "user.extras.tex-conceal" -- Conceals latex text in Neovim, making it appear like it would in a latex document
+spec "user.extras.ultisnips" -- Adds in many different latex shortcuts
+-- spec "user.extras.tex-conceal" -- Conceals latex text in Neovim, making it appear like it would in a latex document
 require "user.lazy"--Adds in LazyVim Plugin manager, can set colorscheme in there
 

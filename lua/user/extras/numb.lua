@@ -1,61 +1,16 @@
 local M = {
-  "nosduco/remote-sshfs.nvim",
-  cmd = {
-    "RemoteSSHFSConnect",
-    "RemoteSSHFSDisconnect",
-    "RemoteSSHFSList",
-  },
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-    "nvim-lua/plenary.nvim",
-  },
+  "nacro90/numb.nvim",
+  event = "CmdlineEnter",
 }
 
 function M.config()
-  require("remote-sshfs").setup({
-    connections = {
-      ssh_configs = {
-        vim.fn.expand("$HOME/.ssh/config"),
-        "/etc/ssh/ssh_config",
-      },
-      ssh_known_hosts = vim.fn.expand("$HOME/.ssh/known_hosts"),
-      sshfs_args = {
-        "-o reconnect",
-        "-o ConnectTimeout=5",
-      },
-    },
-    mounts = {
-      base_dir = vim.fn.expand("$HOME/.sshfs/"),
-      unmount_on_exit = true,
-    },
-    handlers = {
-      on_connect = {
-        change_dir = true,
-      },
-      on_disconnect = {
-        clean_mount_folders = false,
-      },
-      on_edit = {},
-    },
-    ui = {
-      select_prompts = false,
-      confirm = {
-        connect = true,
-        change_dir = false,
-      },
-    },
-    log = {
-      enabled = false,
-      truncate = false,
-      types = {
-        all = false,
-        util = false,
-        handler = false,
-        sshfs = false,
-      },
-    },
+  require("numb").setup({
+    show_numbers = true,      -- show line numbers in preview
+    show_cursorline = true,   -- highlight the previewed line
+    hide_relativenumbers = true,
+    number_only = false,      -- allow :42, not just numbers
+    centered_peeking = true,  -- keep preview centered (feels nice)
   })
 end
 
 return M
-
