@@ -1,5 +1,4 @@
 -- hover your cursor over a file name in quotations and press "gd" to teleport to the config file
--- vim.g.netrw_transport = 'sftp'
 require "user.launch"-- Defines spec function used in this file for LazyVim 
 require "user.options"-- General, Neovim settings, such as relative line numbers, etc.
 require "user.keymaps"-- Basic, general, keybindings
@@ -28,16 +27,13 @@ spec "user.comment" --In Visual Mode, "_/" comments out all lines"
 spec "user.gitsigns" --shows green, red, and blue lines on the left side in git files
 spec "user.indentline" --Adds in indent lines on the left side for functions and whatnot
 spec "user.alpha" --Adds in nice screen when running "nvim" in terminal
--- spec "user.netrw" -- Dependency for other packages, specifically for file managing
 spec "user.project" -- Open up recent projects via telescope using "Ctrl-p", moving up and down with "Ctrl-j" and "Ctrl-k"
 spec "user.toggleterm" -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
 spec "user.bufdelete" -- Delete current buffer by pressing "Q"
--- TODO: figure out why image processing isn't working 
-spec "user.luarocks"
+-- spec "user.luarocks"
 spec "user.image" -- allows using neovim to glance at images
 spec "user.csv" -- allows using neovim to edit csv files
 spec "user.peek" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
--- spec "user.markdown" -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
 spec "user.neocomposer" -- Used for macros, press  
 -- "mr" toggle recording and finishing a macro, 
 -- "mm" to open the macro menu,
@@ -62,15 +58,11 @@ spec "user.extras.surround" -- Helps with HTML tags!
 spec "user.extras.eyeliner" --Highlights characters when using "f" and "F" commands in Neovim for faster jumping
 spec "user.extras.numb" -- Linepeeker that doesn't force you to move all the way down to the line, if you want to peek line 356, type ":356" for example
 spec "user.extras.jaq" -- Use "Alt-r" to run code quickly! Opens up output on the side!
--- spec "user.extras.navbuddy" -- Opens yazi file explorer, using "Space-o". Use "Alt-s" or "Alt-o" for code exploration!
--- spec "user.extras.oil" --Enables mass creating files with "-" in Normal Mode
 spec "user.extras.noice" --Experimental plugin that replaces the command line of neovim, making it look very clean
 spec "user.extras.fidget" --shows language server loading in bottom right on file open
 spec "user.extras.neotab"
--- spec "user.extras.cmp-tabnine"--AI autocompletions (shown as purple robot)
 spec "user.extras.tabby"-- Creates tabs for switching between split files, open using "_;"
 spec "user.extras.various-textobjs"
--- spec "user.extras.spider"
 spec "user.extras.harpoon" -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.package-info"
 spec "user.extras.remote-sshfs" -- :RemoteSSHFS to use it, uses default .ssh/config
