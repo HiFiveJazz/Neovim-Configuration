@@ -118,6 +118,8 @@ function M.common_capabilities()
 end
 
 function M.config()
+
+  vim.lsp.enable("rust_analyzer", false) -- rustaceanvim should own Rust LSP; do NOT start rust_analyzer via core LSP config.
   local wk = require("which-key")
   wk.add({
     { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
