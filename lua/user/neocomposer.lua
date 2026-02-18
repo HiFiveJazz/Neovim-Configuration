@@ -21,7 +21,7 @@ function M.config()
       },
     },
     colors = {
-      bg = "#000000",
+      bg = "#16161e", -- matches lualine
       status_bg = "#999123",
       fg = "#ff9e64",
       red = "#ec5f67",

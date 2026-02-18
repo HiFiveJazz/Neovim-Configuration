@@ -1,6 +1,7 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 keymap("n", "<Space>", "", opts)
+keymap("n", "q", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 keymap("v", "X", '"_d', opts) -- binds X to delete into black hole register
