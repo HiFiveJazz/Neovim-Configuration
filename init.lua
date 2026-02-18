@@ -39,15 +39,16 @@ spec "user.neocomposer"       -- Used for macros, press
                               -- "mr" toggle recording and finishing a macro, 
                               -- "mm" to open the macro menu,
                               -- "mp" to play macro, "ms" to stop a macro!  
-spec "user.smear" 
 -- Extras
+spec "user.extras.smear"      -- Animation for cursor, good for lectures! 
+spec "user.extras.glimmer"     -- Animation for yanking, pasting, undo, redo; good for lectures/screensharing code!
 spec "user.extras.colorizer"  -- Colors hex color codes
 spec "user.extras.neoscroll"  -- Scroll through files using "Ctrl-J" and "Ctrl-K"
 spec "user.extras.modicator"  -- Bolds the line number you are currently on
 spec "user.extras.bqf"        --"Ctrl-q" while in telescope to add files to harpoon easily
 spec "user.extras.nui"        -- UI components library used in many other plugins
 spec "user.extras.ufo"        -- Toggle fold with "za",open all folds with "zR", close all folds "zM" 
-spec "user.extras.dressing"   -- When creating files in nvim-tree, shows dialog box at the top
+-- spec "user.extras.dressing"   -- When creating files in nvim-tree, shows dialog box at the top
 spec "user.extras.surround"   -- Helps with HTML tags!
                               -- ssi for custom tags!
                               -- sst for HTML tags!
@@ -63,7 +64,7 @@ spec "user.extras.noice"      -- Visually enchances the Neovim commandline bar!
 spec "user.extras.fidget"     -- Shows language server loading in top right on file open!
 spec "user.extras.neotab"     -- Always creation of other tabs!
 spec "user.extras.tabby"      -- Creates tabs for switching between split files, open using "_;"
-spec "user.extras.various-textobjs"
+spec "user.extras.various-textobjs" -- replaces ciw, 
 spec "user.extras.harpoon"    -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.package-info"
 spec "user.extras.remote-sshfs"  -- :RemoteSSHFS to use it, uses default .ssh/config
@@ -82,7 +83,7 @@ spec "user.extras.todo-comments" -- Adds in various comments, such as the follow
                               -- PASSED:
                               -- FAILED:
                               -- TESTING:
-spec "user.extras.trouble"
+-- spec "user.extras.trouble"    -- Jump through errors with keybindings!
 spec "user.extras.rustacean"  -- Lots of Rust Language integration
 spec "user.extras.crates"     -- Shows updates for Rust Crates
 spec "user.extras.wrapped"    -- Shows Neovim config statistics! 
@@ -94,4 +95,3 @@ spec "user.extras.wrapped"    -- Shows Neovim config statistics!
 -- spec "user.extras.ultisnips"   -- Adds in many different latex shortcuts
 -- spec "user.extras.tex-conceal" -- Conceals latex text in Neovim, making it appear like it would in a latex document
 require "user.lazy"           -- Adds in LazyVim Plugin manager, can set colorscheme in there
-
