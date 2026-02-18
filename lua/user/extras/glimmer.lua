@@ -2,10 +2,6 @@ local M = {
   "rachartier/tiny-glimmer.nvim",
   event = "VeryLazy",
   priority = 10
-  priority = 10
-  priority = 10
-  priority = 10
-  priority = 10
 }
 
 -- local function get_cursorline_bg()
@@ -18,7 +14,6 @@ local M = {
 
 function M.config()
   require("tiny-glimmer").setup({
-
 
     enabled = true, -- Enable/disable the plugin
     disable_warnings = true, -- Disable warnings for debugging highlight issues
@@ -38,9 +33,6 @@ function M.config()
 
     -- Automatic keybinding overwrites
     overwrite = {
-
-    -- Automatic keybinding overwrites
-    overwrite = {
         -- Automatically map keys to overwrite operations
         -- Set to false if you have custom mappings or prefer manual API calls
         auto_map = true,
@@ -56,7 +48,6 @@ yank = {
         max_duration = 500,
         min_duration = 450,
         easing = "inOutQuad",
-
       },
     },
   },
@@ -66,7 +57,7 @@ paste = {
     default_animation = {
       name = "fade",
       settings = {
-        from_color = "#3b4261", -- illuminate color
+        from_color = "#3b4261", -- bright purple
         to_color = "#292e42",
         max_duration = 500,
         min_duration = 400,
@@ -226,7 +217,7 @@ redo = {
 
     -- Virtual text display priority
     virt_text = {
-        priority = 50000,  -- Higher values appear above other plugins
+        priority = 2048,  -- Higher values appear above other plugins
     },
 
   })
