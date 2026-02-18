@@ -54,6 +54,14 @@ function M.config()
         self.status = require("NeoComposer.ui").status_recording()
       end,
     },
+    color = function()
+      local s = require("NeoComposer.ui").status_recording()
+      if s and s ~= "" then
+        return { bg = "#16161e", fg = "#ff9e64" } -- recording: orange fg
+      end
+      return { bg = "#16161e", fg = "#a9b1d6" } -- idle: normal fg
+    end,
+
   }
 
   require("lualine").setup {
