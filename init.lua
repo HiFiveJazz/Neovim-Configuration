@@ -86,7 +86,7 @@ spec "user.extras.todo-comments" -- Adds in various comments, such as the follow
 -- spec "user.extras.trouble"    -- Jump through errors with keybindings!
 spec "user.extras.rustacean"  -- Lots of Rust Language integration
 spec "user.extras.crates"     -- Shows updates for Rust Crates
-spec "user.extras.wrapped"    -- Shows Neovim config statistics! 
+spec "user.extras.wrapped"    -- Spotify wrapped, but for Nvim, run :NvimWrapped  
 -- AI Components
 -- spec "user.extras.gp"
 -- spec "user.extras.chatgpt"
