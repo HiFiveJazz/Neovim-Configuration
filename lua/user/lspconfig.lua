@@ -5,11 +5,74 @@ local M = {
   -- dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
 
+-- Helper: install a buffer-local <leader>q that returns to origin and deletes this buffer
+local function install_return_q(dest_buf, origin_buf)
+  -- Tag destination buffer with where we came from
+  vim.b[dest_buf].gd_return_buf = origin_buf
+
+  vim.keymap.set("n", "<leader>q", function()
+    local ret = vim.b.gd_return_buf
+    local cur = vim.api.nvim_get_current_buf()
+
+    -- Go back first
+    if type(ret) == "number" and vim.api.nvim_buf_is_valid(ret) then
+      vim.cmd("buffer " .. ret)
+    else
+      vim.cmd("bprevious")
+    end
+
+    -- Then delete the definition buffer
+    local ok, bd = pcall(require, "bufdelete")
+    if ok then
+      bd.bufdelete(cur, false)
+    else
+      pcall(vim.api.nvim_buf_delete, cur, { force = false })
+    end
+  end, {
+    buffer = dest_buf,
+    silent = true,
+    desc = "Close definition buffer and return",
+  })
+end
+
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+
+  -- SMART gd:
+  -- Call LSP definition, then (reliably) detect the destination buffer and
+  -- install a buffer-local <leader>q that returns to the origin buffer.
+  vim.keymap.set("n", "gd", function()
+    local origin_buf = vim.api.nvim_get_current_buf()
+    local origin_win = vim.api.nvim_get_current_win()
+
+    vim.lsp.buf.definition()
+
+    -- Retry until the buffer in the original window changes (async-safe).
+    local tries = 0
+    local max_tries = 25        -- ~25 * 20ms = 500ms worst-case
+    local delay_ms = 20
+
+    local function poll()
+      tries = tries + 1
+      if not vim.api.nvim_win_is_valid(origin_win) then return end
+
+      local dest_buf = vim.api.nvim_win_get_buf(origin_win)
+
+      if dest_buf ~= origin_buf then
+        install_return_q(dest_buf, origin_buf)
+        return
+      end
+
+      if tries < max_tries then
+        vim.defer_fn(poll, delay_ms)
+      end
+    end
+
+    vim.defer_fn(poll, 0)
+  end, opts)
+
   vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
   vim.keymap.set("n", "<CR>", vim.lsp.buf.signature_help, opts)
@@ -99,6 +162,48 @@ M.toggle_inlay_hints = function()
     vim.lsp.inlay_hint.enable(not enabled)
   end)
 end
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = vim.api.nvim_create_augroup("InitLuaSmartGd", { clear = true }),
+  pattern = "*/nvim/init.lua", -- adjust if needed
+  callback = function(ev)
+    local function open_module_under_cursor_same_window()
+      local s = vim.fn.expand("<cfile>")
+      if not s or s == "" then return false end
+      s = s:gsub([[^['"]+]], ""):gsub([[['"]+$]], "")
+
+      -- only handle your init.lua modules
+      if not s:match("^user%.") then return false end
+
+      local rel1 = "lua/" .. s:gsub("%.", "/") .. ".lua"
+      local rel2 = "lua/" .. s:gsub("%.", "/") .. "/init.lua"
+      local found = vim.api.nvim_get_runtime_file(rel1, false)[1]
+        or vim.api.nvim_get_runtime_file(rel2, false)[1]
+      if not found or found == "" then return false end
+
+      -- mark current spot so you can jump back (for <C-o>)
+      vim.cmd("normal! m'")
+
+      local origin_buf = ev.buf
+      local origin_win = vim.api.nvim_get_current_win()
+
+      -- edit in the same window (new buffer)
+      vim.cmd("edit " .. vim.fn.fnameescape(found))
+
+      -- install the same return behavior using <leader>q
+      local dest_buf = vim.api.nvim_win_get_buf(origin_win)
+      install_return_q(dest_buf, origin_buf)
+
+      return true
+    end
+
+    vim.keymap.set("n", "gd", function()
+      if not open_module_under_cursor_same_window() then
+        vim.lsp.buf.definition()
+      end
+    end, { buffer = ev.buf, silent = true, desc = "init.lua: open module buffer / LSP definition" })
+  end,
+})
 
 function M.common_capabilities()
   local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -216,3 +321,4 @@ function M.config()
 end
 
 return M
+
