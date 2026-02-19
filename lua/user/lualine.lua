@@ -1,8 +1,7 @@
 local M = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    "AndreM222/copilot-lualine",
-    -- "ecthelionvi/Neocomposer.nvim",
+    "ecthelionvi/Neocomposer.nvim",
   },
 }
 
@@ -54,14 +53,6 @@ function M.config()
         self.status = require("NeoComposer.ui").status_recording()
       end,
     },
-    color = function()
-      local s = require("NeoComposer.ui").status_recording()
-      if s and s ~= "" then
-        return { bg = "#16161e", fg = "#ff9e64" } -- recording: orange fg
-      end
-      return { bg = "#16161e", fg = "#a9b1d6" } -- idle: normal fg
-    end,
-
   }
 
   require("lualine").setup {
@@ -75,7 +66,7 @@ function M.config()
       lualine_a = { "mode" },
       lualine_b = { { "branch", icon = "" } },
       lualine_c = { diagnostics, neo_composer_status },
-      lualine_x = { diff, filetype },
+      lualine_x = { "harpoon2", diff, filetype },
       lualine_y = { "progress" },
       lualine_z = {},
     },

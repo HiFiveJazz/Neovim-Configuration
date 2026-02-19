@@ -22,11 +22,11 @@ function M.config()
     },
     colors = {
       bg = "#000000", -- Transparent Macro Menu
-      status_bg = "#999123",
-      fg = "#ff9e64",
-      red = "#ec5f67",
-      blue = "#5fb3b3",
-      green = "#99c794",
+      -- status_bg = "#999123",
+      -- fg = "#ff9e64",
+      -- red = "#ec5f67",
+      -- blue = "#5fb3b3",
+      -- green = "#99c794",
     },
     keymaps = {
       toggle_record = "mr",

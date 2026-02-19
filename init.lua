@@ -49,6 +49,7 @@ spec "user.extras.modicator"  -- Bolds the line number you are currently on
 spec "user.extras.bqf"        --"Ctrl-q" while in telescope to add files to harpoon easily
 spec "user.extras.nui"        -- UI components library used in many other plugins
 spec "user.extras.ufo"        -- Toggle fold with "za",open all folds with "zR", close all folds "zM" 
+-- spec "user.extras.linux-style"-- Toggle fold with "za",open all folds with "zR", close all folds "zM" 
 -- spec "user.extras.dressing"   -- When creating files in nvim-tree, shows dialog box at the top
 spec "user.extras.surround"   -- Helps with HTML tags!
                               -- ssi for custom tags!
@@ -67,8 +68,7 @@ spec "user.extras.neotab"     -- Always creation of other tabs!
 spec "user.extras.tabby"      -- Creates tabs for switching between split files, open using "_;"
 spec "user.extras.various-textobjs" -- replaces ciw, 
 spec "user.extras.harpoon"    -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
-spec "user.extras.package-info"
-spec "user.extras.remote-sshfs"  -- :RemoteSSHFS to use it, uses default .ssh/config
+spec "user.extras.harpoon-lualine"    -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
                               -- TODO:
                               -- HACK:
