@@ -11,7 +11,7 @@ function M.config()
   require("NeoComposer").setup({
     notify = true,
     delay_timer = 150,
-    queue_most_recent = false,
+    queue_most_recent = true,
     window = {
       width = 60,
       height = 10,
@@ -35,6 +35,7 @@ function M.config()
       toggle_macro_menu = "mm",
     },
   })
+  -- vim.keymap.set("n", "m", "<Nop>", { silent = true })
 
   -- Custom highlight groups for LUALINE ONLY
   -- (Background matches lualine_c_normal: #16161e)
@@ -44,6 +45,7 @@ function M.config()
   vim.api.nvim_set_hl(0, "NCPlayText",    { fg = "#a9b1d6", bg = "#16161e" }) -- normal PLAY text
   vim.api.nvim_set_hl(0, "NCDelaySymbol", { fg = "#5fb3b3", bg = "#16161e" }) -- cyan ⏱
   vim.api.nvim_set_hl(0, "NCDelayText",   { fg = "#a9b1d6", bg = "#16161e" }) -- normal DELAY text
+
 
   -- Monkey patch status function
   -- Replaces NeoComposer's baked-in highlight groups

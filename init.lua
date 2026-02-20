@@ -68,7 +68,7 @@ spec "user.extras.neotab"     -- Always creation of other tabs!
 spec "user.extras.tabby"      -- Creates tabs for switching between split files, open using "_;"
 spec "user.extras.various-textobjs" -- replaces ciw, 
 spec "user.extras.harpoon"    -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
-spec "user.extras.harpoon-lualine"    -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
+spec "user.extras.harpoon-lualine"    -- Enables harpoon visually showing the lualine!
 spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
                               -- TODO:
                               -- HACK:
