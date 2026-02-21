@@ -5,7 +5,6 @@ local M = {
 function M.config()
   require("fidget").setup({
     integration = {
-      ["nvim-tree"] = { enable = true },
     },
 
     notification = {

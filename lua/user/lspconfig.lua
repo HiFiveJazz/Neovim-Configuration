@@ -251,26 +251,22 @@ function M.config()
 
   -- NOTE: These names must match nvim-lspconfig server names.
   local servers = {
-    "asm_lsp",
+    "asm-lsp",
     "lua_ls",
     "pyright",
     "cssls",
     "html",
-    "ts_ls",
-    "eslint",
-    "tailwindcss",
-    "jsonls",
+    -- "ts_ls",
+    -- "jsonls",
     "bashls",
-    "matlab_ls",
-    "csharp_ls",
-    "zls",
+    -- "matlab_ls",
+    -- "csharp_ls",
     "texlab",
     "vale_ls",
-    "vimls",
+    -- "vimls",
     "gopls",
-    "templ",
-    "biome",
-    "nginx_language_server",
+    -- "biome",
+    -- "nginx_language_server",
   }
 
   vim.diagnostic.config({

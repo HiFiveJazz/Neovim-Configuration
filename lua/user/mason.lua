@@ -22,7 +22,7 @@ M.execs = {
 function M.config()
   local wk = require "which-key"
   wk.add{
-    { "<leader>lI", "<cmd>Mason<cr>", desc = "Mason Info" },
+    { "<leader>lm", "<cmd>Mason<cr>", desc = "Mason Info" },
   }
 
   require("mason").setup {
