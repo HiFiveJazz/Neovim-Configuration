@@ -2,6 +2,7 @@ local M = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "ecthelionvi/Neocomposer.nvim",
+    "nvim-tree/nvim-web-devicons",
   },
 }
 
@@ -22,25 +23,35 @@ function M.config()
 
   local filetype = {
     function()
-      local filetype = vim.bo.filetype
-      local upper_case_filetypes = {
-        "json",
-        "jsonc",
-        "yaml",
-        "toml",
-        "css",
-        "scss",
-        "html",
-        "xml",
-      }
+    local ft = vim.bo.filetype
+    if ft == "" then
+      return ""
+    end
 
-      if vim.tbl_contains(upper_case_filetypes, filetype) then
-        return filetype:upper()
-      end
+    -- Your uppercase list
+    local upper = {
+      json = true, jsonc = true, yaml = true, toml = true, css = true,
+      scss = true, html = true, xml = true,
+    }
 
-      return filetype
-    end,
-  }
+    local label = upper[ft] and ft:upper() or ft
+
+    -- Devicon for the current buffer name
+    local ok, devicons = pcall(require, "nvim-web-devicons")
+    if not ok then
+      return label
+    end
+
+    local name = vim.fn.expand("%:t")
+    local ext  = vim.fn.expand("%:e")
+    local icon = devicons.get_icon(name, ext, { default = true }) or ""
+
+    if icon ~= "" then
+      return icon .. " " .. label
+    end
+    return label
+  end,
+}
 
   local neo_composer_status = {
     function()
