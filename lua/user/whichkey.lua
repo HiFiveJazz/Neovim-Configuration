@@ -68,6 +68,16 @@ function M.config()
   -- azure, blue, cyan, green, grey, orange, purple, red, yellow
 
   wk.add {
+
+    { 
+      "<leader>c", 
+    group = "Cargo", 
+    desc="Rust", 
+    icon = {
+      icon = " ",
+      color = "orange",
+    },
+    },
     {
       "m",
       group = "Macros",

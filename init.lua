@@ -32,6 +32,7 @@ spec "user.project"           -- Open up recent projects via telescope using "Ct
 spec "user.toggleterm"        -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
 spec "user.bufdelete"         -- Delete current buffer by pressing "Q"
 -- spec "user.luarocks"
+-- spec "user.neodev" -- Haven't used this plugin, remove?
 spec "user.image"             -- allows using neovim to glance at images
 spec "user.csv"               -- allows using neovim to edit csv files
 spec "user.peek"              -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
@@ -44,6 +45,7 @@ spec "user.neocomposer"       -- Used for macros, press
 spec "user.extras.smear"      -- Animation for cursor, good for lectures! 
 spec "user.extras.glimmer"    -- Animation for yanking, pasting, undo, redo; good for lectures/screensharing code!
 spec "user.extras.screenkey"  -- Screenkey for neovim, good for lectures/screensharing code!
+spec "user.extras.urlview"    -- Allows for opening urls in the browser quickly
 spec "user.extras.colorizer"  -- Colors hex color codes
 spec "user.extras.neoscroll"  -- Scroll through files using "Ctrl-J" and "Ctrl-K"
 spec "user.extras.modicator"  -- Bolds the line number you are currently on
@@ -59,6 +61,7 @@ spec "user.extras.surround"   -- Helps with HTML tags!
                               -- SS for an entire line
                               -- ds to delete the surrounding tags
                               -- cs to change the tags to something different
+
                               -- spec "user.extras.notify"
 spec "user.extras.eyeliner"   -- Highlights characters when using "f" and "F" commands in Neovim for faster jumping
 spec "user.extras.numb"       -- Linepeeker that doesn't force you to move all the way down to the line, if you want to peek line 356, type ":356" for example
@@ -67,7 +70,7 @@ spec "user.extras.noice"      -- Visually enchances the Neovim commandline bar!
 spec "user.extras.fidget"     -- Shows language server loading in top right on file open!
 spec "user.extras.neotab"     -- Always creation of other tabs!
 spec "user.extras.tabby"      -- Creates tabs for switching between split files, open using "_;"
-spec "user.extras.various-textobjs" -- replaces ciw, 
+spec "user.extras.various-textobjs" -- replaces ciw, works on text object rather than whole line! 
 spec "user.extras.harpoon"    -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.harpoon-lualine"    -- Enables harpoon visually showing the lualine!
 spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
@@ -85,10 +88,10 @@ spec "user.extras.todo-comments" -- Adds in various comments, such as the follow
                               -- PASSED:
                               -- FAILED:
                               -- TESTING:
--- spec "user.extras.trouble"    -- Jump through errors with keybindings!
+-- spec "user.extras.trouble" -- Jump through errors with keybindings!
 spec "user.extras.rustacean"  -- Lots of Rust Language integration
 spec "user.extras.crates"     -- Shows updates for Rust Crates
-spec "user.extras.wrapped"    -- Spotify wrapped, but for Nvim, run :NvimWrapped  
+-- spec "user.extras.wrapped"    -- Spotify wrapped, but for Nvim, run :NvimWrapped  
 -- AI Components
 -- spec "user.extras.gp"
 -- spec "user.extras.chatgpt"
