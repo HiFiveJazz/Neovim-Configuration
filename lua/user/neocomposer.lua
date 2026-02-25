@@ -72,6 +72,7 @@ function M.config()
   -- Which-key descriptions
   local wk = require("which-key")
   wk.add({
+    { "m", group = "Macros", icon = { icon = " ", color = "green", }, },
     { "mr", desc = "Toggle Recording Macro" },
     { "mp", desc = "Play Macro" },
     { "ms", desc = "Stop Macro" },

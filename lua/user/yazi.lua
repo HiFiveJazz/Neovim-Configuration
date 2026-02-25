@@ -10,7 +10,7 @@ local M = {
       "<leader>e",
       mode = { "n", "v" },
       "<cmd>Yazi<cr>",
-      desc = "Open Yazi File Explorer",
+      desc = "Open File Explorer (Yazi)",
     },
   },
 }

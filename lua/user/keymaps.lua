@@ -2,6 +2,7 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 keymap("n", "<Space>", "", opts)
 keymap("n", "q", "", opts) -- My macro button is Neocomposer
+keymap("n", "m", "", opts) -- This is the macro button used by Neocomposer
 keymap("n", "s", "", opts) -- Used by nvim surround
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

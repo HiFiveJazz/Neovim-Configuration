@@ -1,15 +1,15 @@
 local M = {
   "toppair/peek.nvim",
-  event = { "VeryLazy" },
+  ft = { "markdown" },
+  event = { "BufReadPre *.md", "BufNewFile *.md" },
   build = "deno task --quiet build:fast",
-  config = function()
-    M.config()
-  end,
+  -- config = function()
+  --   M.config()
+  -- end,
 }
 
 function M.config()
   local peek = require("peek")
-  local wk = require("which-key")
 
   peek.setup({
     auto_load = true,
@@ -25,6 +25,9 @@ function M.config()
 
   vim.api.nvim_create_user_command("PeekOpen", peek.open, {})
   vim.api.nvim_create_user_command("PeekClose", peek.close, {})
+
+
+  local wk = require("which-key")
 
   -- Register which-key binding
   wk.add {

@@ -35,7 +35,7 @@ require("urlview").setup({
 })
   local wk = require "which-key"
   wk.add {
-    { "<leader>u", "<cmd>UrlView<cr>", desc = "View buffer URLs" },
+    { "<leader>u", "<cmd>UrlView<cr>", desc = "Open URLs", icon = { icon = "", color = "blue"}, },
   }
 end
 

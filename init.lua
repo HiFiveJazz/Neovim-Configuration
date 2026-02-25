@@ -31,7 +31,7 @@ spec "user.alpha"             -- Adds in nice screen when running "nvim" in term
 spec "user.project"           -- Open up recent projects via telescope using "Ctrl-p", moving up and down with "Ctrl-j" and "Ctrl-k"
 spec "user.toggleterm"        -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
 spec "user.bufdelete"         -- Delete current buffer by pressing "Q"
--- spec "user.luarocks"
+-- spec "user.luarocks" --speced into imagemagick so no longer needed?
 -- spec "user.neodev" -- Haven't used this plugin, remove?
 spec "user.image"             -- allows using neovim to glance at images
 spec "user.csv"               -- allows using neovim to edit csv files
@@ -55,14 +55,13 @@ spec "user.extras.ufo"        -- Toggle fold with "za",open all folds with "zR",
 -- spec "user.extras.linux-style"-- Toggle fold with "za",open all folds with "zR", close all folds "zM" 
 -- spec "user.extras.dressing"   -- When creating files in nvim-tree, shows dialog box at the top
 spec "user.extras.surround"   -- Helps with HTML tags!
-                              -- ssi for custom tags!
-                              -- sst for HTML tags!
-                              -- ssb for ()
-                              -- SS for an entire line
-                              -- ds to delete the surrounding tags
-                              -- cs to change the tags to something different
+                              -- si for custom tags!
+                              -- st for HTML tags!
+                              -- sb for ()
+                              -- dt to delete the surrounding tags
+                              -- ct to change the tags to something different
 
-                              -- spec "user.extras.notify"
+-- spec "user.extras.notify"
 spec "user.extras.eyeliner"   -- Highlights characters when using "f" and "F" commands in Neovim for faster jumping
 spec "user.extras.numb"       -- Linepeeker that doesn't force you to move all the way down to the line, if you want to peek line 356, type ":356" for example
 spec "user.extras.jaq"        -- Use "Alt-r" to run code quickly! Opens up output on the side!
