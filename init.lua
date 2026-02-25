@@ -44,7 +44,7 @@ spec "user.neocomposer"       -- Used for macros, press
 -- Extras
 spec "user.extras.smear"      -- Animation for cursor, good for lectures! 
 spec "user.extras.glimmer"    -- Animation for yanking, pasting, undo, redo; good for lectures/screensharing code!
-spec "user.extras.screenkey"  -- Screenkey for neovim, good for lectures/screensharing code!
+-- spec "user.extras.screenkey"  -- Screenkey for neovim, good for lectures/screensharing code! Use :Screenkey
 spec "user.extras.urlview"    -- Allows for opening urls in the browser quickly
 spec "user.extras.colorizer"  -- Colors hex color codes
 spec "user.extras.neoscroll"  -- Scroll through files using "Ctrl-J" and "Ctrl-K"
