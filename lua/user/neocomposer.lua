@@ -67,16 +67,18 @@ function M.config()
     end
 
     return status
+
+
   end
 
   -- Which-key descriptions
   local wk = require("which-key")
   wk.add({
     { "m", group = "Macros", icon = { icon = " ", color = "green", }, },
-    { "mr", desc = "Toggle Recording Macro" },
-    { "mp", desc = "Play Macro" },
-    { "ms", desc = "Stop Macro" },
-    { "mm", desc = "Macro Menu" },
+    { "mr", desc = "Toggle Recording Macro", icon = { icon = "● ", color = "red", }, },
+    { "mp", desc = "Play Macro", icon = { icon = "▶ ", color = "green", }, },
+    { "ms", desc = "Stop Macro", icon = { icon = " ", color = "grey", }, },
+    { "mm", desc = "Macro Menu", icon = { icon = " ", color = "azure", }, },
   })
 end
 

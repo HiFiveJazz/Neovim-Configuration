@@ -28,6 +28,10 @@ function M.config()
   local which_key = require "which-key"
   which_key.setup {
     preset = "helix",
+    triggers = {
+      { "<auto>", mode = "nixsotc" },
+      { "m", mode = "n" },
+    },
     plugins = {
       marks = true,
       registers = true,
