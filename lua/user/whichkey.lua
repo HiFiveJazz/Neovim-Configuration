@@ -121,14 +121,20 @@ function M.config()
     {
       "<leader>w",
       "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",
-      desc = "Wrap",
-      hidden = true,
+      desc = "Toggle Wrap",
+      icon = {
+          icon = "󰖶 ",
+          color = "cyan",
+      },
     },
     {
       "<leader>v",
       "<cmd>vsplit<CR>",
       desc = "Split",
-      hidden = true,
+      icon = {
+          icon = "󰖲",
+          color = "cyan",
+      },
     },
     {
       "<leader>b",
@@ -154,14 +160,14 @@ function M.config()
         color = "blue",
       },
     },
-    {
-      "<leader>n",
-      icon = {
-        icon = "󱞂 ",
-        color = "yellow",
-      },
-      group = "Nostr",
-    },
+    -- {
+    --   "<leader>n",
+    --   icon = {
+    --     icon = "󱞂 ",
+    --     color = "yellow",
+    --   },
+    --   group = "Nostr",
+    -- },
     {
       "<leader>p",
       icon = {
@@ -170,10 +176,10 @@ function M.config()
       },
       group = "Plugins",
     },
-    {
-      "<leader>t",
-      group = "Test",
-    },
+    -- {
+    --   "<leader>t",
+    --   group = "Test",
+    -- },
     -- {
     --   "<leader>a",
     --   name = "Tab",
