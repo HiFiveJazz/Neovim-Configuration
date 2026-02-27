@@ -5,11 +5,20 @@ local M = {
   dependencies = {
     { "nvim-lua/plenary.nvim", lazy = true },
   },
-  keys = {
+keys = {
     {
       "<leader>e",
       mode = { "n", "v" },
-      "<cmd>Yazi<cr>",
+      function()
+        -- Clear image.nvim renders before opening Yazi
+        if package.loaded["image"] then
+          pcall(function()
+            require("image").clear()
+          end)
+        end
+
+        vim.cmd("Yazi")
+      end,
       desc = "Open File Explorer (Yazi)",
     },
   },

@@ -7,6 +7,7 @@ spec "user.colorscheme"       -- Where permanent ColorScheme is initalized
 spec "user.miniicons"         -- Adds many different icons used for filetypes, GitHub, etc. Referenced in many different plugins
 spec "user.treesitter"        -- Enables better syntax highlighting using LSPs
 spec "user.mason"             -- Easily install binaries, such as LSPs, Linters, etc.
+-- spec "user.lint"              -- Linting for Linux Kernel patches
 spec "user.schemastore"       -- Shown as wrench in autocomplete, Gives .json, .yaml schemas and provides autocompletes for those things
 spec "user.lspconfig"         -- LSP configurations
 -- spec "user.navic"          -- Navigation Icons
