@@ -17,6 +17,7 @@ function M.config()
       "astro",
       "lua",
       "php",
+      "zathurarc",
     },
     user_default_options = {
       names = false,
