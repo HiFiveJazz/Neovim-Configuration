@@ -83,6 +83,17 @@ function M.config()
     },
     },
     {
+      "<leader>o",
+      function()
+        vim.ui.open(vim.fn.expand("<cfile>"))
+      end,
+      desc = "Open URL/File",
+      icon = {
+        icon = " ",
+        color = "blue",
+      },
+    },
+    {
       "m",
       group = "Macros",
       icon = {
