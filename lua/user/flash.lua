@@ -17,24 +17,24 @@ function M.config()
       },
     },
 
-    keys = {
-      {
-        "zf",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump()
-        end,
-        desc = "Flash Jump",
-      },
-    },
+    -- keys = {
+    --   {
+    --     "zf",
+    --     mode = { "n", "x", "o" },
+    --     function()
+    --       require("flash").jump()
+    --     end,
+    --     desc = "Flash Jump",
+    --   },
+    -- },
   })
 
-  local wk = require("which-key")
-
-  wk.add({
-    { "z", group = "Z motions" },
-    { "zf", desc = "Flash Jump", mode = { "n", "x", "o" } },
-  })
+  -- local wk = require("which-key")
+  --
+  -- wk.add({
+  --   { "z", group = "Z motions" },
+  --   { "zf", desc = "Flash Jump", mode = { "n", "x", "o" } },
+  -- })
 end
 
 return M
