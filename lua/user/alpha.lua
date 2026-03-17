@@ -1,6 +1,9 @@
 local M = {
   "goolord/alpha-nvim",
-  -- event = "VimEnter",
+  event = "VimEnter",
+  cond = function()
+    return vim.fn.argc(-1) == 0
+  end,
 }
 
 function M.config()

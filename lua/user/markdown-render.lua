@@ -4,7 +4,7 @@ local M = {
     "nvim-treesitter/nvim-treesitter",
     "nvim-tree/nvim-web-devicons",
   },
-  event = "VeryLazy",
+  event = { "BufReadPre *.md", "BufNewFile *.md" },
   ft = { "markdown", "quarto", "vimwiki" },
 }
 

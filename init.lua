@@ -18,7 +18,7 @@ spec "user.telescope"         -- Fuzzy Finder, "_ff", Buffers, "_bb", Colorschem
 -- spec "user.telescope-tabs" -- use "_aa for opening telescope in a tab format"
 -- spec "user.neotree"        -- use "_e to open up file explorer on the side"
 spec "user.yazi"              -- use "_e to open up file explorer on the side" requires yazi package to be installed
-spec "user.flash"             -- enhanced f, F, t, and T keybindings! use zf or ; for super 
+-- spec "user.flash"             -- enhanced f, F, t, and T keybindings! use zf or ; for super 
 spec "user.lualine"           -- Makes Line at bottom look better, uses devicons.lua
 spec "user.whichkey"          -- Typing "_" shows most of the keybindings
 spec "user.dap"               -- Debug Adapter Protocol, used for python3
@@ -50,7 +50,7 @@ spec "user.extras.urlview"    -- Allows for opening urls in the browser quickly
 spec "user.extras.colorizer"  -- Colors hex color codes
 spec "user.extras.neoscroll"  -- Scroll through files using "Ctrl-J" and "Ctrl-K"
 spec "user.extras.modicator"  -- Bolds the line number you are currently on
-spec "user.extras.bqf"        --"Ctrl-q" while in telescope to add files to harpoon easily
+-- spec "user.extras.bqf"        --"Ctrl-q" while in telescope to add files to harpoon easily
 spec "user.extras.nui"        -- UI components library used in many other plugins
 spec "user.extras.ufo"        -- Toggle fold with "za",open all folds with "zR", close all folds "zM" 
 -- spec "user.extras.linux-style"-- Toggle fold with "za",open all folds with "zR", close all folds "zM" 
