@@ -4,7 +4,7 @@ require "user.options"        -- Neovim settings, such as relative line numbers,
 require "user.keymaps"        -- Basic, general, keybindings
 require "user.autocmds"       -- General functions
 spec "user.colorscheme"       -- Where permanent ColorScheme is initalized
-spec "user.miniicons"         -- Adds many different icons used for filetypes, GitHub, etc. Referenced in many different plugins
+-- spec "user.miniicons"         -- Adds many different icons used for filetypes, GitHub, etc. Referenced in many different plugins
 spec "user.treesitter"        -- Enables better syntax highlighting using LSPs
 spec "user.mason"             -- Easily install binaries, such as LSPs, Linters, etc.
 -- spec "user.lint"              -- Linting for Linux Kernel patches
@@ -31,7 +31,7 @@ spec "user.indentline"        -- Adds in indent lines on the left side for funct
 spec "user.alpha"             -- Adds in nice screen when running "nvim" in terminal
 spec "user.project"           -- Open up recent projects via telescope using "Ctrl-p", moving up and down with "Ctrl-j" and "Ctrl-k"
 spec "user.toggleterm"        -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
-spec "user.bufdelete"         -- Delete current buffer by pressing "Q"
+-- spec "user.bufdelete"         -- Delete current buffer by pressing "Q"
 -- spec "user.luarocks" --speced into imagemagick so no longer needed?
 -- spec "user.neodev" -- Haven't used this plugin, remove?
 spec "user.image"             -- allows using neovim to glance at images

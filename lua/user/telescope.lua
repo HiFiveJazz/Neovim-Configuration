@@ -11,7 +11,7 @@ function M.config()
     { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find" },
     { "<leader>fC", "<cmd>Telescope commands<cr>", desc = "Commands" },
     { "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "Highlights" },
-    { "<leader>fM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+    { "<leader>fm", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
     { "<leader>fb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
     { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
