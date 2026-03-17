@@ -1,6 +1,7 @@
 local M = {
   "axieax/urlview.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  ft = { "markdown" },
 }
 
 function M.config()

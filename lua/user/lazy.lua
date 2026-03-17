@@ -28,6 +28,7 @@ require("lazy").setup {
 local wk = require "which-key"
 wk.add {
     { "<leader>pS", "<cmd>Lazy clear<cr>", desc = "Status" },
+    { "<leader>ph", "<cmd>Lazy<cr>", desc = "Home" },
     { "<leader>pc", "<cmd>Lazy clean<cr>", desc = "Clean" },
     { "<leader>pd", "<cmd>Lazy debug<cr>", desc = "Debug" },
     { "<leader>pi", "<cmd>Lazy install<cr>", desc = "Install" },
