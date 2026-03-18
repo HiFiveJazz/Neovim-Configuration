@@ -99,3 +99,27 @@ api.nvim_create_autocmd("CursorHold", {
   end,
 })
 
+-- Aerc pager highlighting for mail buffers opened in Neovim
+api.nvim_create_autocmd({ "BufWinEnter", "FileType" }, {
+  group = group,
+  pattern = { "*", "mail", "text", "markdown" },
+  callback = function(ev)
+    local buf = ev.buf
+    local bt = vim.bo[buf].buftype
+    local ft = vim.bo[buf].filetype
+
+    if bt ~= "" then
+      return
+    end
+
+    if ft ~= "" and ft ~= "mail" and ft ~= "text" and ft ~= "markdown" then
+      return
+    end
+
+    vim.api.nvim_set_hl(0, "AercUrl", { underline = true, fg = "#9ece6a" })
+    vim.api.nvim_set_hl(0, "AercQuote", { italic = true, fg = "#7c7c7c" })
+
+    pcall(vim.fn.matchadd, "AercUrl", "https\\?://[^[:space:]]\\+")
+    pcall(vim.fn.matchadd, "AercQuote", "^>.*$")
+  end,
+})
