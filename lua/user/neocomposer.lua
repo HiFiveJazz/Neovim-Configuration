@@ -1,5 +1,5 @@
 local M = {
-  "ecthelionvi/NeoComposer.nvim",
+  "HiFiveJazz/NeoComposer.nvim",
   dependencies = {
     "kkharji/sqlite.lua",
     "nvim-telescope/telescope.nvim",

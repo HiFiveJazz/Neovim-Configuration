@@ -1,7 +1,7 @@
 local M = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    "ecthelionvi/Neocomposer.nvim",
+    "HiFiveJazz/Neocomposer.nvim",
     "nvim-tree/nvim-web-devicons",
   },
 }
