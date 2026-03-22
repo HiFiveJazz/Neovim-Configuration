@@ -1,8 +1,9 @@
 local M = {
   "HiFiveJazz/NeoComposer.nvim",
+  -- "ecthelionvi/NeoComposer.nvim",
   dependencies = {
     "kkharji/sqlite.lua",
-    "nvim-telescope/telescope.nvim",
+    -- "nvim-telescope/telescope.nvim",
   },
   event = "VeryLazy",
 }

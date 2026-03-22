@@ -11,15 +11,25 @@ keys = {
       mode = { "n", "v" },
       function()
         -- Clear image.nvim renders before opening Yazi
-        if package.loaded["image"] then
-          pcall(function()
-            require("image").clear()
-          end)
-        end
+        -- if package.loaded["image"] then
+        --   pcall(function()
+        --     require("image").clear()
+        --   end)
+        -- end
 
         vim.cmd("Yazi")
       end,
-      desc = "Open File Explorer (Yazi)",
+
+      -- desc = "Open URL/File",
+      -- icon = {
+      --   icon = " ",
+      --   color = "blue",
+      -- },
+
+      desc = "File Explorer",
+      -- icon = {
+      --   icon = " ",
+      -- },
     },
   },
 }

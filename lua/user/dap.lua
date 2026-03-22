@@ -209,9 +209,8 @@ function M.config()
   }
   local wk = require "which-key"
   wk.add {
-    { "<leader>dC", "<cmd>lua require'dap'.run_to_cursor()<cr>", desc = "Run To Cursor" },
-    { "<leader>dU", "<cmd>lua require'dapui'.toggle({reset = true})<cr>", desc = "Toggle UI" },
     { "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", desc = "Step Back" },
+    { "<leader>dC", "<cmd>lua require'dap'.run_to_cursor()<cr>", desc = "Run To Cursor" },
     { "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", desc = "Continue" },
     { "<leader>dd", "<cmd>lua require'dap'.disconnect()<cr>", desc = "Disconnect" },
     { "<leader>dg", "<cmd>lua require'dap'.session()<cr>", desc = "Get Session" },
@@ -222,6 +221,7 @@ function M.config()
     { "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", desc = "Toggle Repl" },
     { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>", desc = "Start" },
     { "<leader>dt", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle Breakpoint" },
+    { "<leader>dU", "<cmd>lua require'dapui'.toggle({reset = true})<cr>", desc = "Toggle UI" },
     { "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", desc = "Step Out" },
   }
 end

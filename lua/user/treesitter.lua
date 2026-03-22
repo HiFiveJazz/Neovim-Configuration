@@ -33,7 +33,7 @@ local M = {
 
       ensure_installed = {
         "json",
-        "javascript",
+        -- "javascript",
         "typescript",
         "html",
         "css",
@@ -44,12 +44,12 @@ local M = {
         "vim",
         "dockerfile",
         "gitignore",
-        "vimdoc",
+        -- "vimdoc",
         "python",
         "go",
         "rust",
         "c",
-        "cpp",
+        -- "cpp",
       },
 
       auto_install = true,

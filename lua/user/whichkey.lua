@@ -5,38 +5,37 @@ local M = {
 
 function M.config()
   local mappings = {
-    { "<leader>;", "<cmd>tabnew | terminal<CR>", desc = "Terminal" },
-    { "<leader>T", group = "Treesitter" },
     { "<leader>a", group = "Tab" },
-    { "<leader>aN", "<cmd>tabnew %<cr>", desc = "New Tab" },
-    { "<leader>ah", "<cmd>-tabmove<cr>", desc = "Move Left" },
-    { "<leader>al", "<cmd>+tabmove<cr>", desc = "Move Right" },
-    { "<leader>an", "<cmd>$tabnew<cr>", desc = "New Empty Tab" },
-    { "<leader>ao", "<cmd>tabonly<cr>", desc = "Only" },
     { "<leader>b", group = "Buffers" },
     { "<leader>d", group = "Debug" },
-    { "<leader>f", group = "Find", icon = { icon = " ", color = "yellow" },
-    },
+    { "<leader>f", group = "Find" },
     { "<leader>g", group = "Git" },
-    { "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
     { "<leader>l", group = "LSP" },
     { "<leader>p", group = "Plugins" },
-    { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
+    { "<leader>T", group = "Treesitter" },
     { "<leader>t", group = "Test" },
+    { "<leader>ah", "<cmd>-tabmove<cr>", desc = "Move Left" },
+    { "<leader>al", "<cmd>+tabmove<cr>", desc = "Move Right" },
+    { "<leader>aN", "<cmd>tabnew %<cr>", desc = "New Tab" },
+    { "<leader>an", "<cmd>$tabnew<cr>", desc = "New Empty Tab" },
+    { "<leader>ao", "<cmd>tabonly<cr>", desc = "Only" },
+    { "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
+    { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
     { "<leader>v", "<cmd>vsplit<CR>", desc = "Split" },
+    { "<leader>;", "<cmd>tabnew | terminal<CR>", desc = "Terminal" },
   }
 
   local which_key = require "which-key"
   which_key.setup {
     preset = "helix",
-    icons = {
-      keys = {
-        ["/"] = " ",
-      },
-    },
+    sort = { "manual", "local", "alphanum", "mod" },
     triggers = {
       { "<auto>", mode = "nixsotc" },
       { "m", mode = "n" },
+      { "s", mode = "n" },
+      { "c", mode = "n" },
+      { "d", mode = "n" },
+      { "y", mode = "n" },
     },
     plugins = {
       marks = true,
@@ -46,7 +45,7 @@ function M.config()
         suggestions = 20,
       },
       presets = {
-        operators = false,
+        operators = true,
         motions = false,
         text_objects = false,
         windows = false,
@@ -78,209 +77,89 @@ function M.config()
   -- azure, blue, cyan, green, grey, orange, purple, red, yellow
 
   wk.add {
+    { "<leader>a", group = "AI", icon = { icon = " ", color = "blue" } },
+    { "<leader>b", group = "Buffers" },
+    { "<leader>c", group = "Cargo", desc="Rust", icon = { icon = " ", color = "red" } },
+    { "<leader>d", group = "Debug" },
+    { "<leader>f", group = "Find", icon = { icon = " ", color = "yellow" } },
+    { "<leader>g", group = "Git" },
+    { "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL", hidden = true },
+    { "<leader>l", group = "LSP", icon = { icon = " ", color = "blue" }},
+    { "m", group = "Macros", icon = { icon = " ", color = "green" } },
+    { "<leader>p", group = "Plugins", icon = { icon = " ", color = "blue" } },
+    { "<leader>o", function() vim.ui.open(vim.fn.expand("<cfile>")) end, desc = "Open URL/File", icon = { icon = " ", color = "blue" } },
+    { "<leader>e", desc = "File Explorer", icon = { icon = "" } },
+    { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
+    { "<leader>T", name = "Treesitter" },
+    { "<leader>v", "<cmd>vsplit<CR>", desc = "Split", icon = { icon = "󰖲", color = "cyan",} },
+    { "<leader>w", "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>", desc = "Toggle Wrap", icon = { icon = "󰖶 ", color = "cyan" } },
+    { "<leader>;", "<cmd>tabnew | terminal<CR>", desc = "Terminal", icon = { icon = " ", color = "green" } },
 
-    { 
-      "<leader>c", 
-    group = "Cargo", 
-    desc="Rust", 
-    icon = {
-      icon = " ",
-      color = "orange",
-    },
-    },
-    {
-      "<leader>o",
-      function()
-        vim.ui.open(vim.fn.expand("<cfile>"))
-      end,
-      desc = "Open URL/File",
-      icon = {
-        icon = " ",
-        color = "blue",
-      },
-    },
-    {
-      "m",
-      group = "Macros",
-      icon = {
-        icon = " ",
-        color = "green",
-     },
-    },
-    {
-      "gx",
-      desc = "Open file/link under cursor",
-      icon = {
-        icon = "󰏋 ", -- nf-oct-link_external
-      },
-    },
-    {
-      "gg",
-      desc = "Go to top of file",
-      icon = {
-        icon = "󰘣 ", -- nf-md-arrow_up
-      },
-    },
-    {
-      "gm",
-      desc = "Go to the middle of the line",
-      icon = {
-        icon = "󰘞 ", -- nf-md-format_align_center
-      },
-    },
 
-  -- display / line behavior
+    { "g", group = "Go to" },
+    { "gd", desc = "Go to Definition", icon = { icon = "󰗚 " } },
+    { "gg", desc = "Go to Top of File", icon = { icon = "󰘣 " } },
+    { "gm", desc = "Go to Middle of Line", icon = { icon = "󰘞 " } },
+    { "gx", desc = "Go to File/URL", icon = { icon = "󰏋 " } },
 
-  { "g0", hidden = true },
-  { "gj", hidden = true },
-  { "gk", hidden = true },
-  { "g~", hidden = true },
-  { "gu", hidden = true },
-  { "gU", hidden = true },
-  { "gd", hidden = true },
-  { "gD", hidden = true },
-  { "gI", hidden = true },
-  { "gO", hidden = true },
-  { "gl", hidden = true },
-  { "gr", hidden = true },
-  { "gb", hidden = true },
-  { "gnn", hidden = true },
-  { "g'", hidden = true },
-  { "g`", hidden = true },
-  { "g_", hidden = true },
-  { "g*", hidden = true },
-  { "g#", hidden = true },
-  { "gc", hidden = true },
-  { "g%", hidden = true },
-    {
-      "<leader>a",
-      group = "AI",
-      icon = {
-        icon = " ",
-        color = "blue",
-     },
-    },
-    {
-      "<leader>q",
-      "<cmd>confirm q<CR>",
-      desc = "Quit",
-    },
-    {
-      "<leader>h",
-      "<cmd>nohlsearch<CR>",
-      desc = "NOHL",
-      hidden = true,
-    },
-    {
-      "<leader>;",
-      "<cmd>tabnew | terminal<CR>",
-      desc = "Term",
-      icon = {
-        icon = " ",
-        color = "green",
-     },
-    },
-    {
-      "<leader>w",
-      "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",
-      desc = "Toggle Wrap",
-      icon = {
-          icon = "󰖶 ",
-          color = "cyan",
-      },
-    },
-    {
-      "<leader>v",
-      "<cmd>vsplit<CR>",
-      desc = "Split",
-      icon = {
-          icon = "󰖲",
-          color = "cyan",
-      },
-    },
-    {
-      "<leader>b",
-      group = "Buffers",
-    },
-    {
-      "<leader>d",
-      group = "Debug",
-    },
-    {
-      "<leader>f",
-      group = "Find",
-      icon = {
-          icon = "",
-          color = "yellow",
-      },
-    },
-    {
-      "<leader>g",
-      group = "Git",
-    },
-    {
-      "<leader>l",
-      group = "LSP",
-      icon = {
-        icon = " ",
-        color = "blue",
-      },
-    },
-    -- {
-    --   "<leader>n",
-    --   icon = {
-    --     icon = "󱞂 ",
-    --     color = "yellow",
-    --   },
-    --   group = "Nostr",
-    -- },
-    {
-      "<leader>p",
-      icon = {
-        icon = " ",
-        color = "azure",
-      },
-      group = "Plugins",
-    },
-    -- {
-    --   "<leader>t",
-    --   group = "Test",
-    -- },
-    -- {
-    --   "<leader>a",
-    --   name = "Tab",
-    --   children = {
-    --     {
-    --       "<leader>an",
-    --       "<cmd>$tabnew<cr>",
-    --       desc = "New Empty Tab",
-    --     },
-    --     {
-    --       "<leader>aN",
-    --       "<cmd>tabnew %<cr>",
-    --       desc = "New Tab",
-    --     },
-    --     {
-    --       "<leader>ao",
-    --       "<cmd>tabonly<cr>",
-    --       desc = "Only",
-    --     },
-    --     {
-    --       "<leader>ah",
-    --       "<cmd>-tabmove<cr>",
-    --       desc = "Move Left",
-    --     },
-    --     {
-    --       "<leader>al",
-    --       "<cmd>+tabmove<cr>",
-    --       desc = "Move Right",
-    --     },
-    --   },
-    -- },
-    {
-      "<leader>T",
-      name = "Treesitter",
-    },
+    { "c", group = "Change" },
+    { "caw", desc = "Change around Word"},
+    { "ciw", desc = "Change inside Word"},
+    { "cs", desc = "Change Surround" },
+    { "ct", desc = "Change Surrounding HTML Tag", icon = { icon = " " }, },
+
+    { "d", group = "Delete" },
+    { "ds", desc = "Delete Surround" },
+    { "dt", desc = "Delete Surrounding HTML Tag", icon = { icon = " " }, },
+
+    { "y", group = "Yank" },
+    { "ys", desc = "Yank Surround" },
+
+    { "s",  group = "Surround" },
+    { "sb", desc = "Surround with ()", icon = { icon = "󰅲 " }, },
+    { "s{", desc = "Surround with {}", icon = { icon = " " }, },
+
+
+      -- { "S",  desc = "Surround (newline)", mode = "n" },
+      -- { "SS", desc = "Surround line (newline)", mode = "n" },
+      -- { "dt", group = "Delete Surround", mode = "n" },
+      -- { "ct", group = "Change Surround", mode = "n" },
+      -- { "dt", desc = "Delete tag (dst)", mode = "n" },
+      -- { "ct", desc = "Change tag (cst)", mode = "n" },
+      -- { "cT", desc = "Change tag (csT)", mode = "n" },
+
+    { "g0", hidden = true },
+    { "gj", hidden = true },
+    { "gk", hidden = true },
+    { "g~", hidden = true },
+    { "gu", hidden = true },
+    { "gU", hidden = true },
+    { "gD", hidden = true },
+    { "gI", hidden = true },
+    { "gO", hidden = true },
+    { "gl", hidden = true },
+    { "gr", hidden = true },
+    { "gb", hidden = true },
+    { "gnn", hidden = true },
+    { "g'", hidden = true },
+    { "g`", hidden = true },
+    { "g_", hidden = true },
+    { "g*", hidden = true },
+    { "g#", hidden = true },
+    { "gc", hidden = true },
+    { "g%", hidden = true },
+    { "cf", hidden = true },
+    { "cF", hidden = true },
+    { "ct", hidden = true },
+    { "cT", hidden = true },
+    { "cH", hidden = true },
+    { "cL", hidden = true },
+    { "c[%", hidden = true },
+    { "c]%", hidden = true },
+    -- { "ca", hidden = true },
+
+    { "z=", hidden = true },
+    { "<leader>oi", hidden = true },
   }
 end
 

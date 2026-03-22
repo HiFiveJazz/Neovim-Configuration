@@ -17,28 +17,16 @@ function M.config()
       icon = { icon = "󰈔 ", color = "green" },
     },
     {
-      "<leader>fC",
-      "<cmd>Telescope commands<cr>",
-      desc = "Commands",
-      icon = { icon = "󰘳 ", color = "green" },
-    },
-    {
-      "<leader>fH",
-      "<cmd>Telescope highlights<cr>",
-      desc = "Highlights",
-      icon = { icon = "󰸱 ", color = "green" },
-    },
-    {
-      "<leader>fm",
-      "<cmd>Telescope man_pages<cr>",
-      desc = "Man Pages",
-      icon = { icon = "󰗚 ", color = "green" },
-    },
-    {
       "<leader>fb",
       "<cmd>Telescope git_branches<cr>",
       desc = "Checkout branch",
       icon = { icon = "󰘬 ", color = "green" },
+    },
+    {
+      "<leader>fC",
+      "<cmd>Telescope commands<cr>",
+      desc = "Commands",
+      icon = { icon = "󰘳 ", color = "green" },
     },
     {
       "<leader>fc",
@@ -52,6 +40,13 @@ function M.config()
       desc = "Find files",
       icon = { icon = "󰈞 ", color = "green" },
     },
+    {
+      "<leader>fH",
+      "<cmd>Telescope highlights<cr>",
+      desc = "Highlights",
+      icon = { icon = "󰸱 ", color = "green" },
+    },
+
     {
       "<leader>fh",
       "<cmd>Telescope help_tags<cr>",
@@ -69,6 +64,12 @@ function M.config()
       "<cmd>Telescope resume<cr>",
       desc = "Last Search",
       icon = { icon = "󰑓 ", color = "green" },
+    },
+    {
+      "<leader>fm",
+      "<cmd>Telescope man_pages<cr>",
+      desc = "Man Pages",
+      icon = { icon = "󰗚 ", color = "green" },
     },
     {
       "<leader>fp",

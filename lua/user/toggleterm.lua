@@ -140,68 +140,38 @@ function M.config()
     end,
   }
 
-  local bun_outdated = Terminal:new {
-    cmd = "bunx npm-check-updates@latest -ui --format group --packageManager bun",
-    dir = "git_dir",
-    direction = "float",
-    float_opts = {
-      border = "rounded",
-    },
-    -- function to run on opening the terminal
-    on_open = function(term)
-      vim.cmd "startinsert!"
-      vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-    end,
-    -- function to run on closing the terminal
-    on_close = function(term)
-      vim.cmd "startinsert!"
-    end,
-  }
-
-  local cargo_run = Terminal:new {
-    cmd = "cargo run -q",
-    dir = "git_dir",
-    direction = "float",
-    float_opts = {
-      border = "rounded",
-    },
-    -- function to run on opening the terminal
-    on_open = function(term)
-      vim.cmd "startinsert!"
-      vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-    end,
-    -- function to run on closing the terminal
-    on_close = function(term)
-      vim.cmd "startinsert!"
-    end,
-  }
+local cargo_run = Terminal:new {
+  cmd = "cargo +nightly run -q",
+  dir = "git_dir",
+  direction = "float",
+  close_on_exit = false,
+  float_opts = {
+    border = "rounded",
+  },
+  on_open = function(term)
+    vim.cmd "startinsert!"
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+  end,
+  on_close = function(term)
+    vim.cmd "startinsert!"
+  end,
+}
 
   function _lazygit_toggle()
     lazygit:toggle()
   end
 
-  function _bun_outdated()
-    bun_outdated:toggle()
-  end
-
   function _cargo_run()
-    vim.cmd('TermExec cmd="cargo run -q"')
-    -- vim.api.nvim_set_keymap('n', '<leader>lg', ':TermExec cmd="echo hi"<CR>', { noremap = true, silent = true })
-    -- cargo_run:toggle()
+    cargo_run:toggle()
   end
 
-  -- Key mapping to run echo hi
   vim.api.nvim_set_keymap('n', '<leader>lg', ':TermExec cmd="echo hi"<CR>', { noremap = true, silent = true })
 
   local wk = require "which-key"
   wk.add{
     { "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", desc = "Lazy Git" },
-    -- { "<leader>co", "<cmd>lua _bun_outdated()<CR>", desc = "Update Bun" },
     { "<leader>cr", "<cmd>lua _cargo_run()<CR>", desc = "Cargo Run" },
   }
-  -- vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-  -- vim.api.nvim_set_keymap("n", "<leader>co", "<cmd>lua _bun_outdated()<CR>", { noremap = true, silent = true })
-  -- vim.api.nvim_set_keymap("n", "<leader>cr", "<cmd>lua _cargo_run()<CR>", { noremap = true, silent = true })
 end
 
 return M
