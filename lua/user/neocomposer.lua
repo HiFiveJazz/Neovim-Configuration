@@ -31,10 +31,10 @@ function M.config()
       -- green = "#99c794",
     },
     keymaps = {
+      toggle_macro_menu = "mm",
       toggle_record = "mr",
       play_macro = "mp",
       stop_macro = "ms",
-      toggle_macro_menu = "mm",
     },
   })
   -- vim.keymap.set("n", "m", "<Nop>", { silent = true })
@@ -76,11 +76,11 @@ function M.config()
   -- Which-key descriptions
   local wk = require("which-key")
   wk.add({
-    { "m", group = "Macros", icon = { icon = " ", color = "green", }, },
+    { "m", group = "Macros", icon = { icon = "󱚣 ", color = "green", }, },
+    { "mm", desc = "Macro Menu", icon = { icon = " ", color = "azure", }, },
     { "mr", desc = "Toggle Recording Macro", icon = { icon = "● ", color = "red", }, },
-    { "mp", desc = "Play Macro", icon = { icon = "▶ ", color = "green", }, },
+    { "mp", desc = "Play Macro", icon = { icon = " ", color = "green", }, },
     { "ms", desc = "Stop Macro", icon = { icon = " ", color = "grey", }, },
-    { "mm", desc = "Macro Menu", icon = { icon = " ", color = "azure", }, },
   })
 end
 
