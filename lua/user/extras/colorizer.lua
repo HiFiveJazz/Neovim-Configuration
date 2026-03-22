@@ -1,6 +1,19 @@
 local M = {
   "ChristianChiarulli/nvim-colorizer.lua",
-  event = { "BufReadPost", "BufNewFile" },
+  ft = {
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact",
+    "css",
+    "html",
+    "toml",
+    "conf",
+    "astro",
+    "lua",
+    "php",
+    "zathurarc",
+  },
 }
 
 function M.config()

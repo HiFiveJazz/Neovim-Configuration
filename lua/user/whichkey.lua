@@ -15,7 +15,8 @@ function M.config()
     { "<leader>ao", "<cmd>tabonly<cr>", desc = "Only" },
     { "<leader>b", group = "Buffers" },
     { "<leader>d", group = "Debug" },
-    { "<leader>f", group = "Find" },
+    { "<leader>f", group = "Find", icon = { icon = " ", color = "yellow" },
+    },
     { "<leader>g", group = "Git" },
     { "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
     { "<leader>l", group = "LSP" },
@@ -28,6 +29,11 @@ function M.config()
   local which_key = require "which-key"
   which_key.setup {
     preset = "helix",
+    icons = {
+      keys = {
+        ["/"] = " ",
+      },
+    },
     triggers = {
       { "<auto>", mode = "nixsotc" },
       { "m", mode = "n" },
@@ -102,6 +108,51 @@ function M.config()
      },
     },
     {
+      "gx",
+      desc = "Open file/link under cursor",
+      icon = {
+        icon = "󰏋 ", -- nf-oct-link_external
+      },
+    },
+    {
+      "gg",
+      desc = "Go to top of file",
+      icon = {
+        icon = "󰘣 ", -- nf-md-arrow_up
+      },
+    },
+    {
+      "gm",
+      desc = "Go to the middle of the line",
+      icon = {
+        icon = "󰘞 ", -- nf-md-format_align_center
+      },
+    },
+
+  -- display / line behavior
+
+  { "g0", hidden = true },
+  { "gj", hidden = true },
+  { "gk", hidden = true },
+  { "g~", hidden = true },
+  { "gu", hidden = true },
+  { "gU", hidden = true },
+  { "gd", hidden = true },
+  { "gD", hidden = true },
+  { "gI", hidden = true },
+  { "gO", hidden = true },
+  { "gl", hidden = true },
+  { "gr", hidden = true },
+  { "gb", hidden = true },
+  { "gnn", hidden = true },
+  { "g'", hidden = true },
+  { "g`", hidden = true },
+  { "g_", hidden = true },
+  { "g*", hidden = true },
+  { "g#", hidden = true },
+  { "gc", hidden = true },
+  { "g%", hidden = true },
+    {
       "<leader>a",
       group = "AI",
       icon = {
@@ -158,6 +209,10 @@ function M.config()
     {
       "<leader>f",
       group = "Find",
+      icon = {
+          icon = "",
+          color = "yellow",
+      },
     },
     {
       "<leader>g",

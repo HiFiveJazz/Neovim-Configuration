@@ -7,23 +7,100 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.add {
-    { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find" },
-    { "<leader>fC", "<cmd>Telescope commands<cr>", desc = "Commands" },
-    { "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "Highlights" },
-    { "<leader>fm", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-    { "<leader>fb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
-    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
-    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
-    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
-    { "<leader>fp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", desc = "Projects" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
-    { "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find String" },
-    { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
-    { "<leader>le", "<cmd>Telescope quickfix<cr>", desc = "Telescope Quickfix" },
-  }
+  local actions = require "telescope.actions"
+
+  wk.add({
+    {
+      "<leader>bb",
+      "<cmd>Telescope buffers previewer=false<cr>",
+      desc = "Find",
+      icon = { icon = "󰈔 ", color = "green" },
+    },
+    {
+      "<leader>fC",
+      "<cmd>Telescope commands<cr>",
+      desc = "Commands",
+      icon = { icon = "󰘳 ", color = "green" },
+    },
+    {
+      "<leader>fH",
+      "<cmd>Telescope highlights<cr>",
+      desc = "Highlights",
+      icon = { icon = "󰸱 ", color = "green" },
+    },
+    {
+      "<leader>fm",
+      "<cmd>Telescope man_pages<cr>",
+      desc = "Man Pages",
+      icon = { icon = "󰗚 ", color = "green" },
+    },
+    {
+      "<leader>fb",
+      "<cmd>Telescope git_branches<cr>",
+      desc = "Checkout branch",
+      icon = { icon = "󰘬 ", color = "green" },
+    },
+    {
+      "<leader>fc",
+      "<cmd>Telescope colorscheme<cr>",
+      desc = "Colorscheme",
+      icon = { icon = "󰏘 ", color = "green" },
+    },
+    {
+      "<leader>ff",
+      "<cmd>Telescope find_files<cr>",
+      desc = "Find files",
+      icon = { icon = "󰈞 ", color = "green" },
+    },
+    {
+      "<leader>fh",
+      "<cmd>Telescope help_tags<cr>",
+      desc = "Help",
+      icon = { icon = "󰞋 ", color = "green" },
+    },
+    {
+      "<leader>fk",
+      "<cmd>Telescope keymaps<cr>",
+      desc = "Keymaps",
+      icon = { icon = "󰌌 ", color = "green" },
+    },
+    {
+      "<leader>fl",
+      "<cmd>Telescope resume<cr>",
+      desc = "Last Search",
+      icon = { icon = "󰑓 ", color = "green" },
+    },
+    {
+      "<leader>fp",
+      "<cmd>lua require('telescope').extensions.projects.projects()<cr>",
+      desc = "Projects",
+      icon = { icon = "󰏗 ", color = "green" },
+    },
+    {
+      "<leader>fr",
+      "<cmd>Telescope oldfiles<cr>",
+      desc = "Recent File",
+      icon = { icon = "󰋚 ", color = "green" },
+    },
+    {
+      "<leader>fs",
+      "<cmd>Telescope grep_string<cr>",
+      desc = "Find String",
+      icon = { icon = "󰱼 ", color = "green" },
+    },
+    {
+      "<leader>ft",
+      "<cmd>Telescope live_grep<cr>",
+      desc = "Find Text",
+      icon = { icon = "󱎸 ", color = "green" },
+    },
+    {
+      "<leader>le",
+      "<cmd>Telescope quickfix<cr>",
+      desc = "Telescope Quickfix",
+      icon = { icon = "󱖫 ", color = "green" },
+    },
+  })
 
   vim.api.nvim_create_autocmd("FileType", {
     pattern = "TelescopeResults",
@@ -35,8 +112,8 @@ function M.config()
     end,
   })
 
-  local icons = require "user.icons"
-  local actions = require "telescope.actions"
+  local telescope_icon = "󰍉 "
+  local forward_icon = " "
 
   local function filenameFirst(_, path)
     local tail = vim.fs.basename(path)
@@ -47,10 +124,10 @@ function M.config()
     return string.format("%s\t\t%s", tail, parent)
   end
 
-  require("telescope").setup {
+  require("telescope").setup({
     defaults = {
-      prompt_prefix = icons.ui.Telescope .. " ",
-      selection_caret = icons.ui.Forward .. "  ",
+      prompt_prefix = telescope_icon,
+      selection_caret = forward_icon,
       entry_prefix = "   ",
       initial_mode = "insert",
       selection_strategy = "reset",
@@ -61,14 +138,13 @@ function M.config()
       layout_strategy = nil,
       layout_config = {},
       vimgrep_arguments = {
-        "rg", --requires ripgrep installed
+        "rg",
         "--color=never",
         "--no-heading",
         "--with-filename",
         "--line-number",
         "--column",
         "--smart-case",
-        -- "--hidden",
         "--glob=!.git/",
       },
 
@@ -76,7 +152,6 @@ function M.config()
         i = {
           ["<C-n>"] = actions.cycle_history_next,
           ["<C-p>"] = actions.cycle_history_prev,
-
           ["<C-j>"] = actions.move_selection_next,
           ["<C-k>"] = actions.move_selection_previous,
         },
@@ -148,13 +223,13 @@ function M.config()
     },
     extensions = {
       fzf = {
-        fuzzy = true, -- false will only do exact matching
-        override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
       },
     },
-  }
+  })
 end
 
 return M

@@ -20,7 +20,7 @@ spec "user.cmp"               -- Adds in cool autocompletion
 spec "user.autopairs"         -- Autocomplete pairs for (),{},& [], $$ for LaTex files, < > for html, and React.js
 spec "user.comment"           --In Visual Mode, "_/" comments out all lines"
 spec "user.gitsigns"          -- Shows green, red, and blue lines on the left side in git files
-spec "user.indentline"        -- Adds in indent lines on the left side for functions and whatnot
+-- spec "user.indentline"        -- Adds in indent lines on the left side for functions and whatnot
 spec "user.alpha"             -- Adds in nice screen when running "nvim" in terminal
 spec "user.project"           -- Open up recent projects via telescope using "Ctrl-p", moving up and down with "Ctrl-j" and "Ctrl-k"
 spec "user.toggleterm"        -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"

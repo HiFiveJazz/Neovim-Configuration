@@ -1,6 +1,7 @@
 local M = {
   "mfussenegger/nvim-dap",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  ft = { "python", "c", "rust" },
   dependencies = {
     {
       -- "mfussenegger/nvim-dap-python",
