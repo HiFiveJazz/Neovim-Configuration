@@ -167,11 +167,28 @@ local cargo_run = Terminal:new {
 
   vim.api.nvim_set_keymap('n', '<leader>lg', ':TermExec cmd="echo hi"<CR>', { noremap = true, silent = true })
 
-  local wk = require "which-key"
-  wk.add{
-    { "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", desc = "Lazy Git" },
-    { "<leader>cr", "<cmd>lua _cargo_run()<CR>", desc = "Cargo Run" },
-  }
+  local wk = require("which-key")
+
+  wk.add({
+    { "<leader>lg", _lazygit_toggle, desc = "Lazy Git" },
+  })
+
+  local function register_rust_keys(bufnr)
+    wk.add({
+      { "<leader>cr", _cargo_run, desc = "Cargo Run", buffer = bufnr },
+    })
+  end
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "rust",
+    callback = function(args)
+      register_rust_keys(args.buf)
+    end,
+  })
+
+  if vim.bo.filetype == "rust" then
+    register_rust_keys(vim.api.nvim_get_current_buf())
+  end
 end
 
 return M

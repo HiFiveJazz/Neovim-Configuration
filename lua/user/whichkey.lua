@@ -12,7 +12,7 @@ function M.config()
     { "<leader>g", group = "Git" },
     { "<leader>l", group = "LSP" },
     { "<leader>p", group = "Plugins" },
-    { "<leader>T", group = "Treesitter" },
+    -- { "<leader>T", group = "Treesitter" },
     { "<leader>t", group = "Test" },
     { "<leader>ah", "<cmd>-tabmove<cr>", desc = "Move Left" },
     { "<leader>al", "<cmd>+tabmove<cr>", desc = "Move Right" },
@@ -89,11 +89,12 @@ function M.config()
     { "<leader>p", group = "Plugins", icon = { icon = " ", color = "blue" } },
     { "<leader>o", function() vim.ui.open(vim.fn.expand("<cfile>")) end, desc = "Open URL/File", icon = { icon = " ", color = "blue" } },
     { "<leader>e", desc = "File Explorer", icon = { icon = "" } },
-    { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
-    { "<leader>T", name = "Treesitter" },
-    { "<leader>v", "<cmd>vsplit<CR>", desc = "Split", icon = { icon = "󰖲", color = "cyan",} },
-    { "<leader>w", "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>", desc = "Toggle Wrap", icon = { icon = "󰖶 ", color = "cyan" } },
-    { "<leader>;", "<cmd>tabnew | terminal<CR>", desc = "Terminal", icon = { icon = " ", color = "green" } },
+    { "<leader>q", desc = "Quit", "<cmd>confirm q<CR>"  },
+    -- { "<leader>T", desc = "Treesitter", },
+    { "<leader>t", desc = "Triforce Stats", "<cmd>Triforce profile<CR>", icon = { icon = "󰄩", color = "cyan",}, },
+    { "<leader>v", desc = "Split", "<cmd>vsplit<CR>",  icon = { icon = "󰖲", color = "cyan",} },
+    { "<leader>w", desc = "Toggle Wrap", "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",  icon = { icon = "󰖶 ", color = "cyan" } },
+    { "<leader>;", desc = "Terminal", "<cmd>tabnew | terminal<CR>",  icon = { icon = " ", color = "green" } },
 
 
     { "g", group = "Go to" },
@@ -118,6 +119,12 @@ function M.config()
     { "s",  group = "Surround" },
     { "sb", desc = "Surround with ()", icon = { icon = "󰅲 " }, },
     { "s{", desc = "Surround with {}", icon = { icon = " " }, },
+    { "s}", desc = "Surround with {}", icon = { icon = " " }, },
+    { "s[", desc = "Surround with {}", icon = { icon = " " }, },
+    { "s]", desc = "Surround with {}", icon = { icon = " " }, },
+    { "s(", desc = "Surround with HTML Tag", icon = { icon = " " }, },
+    { "s)", desc = "Surround with HTML Tag", icon = { icon = " " }, },
+    { "st", desc = "Surround with HTML Tag", icon = { icon = " " }, },
 
 
       -- { "S",  desc = "Surround (newline)", mode = "n" },
@@ -160,6 +167,19 @@ function M.config()
 
     { "z=", hidden = true },
     { "<leader>oi", hidden = true },
+    { "<leader>d", hidden = true },
+    { "<leader>df", hidden = true },
+    { "<leader>dF", hidden = true },
+    { "<leader>dt", hidden = true },
+    { "<leader>dT", hidden = true },
+    { "<leader>da", hidden = true },
+    { "<leader>dg", hidden = true },
+    { "<leader>dH", hidden = true },
+    { "<leader>d%", hidden = true },
+    { "<leader>dL", hidden = true },
+    { "<leader>d[", hidden = true },
+    { "<leader>d]", hidden = true },
+    { "<leader>di", hidden = true },
   }
 end
 
