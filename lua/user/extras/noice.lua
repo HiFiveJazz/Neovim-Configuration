@@ -13,18 +13,26 @@ function M.config()
   })
 
   require("noice").setup({
+    cmdline = {
+      format = {
+        search_down = {
+          icon = "   ",
+        },
+        search_up = {
+          icon = "   ",
+        },
+      },
+    },
+
     lsp = {
-      -- ✅ don't let noice display LSP progress (use fidget instead)
       progress = {
         enabled = false,
       },
 
-      -- ✅ don't let noice route LSP messages to cmdline/popup
       message = {
         enabled = false,
       },
 
-      -- keep your markdown overrides
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,
@@ -55,4 +63,3 @@ function M.config()
 end
 
 return M
-
