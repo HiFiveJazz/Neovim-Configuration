@@ -62,6 +62,7 @@ spec "user.extras.various-textobjs" -- replaces ciw, works on text object rather
 spec "user.extras.harpoon"    -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.harpoon-lualine"    -- Enables harpoon visually showing the lualine!
 spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
+-- spec "user.extras.biscuits"
                               -- TODO:
                               -- HACK:
                               -- WARN: 

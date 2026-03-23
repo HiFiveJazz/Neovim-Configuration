@@ -1,5 +1,7 @@
 local M = {
-  "is0n/jaq-nvim",
+  -- "is0n/jaq-nvim",
+  "HiFiveJazz/jaq-nvim",
+  -- dir = "~/GitHub/jaq-nvim/",
   event = "VeryLazy",
 }
 

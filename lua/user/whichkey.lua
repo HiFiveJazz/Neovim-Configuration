@@ -96,13 +96,12 @@ function M.config()
     { "<leader>w", desc = "Toggle Wrap", "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",  icon = { icon = "󰖶 ", color = "cyan" } },
     { "<leader>;", desc = "Terminal", "<cmd>tabnew | terminal<CR>",  icon = { icon = " ", color = "green" } },
 
-
     { "g", group = "Go to" },
     { "gd", desc = "Go to Definition", icon = { icon = "󰗚 " } },
     { "gg", desc = "Go to Top of File", icon = { icon = "󰘣 " } },
+    { "gl", desc = "Show Line Diagnostics", icon = { icon = " " } },
     { "gm", desc = "Go to Middle of Line", icon = { icon = "󰘞 " } },
     { "gx", desc = "Go to File/URL", icon = { icon = "󰏋 " } },
-
     { "c", group = "Change" },
     { "caw", desc = "Change around Word"},
     { "ciw", desc = "Change inside Word"},
@@ -144,7 +143,7 @@ function M.config()
     { "gD", hidden = true },
     { "gI", hidden = true },
     { "gO", hidden = true },
-    { "gl", hidden = true },
+    -- { "gl", hidden = true },
     { "gr", hidden = true },
     { "gb", hidden = true },
     { "gnn", hidden = true },
