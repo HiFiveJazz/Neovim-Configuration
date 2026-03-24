@@ -7,6 +7,7 @@ function M.config()
   local mappings = {
     { "<leader>a", group = "Tab" },
     { "<leader>b", group = "Buffers" },
+    { "<leader>c", group = "Compiler" },
     { "<leader>d", group = "Debug" },
     { "<leader>f", group = "Find" },
     { "<leader>g", group = "Git" },
@@ -78,8 +79,8 @@ function M.config()
 
   wk.add {
     { "<leader>a", group = "AI", icon = { icon = " ", color = "blue" } },
-    { "<leader>b", group = "Buffers" },
-    { "<leader>c", group = "Cargo", desc="Rust", icon = { icon = " ", color = "red" } },
+    { "<leader>b", group = "Buffers", icon = { icon = "󰓩 ", color = "blue" }  },
+    { "<leader>c", group = "Compiler", desc="Compiler", icon = { icon = "󱁤 ", color = "green" } },
     { "<leader>d", group = "Debug" },
     { "<leader>f", group = "Find", icon = { icon = " ", color = "yellow" } },
     { "<leader>g", group = "Git" },
@@ -91,9 +92,9 @@ function M.config()
     { "<leader>q", desc = "Quit", "<cmd>confirm q<CR>"  },
     -- { "<leader>T", desc = "Treesitter", },
     { "<leader>o", function() vim.ui.open(vim.fn.expand("<cfile>")) end, desc = "Open URL/File", icon = { icon = " ", color = "blue" } },
-    { "<leader>t", desc = "Triforce Stats", "<cmd>Triforce profile<CR>", icon = { icon = "󰄩", color = "cyan",}, },
+    { "<leader>t", desc = "Triforce Stats", "<cmd>Triforce profile<CR>", icon = { icon = "󰄩", color = "blue",}, },
     { "<leader>v", desc = "Split", "<cmd>vsplit<CR>",  icon = { icon = "󰖲", color = "cyan",} },
-    { "<leader>w", desc = "Toggle Wrap", "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",  icon = { icon = "󰖶 ", color = "cyan" } },
+    { "<leader>w", desc = "Toggle Wrap", "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",  icon = { icon = "󰖶 ", color = "blue" } },
     { "<leader>;", desc = "Terminal", "<cmd>tabnew | terminal<CR>",  icon = { icon = " ", color = "green" } },
 
     { "g", group = "Go to" },
@@ -148,6 +149,7 @@ function M.config()
     { "gb", hidden = true },
     { "gnn", hidden = true },
     { "g'", hidden = true },
+    { "gw", hidden = true },
     { "g`", hidden = true },
     { "g_", hidden = true },
     { "g*", hidden = true },

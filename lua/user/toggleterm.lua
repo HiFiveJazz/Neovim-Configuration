@@ -22,7 +22,6 @@ function M.config()
   end
 
   local function get_dynamic_terminal_size(direction, size)
-    size = size
     if direction ~= "float" and tostring(size):find(".", 1, true) then
       size = math.min(size, 1.0)
       local buf_sizes = get_buf_size()
@@ -35,19 +34,28 @@ function M.config()
 
   local exec_toggle = function(opts)
     local Terminal = require("toggleterm.terminal").Terminal
-    local term = Terminal:new { cmd = opts.cmd, count = opts.count, direction = opts.direction }
+    local term = Terminal:new({
+      cmd = opts.cmd,
+      count = opts.count,
+      direction = opts.direction,
+    })
     term:toggle(opts.size, opts.direction)
   end
 
   local add_exec = function(opts)
-    local binary = opts.cmd:match "(%S+)"
+    local binary = opts.cmd:match("(%S+)")
     if vim.fn.executable(binary) ~= 1 then
       vim.notify("Skipping configuring executable " .. binary .. ". Please make sure it is installed properly.")
       return
     end
 
     vim.keymap.set({ "n", "t" }, opts.keymap, function()
-      exec_toggle { cmd = opts.cmd, count = opts.count, direction = opts.direction, size = opts.size() }
+      exec_toggle({
+        cmd = opts.cmd,
+        count = opts.count,
+        direction = opts.direction,
+        size = opts.size(),
+      })
     end, { desc = opts.label, noremap = true, silent = true })
   end
 
@@ -68,20 +76,20 @@ function M.config()
     add_exec(opts)
   end
 
-  require("toggleterm").setup {
+  require("toggleterm").setup({
     size = 20,
     open_mapping = [[<c-\>]],
-    hide_numbers = true, -- hide the number column in toggleterm buffers
+    hide_numbers = true,
     shade_filetypes = {},
     shade_terminals = true,
-    shading_factor = 2, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+    shading_factor = 2,
     start_in_insert = true,
-    insert_mappings = true, -- whether or not the open mapping applies in insert mode
+    insert_mappings = true,
     persist_size = false,
     direction = "float",
     autochdir = true,
-    close_on_exit = true, -- close the terminal window when the process exits
-    shell = nil, -- change the default shell
+    close_on_exit = true,
+    shell = nil,
     float_opts = {
       border = "rounded",
       winblend = 0,
@@ -92,27 +100,29 @@ function M.config()
     },
     winbar = {
       enabled = true,
-      name_formatter = function(term) --  term: Terminal
+      name_formatter = function(term)
         return term.count
       end,
     },
-  }
-  vim.cmd [[
-  augroup terminal_setup | au!
-  autocmd TermOpen * nnoremap <buffer><LeftRelease> <LeftRelease>i
-  autocmd TermEnter * startinsert!
-  augroup end
-  ]]
+  })
 
-  vim.api.nvim_create_autocmd({ "TermEnter" }, {
-    pattern = { "*" },
+  vim.cmd([[
+    augroup terminal_setup | au!
+    autocmd TermOpen * nnoremap <buffer><LeftRelease> <LeftRelease>i
+    autocmd TermEnter * startinsert!
+    augroup end
+  ]])
+
+  vim.api.nvim_create_autocmd("TermEnter", {
+    pattern = "*",
     callback = function()
-      vim.cmd "startinsert"
+      vim.cmd("startinsert")
       _G.set_terminal_keymaps()
     end,
   })
 
   local opts = { noremap = true, silent = true }
+
   function _G.set_terminal_keymaps()
     vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
     vim.api.nvim_buf_set_keymap(0, "t", "<m-j>", [[<C-\><C-n><C-W>j]], opts)
@@ -120,75 +130,149 @@ function M.config()
     vim.api.nvim_buf_set_keymap(0, "t", "<m-l>", [[<C-\><C-n><C-W>l]], opts)
   end
 
-  -- abstract to function
   local Terminal = require("toggleterm.terminal").Terminal
-  local lazygit = Terminal:new {
+
+  local function terminal_on_open(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+  end
+
+  local function terminal_on_close(_)
+    vim.cmd("startinsert!")
+  end
+
+  local lazygit = Terminal:new({
     cmd = "lazygit",
     dir = "git_dir",
     direction = "float",
     float_opts = {
       border = "rounded",
     },
-    -- function to run on opening the terminal
-    on_open = function(term)
-      vim.cmd "startinsert!"
-      vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-    end,
-    -- function to run on closing the terminal
-    on_close = function(term)
-      vim.cmd "startinsert!"
-    end,
-  }
+    on_open = terminal_on_open,
+    on_close = terminal_on_close,
+  })
 
-local cargo_run = Terminal:new {
-  cmd = "cargo +nightly run -q",
-  dir = "git_dir",
-  direction = "float",
-  close_on_exit = false,
-  float_opts = {
-    border = "rounded",
-  },
-  on_open = function(term)
-    vim.cmd "startinsert!"
-    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-  end,
-  on_close = function(term)
-    vim.cmd "startinsert!"
-  end,
-}
+  local runners = {}
+
+  local function current_file()
+    return vim.api.nvim_buf_get_name(0)
+  end
+
+  local function project_root()
+    local bufname = current_file()
+    local root = vim.fs.root(bufname, { "Cargo.toml", "Makefile", ".git" })
+    return root or vim.fn.getcwd()
+  end
+
+  local function current_file_rel()
+    return vim.fn.expand("%:.")
+  end
+
+  local function current_file_abs()
+    return vim.fn.expand("%:p")
+  end
+
+  local function current_file_name_no_ext()
+    return vim.fn.expand("%:t:r")
+  end
+
+  local function has_cargo_project()
+    return vim.fs.root(current_file(), { "Cargo.toml" }) ~= nil
+  end
+
+  local function get_commands()
+    local ft = vim.bo.filetype
+    local file_rel = current_file_rel()
+    local file_abs = current_file_abs()
+    local bin = current_file_name_no_ext()
+
+    if ft == "rust" then
+      if has_cargo_project() then
+        return {
+          build = "cargo +nightly build",
+          run = "cargo +nightly run -q",
+        }
+      else
+        return {
+          build = string.format('mkdir -p .build && rustc "%s" -o ".build/%s"', file_abs, bin),
+          run = string.format('mkdir -p .build && rustc "%s" -o ".build/%s" && "./.build/%s"', file_abs, bin, bin),
+        }
+      end
+    elseif ft == "c" then
+      return {
+        build = string.format('mkdir -p .build && cc "%s" -o ".build/%s"', file_rel, bin),
+        run = string.format('mkdir -p .build && cc "%s" -o ".build/%s" && "./.build/%s"', file_rel, bin, bin),
+      }
+    end
+
+    return nil
+  end
+
+  local function get_runner(action)
+    local commands = get_commands()
+    if not commands or not commands[action] then
+      vim.notify("No " .. action .. " command configured for filetype: " .. vim.bo.filetype, vim.log.levels.WARN)
+      return nil
+    end
+
+    local key = vim.bo.filetype .. "::" .. action
+    local root = project_root()
+
+    if not runners[key] then
+      runners[key] = Terminal:new({
+        cmd = commands[action],
+        dir = root,
+        direction = "float",
+        close_on_exit = false,
+        hidden = true,
+        float_opts = {
+          border = "rounded",
+        },
+        on_open = terminal_on_open,
+        on_close = terminal_on_close,
+      })
+    else
+      runners[key].cmd = commands[action]
+      runners[key].dir = root
+    end
+
+    return runners[key]
+  end
+
+  local function generic_build()
+    local term = get_runner("build")
+    if term then
+      term:toggle()
+    end
+  end
+
+  local function generic_run()
+    local term = get_runner("run")
+    if term then
+      term:toggle()
+    end
+  end
 
   function _lazygit_toggle()
     lazygit:toggle()
   end
 
-  function _cargo_run()
-    cargo_run:toggle()
+  function _generic_build()
+    generic_build()
   end
 
-  vim.api.nvim_set_keymap('n', '<leader>lg', ':TermExec cmd="echo hi"<CR>', { noremap = true, silent = true })
+  function _generic_run()
+    generic_run()
+  end
 
   local wk = require("which-key")
 
   wk.add({
-    { "<leader>lg", _lazygit_toggle, desc = "Lazy Git" },
+
+    { "<leader>lg", _lazygit_toggle, desc = "Lazy Git", icon = { icon = " ", color = "green"}  },
+    { "<leader>cb", _generic_build, desc = "Build", icon = { icon = " ", color = "green"} },
+    { "<leader>cr", _generic_run, desc = "Run", icon = { icon = "󰓅 ", color = "green"} },
   })
-
-  local function register_rust_keys(bufnr)
-    wk.add({
-      { "<leader>cr", _cargo_run, desc = "Cargo Run", buffer = bufnr },
-    })
-  end
-
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = "rust",
-    callback = function(args)
-      register_rust_keys(args.buf)
-    end,
-  })
-
-  if vim.bo.filetype == "rust" then
-    register_rust_keys(vim.api.nvim_get_current_buf())
-  end
 end
 
 return M

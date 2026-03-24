@@ -40,7 +40,8 @@ function M.config()
           peek.open()
         end
       end,
-      desc = "Toggle Markdown Preview (Peek)",
+      desc = "Markdown Preview",
+      icon = { icon = " ", color = "green"}
     },
   }
 end

@@ -27,13 +27,13 @@ require("lazy").setup {
 
 local wk = require "which-key"
 wk.add {
-    { "<leader>pc", "<cmd>Lazy clean<cr>", desc = "Clean" },
-    { "<leader>pd", "<cmd>Lazy debug<cr>", desc = "Debug" },
-    { "<leader>ph", "<cmd>Lazy<cr>", desc = "Home" },
-    { "<leader>pi", "<cmd>Lazy install<cr>", desc = "Install" },
-    { "<leader>pl", "<cmd>Lazy log<cr>", desc = "Log" },
-    { "<leader>pp", "<cmd>Lazy profile<cr>", desc = "Profile" },
-    { "<leader>pS", "<cmd>Lazy clear<cr>", desc = "Status" },
-    { "<leader>ps", "<cmd>Lazy sync<cr>", desc = "Sync" },
-    { "<leader>pu", "<cmd>Lazy update<cr>", desc = "Update" },
+    { "<leader>pc", "<cmd>Lazy clean<cr>", desc = "Clean",icon = { icon = "󰫩 ", color = "blue" }  },
+    { "<leader>pd", "<cmd>Lazy debug<cr>", desc = "Debug",icon = { icon = "󱡴 ", color = "blue" }  },
+    { "<leader>ph", "<cmd>Lazy<cr>", desc = "Home",icon = { icon = "󰋜 ", color = "blue" }  },
+    { "<leader>pi", "<cmd>Lazy install<cr>", desc = "Install",icon = { icon = "󰇚 ", color = "blue" }  },
+    { "<leader>pl", "<cmd>Lazy log<cr>", desc = "Log",icon = { icon = "󱖫 ", color = "blue" }  },
+    { "<leader>pp", "<cmd>Lazy profile<cr>", desc = "Profile", icon = { icon = " ", color = "blue" } },
+    { "<leader>pS", "<cmd>Lazy clear<cr>", desc = "Status",icon = { icon = " ", color = "blue" }  },
+    { "<leader>ps", "<cmd>Lazy sync<cr>", desc = "Sync",icon = { icon = " ", color = "blue" }  },
+    { "<leader>pu", "<cmd>Lazy update<cr>", desc = "Update",icon = { icon = "󰚰 ", color = "blue" }  },
 }
