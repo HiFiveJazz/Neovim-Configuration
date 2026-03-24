@@ -17,7 +17,7 @@ function M.config()
         -- rust = "rustc % && ./$fileBase && rm $fileBase",
         -- rust = 'OUT="$(mktemp -t rustbin.XXXXXX)"; rustc "%" -O -o "$OUT" && "$OUT"; code=$?; rm -f "$OUT"; exit $code',
         rust = 'OUT="$(mktemp -t rustbin.XXXXXX)"; rustc "%" -O -o "$OUT" && "$OUT"; ' ..
-       -- 'hyperfine -N --warmup 5000 --min-runs 10000 "$OUT"; ' ..
+       'hyperfine -N --warmup 5000 --min-runs 10000 "$OUT"; ' ..
        'code=$?; rm -f "$OUT"; exit $code',
 
         -- rust = "cargo run -q",

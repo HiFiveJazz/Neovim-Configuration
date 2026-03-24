@@ -15,9 +15,11 @@ function M.config()
     local bufinfo = vim.tbl_filter(function(buf)
       return buf.bufnr == cbuf
     end, vim.fn.getwininfo(vim.api.nvim_get_current_win()))[1]
+
     if bufinfo == nil then
       return { width = -1, height = -1 }
     end
+
     return { width = bufinfo.width, height = bufinfo.height }
   end
 
@@ -180,28 +182,64 @@ function M.config()
     return vim.fs.root(current_file(), { "Cargo.toml" }) ~= nil
   end
 
+  local function cargo_bin_name()
+    local cwd = project_root()
+    local cmd = [[cargo metadata --no-deps --format-version 1 2>/dev/null | sed -n 's/.*"name":"\([^"]*\)".*/\1/p' | head -n 1]]
+    local output = vim.fn.system({ "sh", "-c", cmd }, cwd)
+    return vim.trim(output)
+  end
+
   local function get_commands()
     local ft = vim.bo.filetype
     local file_rel = current_file_rel()
     local file_abs = current_file_abs()
     local bin = current_file_name_no_ext()
+    local out = string.format(".build/%s", bin)
 
     if ft == "rust" then
       if has_cargo_project() then
+        local cargo_bin = cargo_bin_name()
+
+        if cargo_bin == nil or cargo_bin == "" then
+          vim.notify("Could not determine Cargo binary name.", vim.log.levels.ERROR)
+          return nil
+        end
+
+        local release_bin = string.format("./target/release/%s", cargo_bin)
+
         return {
-          build = "cargo +nightly build",
-          run = "cargo +nightly run -q",
+          build = "cargo +nightly build --release",
+          run = string.format('cargo +nightly build --release && "%s"', release_bin),
+          bench = string.format(
+            'cargo +nightly build --release && "%s" && hyperfine -N --warmup 5000 --min-runs 10000 "%s"',
+            release_bin,
+            release_bin
+          ),
         }
       else
         return {
-          build = string.format('mkdir -p .build && rustc "%s" -o ".build/%s"', file_abs, bin),
-          run = string.format('mkdir -p .build && rustc "%s" -o ".build/%s" && "./.build/%s"', file_abs, bin, bin),
+          build = string.format('mkdir -p .build && rustc "%s" -O -o "%s"', file_abs, out),
+          run = string.format('mkdir -p .build && rustc "%s" -O -o "%s" && "./%s"', file_abs, out, out),
+          bench = string.format(
+            'mkdir -p .build && rustc "%s" -O -o "%s" && "./%s" && hyperfine -N --warmup 5000 --min-runs 10000 "./%s"',
+            file_abs,
+            out,
+            out,
+            out
+          ),
         }
       end
     elseif ft == "c" then
       return {
-        build = string.format('mkdir -p .build && cc "%s" -o ".build/%s"', file_rel, bin),
-        run = string.format('mkdir -p .build && cc "%s" -o ".build/%s" && "./.build/%s"', file_rel, bin, bin),
+        build = string.format('mkdir -p .build && cc -O2 "%s" -o "%s"', file_rel, out),
+        run = string.format('mkdir -p .build && cc -O2 "%s" -o "%s" && "./%s"', file_rel, out, out),
+        bench = string.format(
+          'mkdir -p .build && cc -O2 "%s" -o "%s" && "./%s" && hyperfine -N --warmup 5000 --min-runs 10000 "./%s"',
+          file_rel,
+          out,
+          out,
+          out
+        ),
       }
     end
 
@@ -253,6 +291,13 @@ function M.config()
     end
   end
 
+  local function generic_bench()
+    local term = get_runner("bench")
+    if term then
+      term:toggle()
+    end
+  end
+
   function _lazygit_toggle()
     lazygit:toggle()
   end
@@ -265,13 +310,17 @@ function M.config()
     generic_run()
   end
 
+  function _generic_bench()
+    generic_bench()
+  end
+
   local wk = require("which-key")
 
   wk.add({
-
-    { "<leader>lg", _lazygit_toggle, desc = "Lazy Git", icon = { icon = " ", color = "blue"}  },
-    { "<leader>cb", _generic_build, desc = "Build", icon = { icon = " ", color = "green"} },
-    { "<leader>cr", _generic_run, desc = "Run", icon = { icon = "󰓅 ", color = "green"} },
+    { "<leader>lg", _lazygit_toggle, desc = "Lazy Git", icon = { icon = " ", color = "blue" } },
+    { "<leader>cb", _generic_build, desc = "Build", icon = { icon = " ", color = "green" } },
+    { "<leader>cr", _generic_run, desc = "Run", icon = { icon = "󰓅 ", color = "green" } },
+    { "<leader>ct", _generic_bench, desc = "Benchmark", icon = { icon = "󱎫 ", color = "green" } },
   })
 end
 

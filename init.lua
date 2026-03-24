@@ -51,7 +51,7 @@ spec "user.extras.surround"   -- Helps with HTML tags!
                               -- ct to change the tags to something different
 spec "user.extras.eyeliner"   -- Highlights characters when using "f" and "F" commands in Neovim for faster jumping
 spec "user.extras.numb"       -- Linepeeker that doesn't force you to move all the way down to the line, if you want to peek line 356, type ":356" for example
-spec "user.extras.jaq"        -- Use "Alt-r" to run code quickly! Opens up output on the side!
+-- spec "user.extras.jaq"        -- Use "Alt-r" to run code quickly! Opens up output on the side!
 spec "user.extras.noice"      -- Visually enchances the Neovim commandline bar! 
 spec "user.extras.fidget"     -- Shows language server loading in top right on file open!
 spec "user.extras.neotab"     -- Always creation of other tabs!
