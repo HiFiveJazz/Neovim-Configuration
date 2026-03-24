@@ -269,7 +269,7 @@ function M.config()
 
   wk.add({
 
-    { "<leader>lg", _lazygit_toggle, desc = "Lazy Git", icon = { icon = " ", color = "green"}  },
+    { "<leader>lg", _lazygit_toggle, desc = "Lazy Git", icon = { icon = " ", color = "blue"}  },
     { "<leader>cb", _generic_build, desc = "Build", icon = { icon = " ", color = "green"} },
     { "<leader>cr", _generic_run, desc = "Run", icon = { icon = "󰓅 ", color = "green"} },
   })

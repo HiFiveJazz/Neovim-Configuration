@@ -231,13 +231,13 @@ function M.config()
       "<cmd>lua vim.lsp.buf.format({ async = true, filter = function(client) return client.name ~= 'typescript-tools' end })<cr>",
       desc = "Format",
     },
-    { "<leader>lh", "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>", desc = "Hints" },
-    { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
-    { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
-    { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
-    { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
-    { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
-    { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+    { "<leader>lh", "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>", desc = "Hints", icon = { icon = "󰛨 ", color = "blue" } },
+    { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info", icon = { icon = "󰋽 ", color = "blue" }  },
+    { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic", icon = { icon = "󰮰 ", color = "blue" }  },
+    { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic", icon = { icon = "󰮲 ", color = "blue" }  },
+    { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action", icon = { icon = " ", color = "blue" }  },
+    { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix", icon = { icon = "󰁨 ", color = "blue" }  },
+    { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", icon = { icon = "󰟵 ", color = "blue" }  },
   })
 
   wk.add({

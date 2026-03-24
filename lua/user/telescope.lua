@@ -99,7 +99,7 @@ function M.config()
       "<leader>le",
       "<cmd>Telescope quickfix<cr>",
       desc = "Telescope Quickfix",
-      icon = { icon = "󱖫 ", color = "yellow" },
+      icon = { icon = " ", color = "blue" },
     },
   })
 
