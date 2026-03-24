@@ -50,6 +50,34 @@ api.nvim_create_autocmd("VimResized", {
   end,
 })
 
+-- Follow Linux Kernel Rust Indentation Rules
+api.nvim_create_autocmd("FileType", {
+  pattern = "rust",
+  callback = function()
+    vim.opt_local.expandtab = false
+    vim.opt_local.tabstop = 8
+    vim.opt_local.shiftwidth = 8
+    vim.opt_local.softtabstop = 8
+  end,
+})
+
+-- Follow Linux Kernel C Indentation Rules
+api.nvim_create_autocmd("FileType", {
+  pattern = "c",
+  callback = function()
+    vim.opt_local.expandtab = false
+    vim.opt_local.tabstop = 8
+    vim.opt_local.shiftwidth = 8
+    vim.opt_local.softtabstop = 8
+
+    -- kernel style prefers simpler indentation logic
+    vim.opt_local.cindent = true
+    vim.opt_local.smartindent = false
+
+    -- optional: avoid wrapping comments weirdly
+    vim.opt_local.textwidth = 80
+  end,
+})
 -- Check if files changed on disk when you focus a window
 api.nvim_create_autocmd({ "BufWinEnter", "FocusGained" }, {
   group = group,

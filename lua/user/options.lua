@@ -1,4 +1,10 @@
 vim.opt.backup = false -- creates a backup file
+vim.opt.list = true
+vim.opt.listchars = {
+  space = "·",   -- show spaces as dots
+  tab = "→ ",    -- show tabs as arrow + space
+  trail = "·",   -- highlight trailing spaces
+}
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp

@@ -20,7 +20,7 @@ spec "user.cmp"               -- Adds in cool autocompletion
 spec "user.autopairs"         -- Autocomplete pairs for (),{},& [], $$ for LaTex files, < > for html, and React.js
 spec "user.comment"           --In Visual Mode, "_/" comments out all lines"
 spec "user.gitsigns"          -- Shows green, red, and blue lines on the left side in git files
--- spec "user.indentline"        -- Adds in indent lines on the left side for functions and whatnot
+spec "user.indentline"        -- Adds in indent lines on the left side for functions and whatnot
 spec "user.alpha"             -- Adds in nice screen when running "nvim" in terminal
 spec "user.project"           -- Open up recent projects via telescope using "Ctrl-p", moving up and down with "Ctrl-j" and "Ctrl-k"
 spec "user.toggleterm"        -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
@@ -42,7 +42,6 @@ spec "user.extras.colorizer"  -- Colors hex color codes
 spec "user.extras.neoscroll"  -- Scroll through files using "Ctrl-J" and "Ctrl-K"
 spec "user.extras.modicator"  -- Bolds the line number you are currently on
 -- spec "user.extras.bqf"        --"Ctrl-q" while in telescope to add files to harpoon easily
-spec "user.extras.nui"        -- UI components library used in many other plugins
 spec "user.extras.ufo"        -- Toggle fold with "za",open all folds with "zR", close all folds "zM" 
 spec "user.extras.surround"   -- Helps with HTML tags!
                               -- si for custom tags!
@@ -50,7 +49,6 @@ spec "user.extras.surround"   -- Helps with HTML tags!
                               -- sb for ()
                               -- dt to delete the surrounding tags
                               -- ct to change the tags to something different
-
 spec "user.extras.eyeliner"   -- Highlights characters when using "f" and "F" commands in Neovim for faster jumping
 spec "user.extras.numb"       -- Linepeeker that doesn't force you to move all the way down to the line, if you want to peek line 356, type ":356" for example
 spec "user.extras.jaq"        -- Use "Alt-r" to run code quickly! Opens up output on the side!
@@ -62,7 +60,7 @@ spec "user.extras.various-textobjs" -- replaces ciw, works on text object rather
 spec "user.extras.harpoon"    -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.harpoon-lualine"    -- Enables harpoon visually showing the lualine!
 spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
--- spec "user.extras.biscuits"
+-- spec "user.extras.biscuits" -- Shows the other part of { }
                               -- TODO:
                               -- HACK:
                               -- WARN: 
