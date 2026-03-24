@@ -182,10 +182,23 @@ function M.config()
     return vim.fs.root(current_file(), { "Cargo.toml" }) ~= nil
   end
 
+  -- local function cargo_bin_name()
+  --   local cwd = project_root()
+  --   local cmd = [[cargo metadata --no-deps --format-version 1 2>/dev/null | sed -n 's/.*"name":"\([^"]*\)".*/\1/p' | head -n 1]]
+  --   local output = vim.fn.system({ "sh", "-c", cmd }, cwd)
+  --   return vim.trim(output)
+  -- end
+
   local function cargo_bin_name()
-    local cwd = project_root()
-    local cmd = [[cargo metadata --no-deps --format-version 1 2>/dev/null | sed -n 's/.*"name":"\([^"]*\)".*/\1/p' | head -n 1]]
-    local output = vim.fn.system({ "sh", "-c", cmd }, cwd)
+    local cmd = [[
+      cargo metadata --no-deps --format-version 1 |
+      sed -n 's/.*"targets":\[\(.*\)\].*/\1/p' |
+      grep '"kind":\["bin"\]' |
+      sed -n 's/.*"name":"\([^"]*\)".*/\1/p' |
+      head -n 1
+    ]]
+
+    local output = vim.fn.system({ "sh", "-c", cmd })
     return vim.trim(output)
   end
 
