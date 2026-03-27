@@ -89,7 +89,7 @@ function M.config()
     insert_mappings = true,
     persist_size = false,
     direction = "float",
-    autochdir = true,
+    autochdir = false,
     close_on_exit = true,
     shell = nil,
     float_opts = {
@@ -162,7 +162,15 @@ function M.config()
 
   local function project_root()
     local bufname = current_file()
-    local root = vim.fs.root(bufname, { "Cargo.toml", "Makefile", ".git" })
+
+    if vim.bo.filetype == "rust" then
+      local cargo_root = vim.fs.root(bufname, { "Cargo.toml" })
+      if cargo_root then
+        return cargo_root
+      end
+    end
+
+    local root = vim.fs.root(bufname, { "Makefile", ".git" })
     return root or vim.fn.getcwd()
   end
 
@@ -182,14 +190,8 @@ function M.config()
     return vim.fs.root(current_file(), { "Cargo.toml" }) ~= nil
   end
 
-  -- local function cargo_bin_name()
-  --   local cwd = project_root()
-  --   local cmd = [[cargo metadata --no-deps --format-version 1 2>/dev/null | sed -n 's/.*"name":"\([^"]*\)".*/\1/p' | head -n 1]]
-  --   local output = vim.fn.system({ "sh", "-c", cmd }, cwd)
-  --   return vim.trim(output)
-  -- end
-
   local function cargo_bin_name()
+    local root = project_root()
     local cmd = [[
       cargo metadata --no-deps --format-version 1 |
       sed -n 's/.*"targets":\[\(.*\)\].*/\1/p' |
@@ -198,8 +200,12 @@ function M.config()
       head -n 1
     ]]
 
-    local output = vim.fn.system({ "sh", "-c", cmd })
-    return vim.trim(output)
+    local result = vim.system({ "sh", "-c", cmd }, { cwd = root, text = true }):wait()
+    if result.code ~= 0 then
+      return ""
+    end
+
+    return vim.trim(result.stdout or "")
   end
 
   local function get_commands()
@@ -266,8 +272,8 @@ function M.config()
       return nil
     end
 
-    local key = vim.bo.filetype .. "::" .. action
     local root = project_root()
+    local key = root .. "::" .. vim.bo.filetype .. "::" .. action
 
     if not runners[key] then
       runners[key] = Terminal:new({
