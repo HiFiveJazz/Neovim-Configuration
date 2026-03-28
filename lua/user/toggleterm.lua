@@ -214,6 +214,9 @@ function M.config()
     local file_abs = current_file_abs()
     local bin = current_file_name_no_ext()
     local out = string.format(".build/%s", bin)
+    local rsbench = "$HOME/.config/nvim/scripts/rsbench"
+    local bench_runs = 800
+
 
     if ft == "rust" then
       if has_cargo_project() then
@@ -226,27 +229,50 @@ function M.config()
 
         local release_bin = string.format("./target/release/%s", cargo_bin)
 
-        return {
-          build = "cargo +nightly build --release",
-          run = string.format('cargo +nightly build --release && "%s"', release_bin),
-          bench = string.format(
-            'cargo +nightly build --release && "%s" && hyperfine -N --warmup 5000 --min-runs 10000 "%s"',
-            release_bin,
-            release_bin
-          ),
-        }
+        -- return {
+        --    build = "cargo +nightly build --release",
+        --    run = string.format('cargo +nightly build --release && "%s"', release_bin),
+        --    bench = string.format(
+        --      'cargo +nightly build --release && "%s" && hyperfine -N --warmup 5000 --min-runs 10000 "%s"',
+        --      release_bin,
+        --      release_bin
+        --    ),
+        -- }
+      return {
+        build = "cargo +nightly build --release",
+        run = string.format('cargo +nightly build --release && "%s"', release_bin),
+        bench = string.format(
+          'cargo +nightly build --release && "%s" %d "%s"',
+          rsbench,
+          bench_runs,
+          release_bin
+        ),
+      }
       else
-        return {
-          build = string.format('mkdir -p .build && rustc "%s" -O -o "%s"', file_abs, out),
-          run = string.format('mkdir -p .build && rustc "%s" -O -o "%s" && "./%s"', file_abs, out, out),
-          bench = string.format(
-            'mkdir -p .build && rustc "%s" -O -o "%s" && "./%s" && hyperfine -N --warmup 5000 --min-runs 10000 "./%s"',
-            file_abs,
-            out,
-            out,
-            out
-          ),
-        }
+        -- return {
+        --   build = string.format('mkdir -p .build && rustc "%s" -O -o "%s"', file_abs, out),
+        --   run = string.format('mkdir -p .build && rustc "%s" -O -o "%s" && "./%s"', file_abs, out, out),
+        --   bench = string.format(
+        --     'mkdir -p .build && rustc "%s" -O -o "%s" && "./%s" && hyperfine -N --warmup 5000 --min-runs 10000 "./%s"',
+        --     file_abs,
+        --     out,
+        --     out,
+        --     out
+        --   ),
+        -- }
+
+      return {
+        build = string.format('mkdir -p .build && rustc "%s" -O -o "%s"', file_abs, out),
+        run = string.format('mkdir -p .build && rustc "%s" -O -o "%s" && "%s"', file_abs, out, "./" .. out),
+        bench = string.format(
+          'mkdir -p .build && rustc "%s" -O -o "%s" && "%s" %d "%s"',
+          file_abs,
+          out,
+          rsbench,
+          bench_runs,
+          "./" .. out
+        ),
+      }
       end
     elseif ft == "c" then
       return {
