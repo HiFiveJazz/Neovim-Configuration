@@ -163,6 +163,12 @@ function M.config()
     return root or vim.fn.getcwd()
   end
 
+  local function git_root()
+    local bufname = current_file()
+    local root = vim.fs.root(bufname, { ".git" })
+    return root or project_root()
+  end
+
   -- local lazygit = Terminal:new({
   --   cmd = "lazygit",
   --   dir = function()
@@ -328,7 +334,7 @@ function M.config()
   function _lazygit_toggle()
     local term = Terminal:new({
       cmd = "lazygit",
-      dir = project_root(),
+      dir = git_root(),
       direction = "float",
       close_on_exit = true,
       hidden = true,
