@@ -330,7 +330,7 @@ function M.config()
       cmd = "lazygit",
       dir = project_root(),
       direction = "float",
-      close_on_exit = false,
+      close_on_exit = true,
       hidden = true,
       float_opts = {
         border = "rounded",
