@@ -44,12 +44,10 @@ local M = {
         "vim",
         "dockerfile",
         "gitignore",
-        -- "vimdoc",
         "python",
         "go",
         "rust",
         "c",
-        -- "cpp",
       },
 
       auto_install = true,
