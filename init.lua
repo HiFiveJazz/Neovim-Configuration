@@ -13,14 +13,14 @@ spec "user.illuminate"        -- Enables highlighting entire word on cursor hove
 spec "user.telescope"         -- Fuzzy Finder, "_ff", Buffers, "_bb", Colorscheme, "_fc"
 spec "user.yazi"              -- use "_e to open up file explorer on the side" requires yazi package to be installed
 spec "user.lualine"           -- Makes Line at bottom look better, uses devicons.lua
-spec "user.whichkey"          -- Typing "_" shows most of the keybindings
-spec "user.dap"               -- Debug Adapter Protocol, used for python3
-spec "user.autotag"           -- Automatically update both HTML tags when editing one of them
-spec "user.cmp"               -- Adds in cool autocompletion
-spec "user.autopairs"         -- Autocomplete pairs for (),{},& [], $$ for LaTex files, < > for html, and React.js
-spec "user.comment"           --In Visual Mode, "_/" comments out all lines"
-spec "user.gitsigns"          -- Shows green, red, and blue lines on the left side in git files
-spec "user.indentline"        -- Adds in indent lines on the left side for functions and whatnot
+spec "user.whichkey"          -- Typing "_" shows most of the keybindings 
+spec "user.dap"               -- Debug Adapter Protocol, used for python3 
+spec "user.autotag"           -- Automatically update both HTML tags when editing one of them 
+spec "user.cmp"               -- Adds in cool autocompletion 
+spec "user.autopairs"         -- Autocomplete pairs for (),{},& [], $$ for LaTex files, < > for html, and React.js 
+spec "user.comment"           --In Visual Mode, "_/" comments out all lines" 
+spec "user.gitsigns"          -- Shows green, red, and blue lines on the left side in git files 
+spec "user.indentline"        -- Adds in indent lines on the left side for functions and whatnot 
 spec "user.alpha"             -- Adds in nice screen when running "nvim" in terminal
 spec "user.project"           -- Open up recent projects via telescope using "Ctrl-p", moving up and down with "Ctrl-j" and "Ctrl-k"
 spec "user.toggleterm"        -- Adds in terminal using "Alt-1","Alt-2","Alt-3", and "Ctrl-\"
