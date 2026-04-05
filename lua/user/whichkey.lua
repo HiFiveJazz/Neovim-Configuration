@@ -5,7 +5,7 @@ local M = {
 
 function M.config()
   local mappings = {
-    { "<leader>a", group = "Tab" },
+    -- { "<leader>a", group = "Tab" },
     { "<leader>b", group = "Buffers" },
     { "<leader>c", group = "Compiler" },
     { "<leader>d", group = "Debug" },
@@ -78,7 +78,8 @@ function M.config()
   -- azure, blue, cyan, green, grey, orange, purple, red, yellow
 
   wk.add {
-    { "<leader>a", group = "AI", icon = { icon = " ", color = "blue" } },
+    -- { "<leader>a", group = "AI", icon = { icon = " ", color = "blue" } },
+    { "<leader>a", group = "Multi-Cursor", icon = { icon = "󰘎 ", color = "blue" } },
     { "<leader>b", group = "Buffers", icon = { icon = "󰓩 ", color = "blue" }  },
     { "<leader>c", group = "Compiler", desc="Compiler", icon = { icon = "󱁤 ", color = "green" } },
     { "<leader>d", group = "Debug" },
@@ -88,10 +89,11 @@ function M.config()
     { "<leader>l", group = "LSP", icon = { icon = " ", color = "blue" }},
     { "<leader>p", group = "Plugins", icon = { icon = " ", color = "blue" } },
     { "m", group = "Macros", icon = { icon = " ", color = "green" } },
+    { "<leader>aj", desc="Add Cursor Below", "<Cmd>MultipleCursorsAddUp<CR>", mode = {"n"}, icon = { icon = "", color = "blue",}, },
+    { "<leader>ak", desc="Add Cursor Above", "<Cmd>MultipleCursorsAddDown<CR>", mode = {"n"}, icon = { icon = "", color = "blue",}, },
     { "<leader>e", desc = "File Explorer", icon = { icon = "" } },
     { "<leader>q", desc = "Quit", "<cmd>confirm q<CR>"  },
     -- { "<leader>T", desc = "Treesitter", },
-
     -- { "<leader>la", desc = "LSP"},
     -- { "<leader>le", desc = "LSP"},
     -- { "<leader>lq", desc = "LSP"},

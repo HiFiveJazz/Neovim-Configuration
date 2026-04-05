@@ -28,6 +28,7 @@ spec "user.image"             -- allows using neovim to glance at images
 spec "user.csv"               -- allows using neovim to edit csv files
 spec "user.peek"              -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
 spec "user.find-replace"      -- Find and Replace UI that's simple, using ripgrep, using "_s"
+-- spec "user.multi-cursor"   -- Renders Markdown files inside of Neovim in normal mode, only doesn't when in insert mode
 spec "user.markdown-render"   -- Renders Markdown files inside of Neovim in normal mode, only doesn't when in insert mode
 spec "user.neocomposer"       -- Used for macros, press  
                               -- "mr" toggle recording and finishing a macro, 
