@@ -1,13 +1,17 @@
 local M = {
   "windwp/nvim-ts-autotag",
-  event = { "BufReadPre", "BufNewFile" },
+  -- "miridih-jslee01/nvim-ts-autotag",
+  -- event = { "BufReadPre", "BufNewFile" },
+  ft = { "html", "css", "markdown", "ts", "js", "jsx", "tsx"},
 }
 
 function M.config()
   require("nvim-ts-autotag").setup({
     opts = {
-      enable_close = false,
-      enable_rename = true,
+      enable_close = true,
+      -- enable_close = false,
+      -- enable_rename = true,
+      enable_rename = false,
       enable_close_on_slash = false,
     },
     -- Use per_filetype to customize behavior per language
