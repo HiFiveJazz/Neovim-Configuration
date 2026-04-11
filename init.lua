@@ -28,7 +28,7 @@ spec "user.image"             -- allows using neovim to glance at images
 spec "user.csv"               -- allows using neovim to edit csv files
 spec "user.peek"              -- When in a Markdown File, use "_m" to open a live preview of the markdown file you are editing 
 spec "user.find-replace"      -- Find and Replace UI that's simple, using ripgrep, using "_s"
--- spec "user.multi-cursor"   -- Renders Markdown files inside of Neovim in normal mode, only doesn't when in insert mode
+spec "user.multi-cursor"      -- Use "V + enter", or use "Alt-j" and "Alt-k" and press enter to create multi-cursor, "Esc" to exit multi-cursor mode
 spec "user.markdown-render"   -- Renders Markdown files inside of Neovim in normal mode, only doesn't when in insert mode
 spec "user.neocomposer"       -- Used for macros, press  
                               -- "mr" toggle recording and finishing a macro, 
@@ -46,6 +46,7 @@ spec "user.extras.modicator"  -- Bolds the line number you are currently on
 -- spec "user.extras.bqf"        --"Ctrl-q" while in telescope to add files to harpoon easily
 spec "user.extras.ufo"        -- Toggle fold with "za",open all folds with "zR", close all folds "zM" 
 spec "user.extras.surround"   -- Helps with HTML tags!
+
                               -- si for custom tags!
                               -- st for HTML tags!
                               -- sb for ()
