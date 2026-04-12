@@ -46,7 +46,6 @@ spec "user.extras.modicator"  -- Bolds the line number you are currently on
 -- spec "user.extras.bqf"        --"Ctrl-q" while in telescope to add files to harpoon easily
 spec "user.extras.ufo"        -- Toggle fold with "za",open all folds with "zR", close all folds "zM" 
 spec "user.extras.surround"   -- Helps with HTML tags!
-
                               -- si for custom tags!
                               -- st for HTML tags!
                               -- sb for ()
