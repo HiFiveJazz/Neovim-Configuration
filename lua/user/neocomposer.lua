@@ -73,7 +73,6 @@ function M.config()
 
   end
 
-  -- Which-key descriptions
   local wk = require("which-key")
   wk.add({
     { "m", group = "Macros", icon = { icon = "󱚣 ", color = "green", }, },

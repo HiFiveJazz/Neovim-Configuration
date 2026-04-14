@@ -35,7 +35,6 @@ function M.config()
           --   target = "thumbv7em-none-eabihf", -- Set embedded Rust target
           -- },
           -- -- END: MICROBIT RUST SETTINGS
-
           -- run checks on save; choose command via `check.command`
           checkOnSave = true,
           check = { command = "clippy" }, -- or "check"
@@ -45,12 +44,10 @@ function M.config()
           -- FLAT inlayHints schema (so hints actually render)
           inlayHints = {
             enable = true,
-
             -- core toggles
             chainingHints  = true,
             parameterHints = true,
             typeHints      = true,
-
             -- fine-tuning
             renderColons   = true,
             maxLength      = 25,
