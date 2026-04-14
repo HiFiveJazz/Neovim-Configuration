@@ -102,20 +102,10 @@ function M.config()
 
   local wk = require "which-key"
   wk.add {
-    {"za", desc = "Toggle fold", icon = { icon = "󰨚 "}},
-    {"zm","<cmd>require('ufo').closeAllFolds<cr>",desc = "Close all folds", icon = { icon = "󰡍 "} },
-    {"zr","<cmd>require('ufo').openAllFolds<cr>",desc = "Open all folds", icon = { icon = "󰡏"} },
+    {"za", desc = "Toggle Fold", icon = { icon = "󰨚 "}},
+    {"zm","<cmd>require('ufo').closeAllFolds<cr>",desc = "Close all Folds", icon = { icon = "󰡍 "} },
+    {"zr","<cmd>require('ufo').openAllFolds<cr>",desc = "Open all Folds", icon = { icon = "󰡏"} },
 
-
-    {
-      "<leader>w",
-      "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",
-      desc = "Toggle Wrap",
-      icon = {
-          icon = "󰖶 ",
-          color = "cyan",
-      },
-    },
   }
   vim.keymap.set("n", "K", function()
     local winid = require("ufo").peekFoldedLinesUnderCursor()

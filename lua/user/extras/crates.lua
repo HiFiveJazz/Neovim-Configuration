@@ -19,8 +19,8 @@ function M.config()
   local wk = require("which-key")
 
   wk.add({
-    { "<leader>cm", function() require("crates").show_popup() end, desc = "Cargo Menu" },
-    { "<leader>cu", function() require("crates").update_crate() end, desc = "Update Cargo Package" },
+    { "<leader>cm", function() require("crates").show_popup() end, desc = "Cargo Package Menu", icon = { icon = "", color = "orange"} },
+    { "<leader>cu", function() require("crates").update_crate() end, desc = "Update Cargo Package(s)", icon = { icon = "󰏗 ", color = "orange"} },
   })
 end
 

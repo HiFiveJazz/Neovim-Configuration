@@ -43,7 +43,6 @@ spec "user.extras.urlview"    -- Allows for opening urls in the browser quickly
 spec "user.extras.colorizer"  -- Colors hex color codes
 spec "user.extras.neoscroll"  -- Scroll through files using "Ctrl-J" and "Ctrl-K"
 spec "user.extras.modicator"  -- Bolds the line number you are currently on
--- spec "user.extras.bqf"        --"Ctrl-q" while in telescope to add files to harpoon easily
 spec "user.extras.ufo"        -- Toggle fold with "za",open all folds with "zR", close all folds "zM" 
 spec "user.extras.surround"   -- Helps with HTML tags!
                               -- si for custom tags!
@@ -61,7 +60,6 @@ spec "user.extras.various-textobjs" -- replaces ciw, works on text object rather
 spec "user.extras.harpoon"    -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.harpoon-lualine"    -- Enables harpoon visually showing the lualine!
 spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
--- spec "user.extras.biscuits" -- Shows the other part of { }
                               -- TODO:
                               -- HACK:
                               -- WARN: 
@@ -76,9 +74,11 @@ spec "user.extras.todo-comments" -- Adds in various comments, such as the follow
                               -- PASSED:
                               -- FAILED:
                               -- TESTING:
--- spec "user.extras.trouble" -- Jump through errors with keybindings!
 spec "user.extras.rustacean"  -- Lots of Rust Language integration
 spec "user.extras.crates"     -- Shows updates for Rust Crates
+-- spec "user.extras.trouble" -- Jump through errors with keybindings!
+-- spec "user.extras.biscuits" -- Shows the other part of { }
+-- spec "user.extras.bqf"        --"Ctrl-q" while in telescope to add files to harpoon easily
 --Latex Documents
 -- spec "user.extras.vimtex"      -- Allows continous compilation of latex document and neovim editing
 -- spec "user.extras.ultisnips"   -- Adds in many different latex shortcuts
