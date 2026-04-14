@@ -16,7 +16,6 @@ function M.config()
       "minifiles",
       "fugitive",
       "alpha",
-      "NvimTree",
       "lazy",
       "NeogitStatus",
       "Trouble",
@@ -29,7 +28,6 @@ function M.config()
       "toggleterm",
       "DressingSelect",
       "TelescopePrompt",
-      "neo-tree",
     },
   }
 end

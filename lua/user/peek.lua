@@ -3,9 +3,6 @@ local M = {
   ft = { "markdown" },
   event = { "BufReadPre *.md", "BufNewFile *.md" },
   build = "deno task --quiet build:fast",
-  -- config = function()
-  --   M.config()
-  -- end,
 }
 
 function M.config()

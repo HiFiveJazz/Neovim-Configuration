@@ -10,32 +10,14 @@ keys = {
       "<leader>e",
       mode = { "n", "v" },
       function()
-        -- Clear image.nvim renders before opening Yazi
-        -- if package.loaded["image"] then
-        --   pcall(function()
-        --     require("image").clear()
-        --   end)
-        -- end
-
         vim.cmd("Yazi")
       end,
-
-      -- desc = "Open URL/File",
-      -- icon = {
-      --   icon = " ",
-      --   color = "blue",
-      -- },
-
       desc = "File Explorer",
-      -- icon = {
-      --   icon = " ",
-      -- },
     },
   },
 }
 
 function M.init()
-  -- Disable netrw entirely (recommended when open_for_directories=true)
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
   vim.g.loaded_netrwSettings = 1
@@ -44,7 +26,6 @@ end
 
 function M.config()
   require("yazi").setup({
-    -- ✅ Replace netrw when opening directories (e.g. `nvim .`, `:e some/dir`)
     open_for_directories = true,
 
     open_multiple_tabs = false,
@@ -67,8 +48,6 @@ function M.config()
       cycle_open_buffers = "<tab>",
       copy_relative_path_to_selected_files = "<c-y>",
       send_to_quickfix_list = "<c-q>",
-      -- change_working_directory = "<c-\\>",
-      -- open_and_pick_window = "<c-o>",
     },
 
     clipboard_register = "*",

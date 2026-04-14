@@ -1,8 +1,6 @@
 local M = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    -- dir = "~/GitHub/NeoComposer.nvim/",
-    -- "HiFiveJazz/Neocomposer.nvim",
     "nvim-tree/nvim-web-devicons",
   },
 }
@@ -69,7 +67,6 @@ function M.config()
 
   require("lualine").setup {
     options = {
-      -- theme = "neovim",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       ignore_focus = { "NvimTree" },
@@ -82,7 +79,6 @@ function M.config()
       lualine_y = { "progress" },
       lualine_z = {},
     },
-    -- extensions = { "quickfix", "man", "fugitive", "oil" },
     extensions = { "quickfix", "man", "fugitive" },
   }
 end
