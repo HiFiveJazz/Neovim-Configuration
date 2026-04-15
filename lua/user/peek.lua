@@ -38,7 +38,7 @@ function M.config()
         end
       end,
       desc = "Markdown Preview",
-      icon = { icon = " ", color = "green"}
+      icon = { icon = "󰱽 ", color = "green"}
     },
   }
 end
