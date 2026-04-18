@@ -2,7 +2,7 @@ local M = {
   "windwp/nvim-ts-autotag",
   -- "miridih-jslee01/nvim-ts-autotag",
   -- event = { "BufReadPre", "BufNewFile" },
-  ft = { "html", "css", "markdown", "ts", "js", "jsx", "tsx"},
+  -- ft = { "html", "css", "markdown", "ts", "js", "jsx", "tsx"},
 }
 
 function M.config()
