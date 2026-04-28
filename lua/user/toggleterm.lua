@@ -10,6 +10,10 @@ function M.config()
     { nil, "<M-3>", "Float Terminal", "float", nil },
   }
 
+  local function current_file_dir()
+    return vim.fn.expand("%:p:h")
+  end
+
   local function get_buf_size()
     local cbuf = vim.api.nvim_get_current_buf()
     local bufinfo = vim.tbl_filter(function(buf)
@@ -263,11 +267,21 @@ function M.config()
         }
       end
       elseif ft == "c" then
+        local file_dir = current_file_dir()
+        local out = string.format("%s/.build/%s", file_dir, bin)
+
         return {
-          build = string.format('mkdir -p .build && cc -O2 "%s" -o "%s"', file_abs, out),
-          run = string.format('mkdir -p .build && cc -O2 "%s" -o "%s" && "./%s"', file_abs, out, out),
+          build = string.format('mkdir -p "%s/.build" && cc -O2 "%s" -o "%s"', file_dir, file_abs, out),
+          run = string.format(
+            'mkdir -p "%s/.build" && cc -O2 "%s" -o "%s" && "%s"; echo; read -p "Press Enter to close..."',
+            file_dir,
+            file_abs,
+            out,
+            out
+          ),
           bench = string.format(
-            'mkdir -p .build && cc -O2 "%s" -o "%s" && "./%s" && hyperfine -N --warmup 5000 --min-runs 10000 "./%s"',
+            'mkdir -p "%s/.build" && cc -O2 "%s" -o "%s" && "%s" && hyperfine -N --warmup 5000 --min-runs 10000 "%s"',
+            file_dir,
             file_abs,
             out,
             out,
@@ -275,6 +289,19 @@ function M.config()
           ),
         }
       end
+      -- elseif ft == "c" then
+      --   return {
+      --     build = string.format('mkdir -p .build && cc -O2 "%s" -o "%s"', file_abs, out),
+      --     run = string.format('mkdir -p .build && cc -O2 "%s" -o "%s" && "./%s"', file_abs, out, out),
+      --     bench = string.format(
+      --       'mkdir -p .build && cc -O2 "%s" -o "%s" && "./%s" && hyperfine -N --warmup 5000 --min-runs 10000 "./%s"',
+      --       file_abs,
+      --       out,
+      --       out,
+      --       out
+      --     ),
+      --   }
+      -- end
 
     return nil
   end
