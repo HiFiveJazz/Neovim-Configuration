@@ -262,19 +262,19 @@ function M.config()
           ),
         }
       end
-    elseif ft == "c" then
-      return {
-        build = string.format('mkdir -p .build && cc -O2 "%s" -o "%s"', file_rel, out),
-        run = string.format('mkdir -p .build && cc -O2 "%s" -o "%s" && "./%s"', file_rel, out, out),
-        bench = string.format(
-          'mkdir -p .build && cc -O2 "%s" -o "%s" && "./%s" && hyperfine -N --warmup 5000 --min-runs 10000 "./%s"',
-          file_rel,
-          out,
-          out,
-          out
-        ),
-      }
-    end
+      elseif ft == "c" then
+        return {
+          build = string.format('mkdir -p .build && cc -O2 "%s" -o "%s"', file_abs, out),
+          run = string.format('mkdir -p .build && cc -O2 "%s" -o "%s" && "./%s"', file_abs, out, out),
+          bench = string.format(
+            'mkdir -p .build && cc -O2 "%s" -o "%s" && "./%s" && hyperfine -N --warmup 5000 --min-runs 10000 "./%s"',
+            file_abs,
+            out,
+            out,
+            out
+          ),
+        }
+      end
 
     return nil
   end
