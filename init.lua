@@ -75,9 +75,7 @@ spec "user.extras.todo-comments" -- Adds in various comments, such as the follow
                               -- TEST:
                               -- PASSED:
                               -- FAILED:
-                              -- TESTING: Is this still pink?
-                              -- this line is also related, but still not pink 
-                              -- does this still work
+                              -- TESTING:
 spec "user.extras.crates"     -- Shows updates for Rust Crates
 -- spec "user.extras.trouble" -- Jump through errors with keybindings!
 -- spec "user.extras.biscuits" -- Shows the other part of { }
