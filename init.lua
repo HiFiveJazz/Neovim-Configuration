@@ -4,7 +4,7 @@ require "user.options"        -- Neovim settings, such as relative line numbers,
 require "user.keymaps"        -- Basic, general, keybindings
 require "user.autocmds"       -- General functions
 spec "user.colorscheme"       -- Where permanent ColorScheme is initalized
--- spec "user.treesitter"        -- Enables better syntax highlighting using LSPs
+spec "user.treesitter"        -- Enables better syntax highlighting using LSPs
 spec "user.mason"             -- Easily install binaries, such as LSPs, Linters, etc.
 spec "user.schemastore"       -- Shown as wrench in autocomplete, Gives .json, .yaml schemas and provides autocompletes for those things
 spec "user.lspconfig"         -- LSP configurations
@@ -61,6 +61,7 @@ spec "user.extras.various-textobjs" -- replaces ciw, works on text object rather
 spec "user.extras.harpoon"    -- Enables harpooning, "Tab" in Normal mode, "Shift-M" to mark a file 
 spec "user.extras.harpoon-lualine"    -- Enables harpoon visually showing the lualine!
 spec "user.extras.todo-comments" -- Adds in various comments, such as the following below 
+                              -- BUG:
                               -- TODO:
                               -- HACK:
                               -- WARN: 
@@ -74,8 +75,9 @@ spec "user.extras.todo-comments" -- Adds in various comments, such as the follow
                               -- TEST:
                               -- PASSED:
                               -- FAILED:
-                              -- TESTING:
-spec "user.extras.rustacean"  -- Lots of Rust Language integration
+                              -- TESTING: Is this still pink?
+                              -- this line is also related, but still not pink 
+                              -- does this still work
 spec "user.extras.crates"     -- Shows updates for Rust Crates
 -- spec "user.extras.trouble" -- Jump through errors with keybindings!
 -- spec "user.extras.biscuits" -- Shows the other part of { }
