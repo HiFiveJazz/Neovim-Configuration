@@ -58,7 +58,7 @@ local wk = require "which-key"
 wk.add {
     { "<leader>rc", "<cmd>RemoteSSHFSConnect<CR>", desc = "Connect", icon = { icon = "󰌘", color = "green"} },
     { "<leader>rd", "<cmd>RemoteSSHFSDisconnect<CR>", desc = "Disconnect", icon = { icon = "󰌙", color = "green"} },
-    { "<leader>rl", "<cmd>RemoteSSHFSList<CR>", desc = "List Connections", icon = { icon = "󰋁", color = "green"} },
+    { "<leader>rl", "<cmd>RemoteSSHFSList<CR>", desc = "List Connections", icon = { icon = "󰕲", color = "green"} },
 }
 
 return M
