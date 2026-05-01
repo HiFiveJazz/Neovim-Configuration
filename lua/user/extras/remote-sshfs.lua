@@ -1,13 +1,10 @@
 local M = {
   "nosduco/remote-sshfs.nvim",
-  cmd = {
-    "RemoteSSHFSConnect",
-    "RemoteSSHFSDisconnect",
-    "RemoteSSHFSList",
-  },
+  event = "VeryLazy",
   dependencies = {
     "nvim-telescope/telescope.nvim",
     "nvim-lua/plenary.nvim",
+    "folke/which-key.nvim",
   },
 }
 
@@ -57,5 +54,11 @@ function M.config()
   })
 end
 
-return M
+local wk = require "which-key"
+wk.add {
+    { "<leader>rc", "<cmd>RemoteSSHFSConnect<CR>", desc = "Connect", icon = { icon = "󰌘", color = "green"} },
+    { "<leader>rd", "<cmd>RemoteSSHFSDisconnect<CR>", desc = "Disconnect", icon = { icon = "󰌙", color = "green"} },
+    { "<leader>rl", "<cmd>RemoteSSHFSList<CR>", desc = "List Connections", icon = { icon = "󰋁", color = "green"} },
+}
 
+return M

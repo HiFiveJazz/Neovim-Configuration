@@ -66,6 +66,7 @@ function M.config()
     { "<leader>l", group = "LSP", icon = { icon = " ", color = "blue" }},
     { "<leader>p", group = "Plugins", icon = { icon = "󰐱 ", color = "blue" } },
     { "m", group = "Macros", icon = { icon = " ", color = "green" } },
+    { "<leader>r", group = "Remote SSHFS", icon = { icon = "󰌘 ", color = "green" } },
     { "<leader>e", desc = "File Explorer", icon = { icon = "" } },
     { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit", icon = { icon = "󰈆", color = "red"} },
     { "<leader>o", function() vim.ui.open(vim.fn.expand("<cfile>")) end, desc = "Open URL/File", icon = { icon = "", color = "blue" } },
