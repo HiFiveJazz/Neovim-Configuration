@@ -10,7 +10,7 @@ keys = {
       "<leader>e",
       mode = { "n", "v" },
       function()
-        vim.cmd("Yazi")
+        vim.cmd("Yazi cwd")
       end,
       desc = "File Explorer",
     },
