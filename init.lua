@@ -4,7 +4,7 @@ require "user.options"        -- Neovim settings, such as relative line numbers,
 require "user.keymaps"        -- Basic, general, keybindings
 require "user.autocmds"       -- General functions
 spec "user.colorscheme"       -- Where permanent ColorScheme is initalized
--- spec "user.treesitter"        -- Enables better syntax highlighting using LSPs
+spec "user.treesitter"        -- Enables better syntax highlighting using LSPs
 spec "user.mason"             -- Easily install binaries, such as LSPs, Linters, etc.
 spec "user.schemastore"       -- Shown as wrench in autocomplete, Gives .json, .yaml schemas and provides autocompletes for those things
 spec "user.lspconfig"         -- LSP configurations

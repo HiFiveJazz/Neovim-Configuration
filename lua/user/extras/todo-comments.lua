@@ -1,5 +1,6 @@
 local M = {
   "HiFiveJazz/todo-comments.nvim",
+  -- "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   event = "BufReadPre",
 }

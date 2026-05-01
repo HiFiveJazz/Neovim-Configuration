@@ -1,105 +1,87 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
+  branch = "main",
   build = ":TSUpdate",
-  event = { "BufReadPre", "BufNewFile" },
-  -- lazy = false,
-  -- auto_install = false,
-  -- dependencies = {
-  --   {
-  --     "nvim-treesitter/nvim-treesitter-textobjects",
-  --     after = "nvim-treesitter", -- ensure this loads after treesitter
-  --   },
-  -- },
-  config = function()
-    local ok, ts_configs = pcall(require, "nvim-treesitter.configs")
-    if not ok then
-      vim.notify("nvim-treesitter not found!", vim.log.levels.WARN)
-      return
-    end
-
-    ts_configs.setup({
-      highlight = {
-        enable = true,
-        disable = function(_, buf)
-          local max_filesize = 100 * 1024 -- 100 KB
-          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-          return ok and stats and stats.size > max_filesize
-        end,
-        additional_vim_regex_highlighting = false,
-      },
-
-      indent = {
-        enable = true,
-        disable = { "yaml" },
-      },
-
-      ensure_installed = {
-        "json",
-        -- "javascript",
-        "typescript",
-        "html",
-        "css",
-        "markdown",
-        "markdown_inline",
-        "bash",
-        "lua",
-        "vim",
-        "dockerfile",
-        "gitignore",
-        "python",
-        "go",
-        "rust",
-        "c",
-      },
-
-      auto_install = true,
-
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "gnn",
-          node_incremental = "grn",
-          scope_incremental = "grc",
-          node_decremental = "grm",
-        },
-      },
-
-      -- Textobjects only setup if module exists
-      textobjects = (function()
-        local ok2, textobjects = pcall(require, "nvim-treesitter.configs")
-        if ok2 and textobjects then
-          return {
-            select = {
-              enable = true,
-              lookahead = true,
-              keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@call.outer",
-                ["ic"] = "@call.inner",
-                ["aa"] = "@parameter.outer",
-                ["ia"] = "@parameter.inner",
-              },
-            },
-            move = {
-              enable = true,
-              set_jumps = true,
-              goto_next_start = {
-                ["]f"] = "@function.outer",
-                ["]c"] = "@class.outer",
-              },
-              goto_previous_start = {
-                ["[f"] = "@function.outer",
-                ["[c"] = "@class.outer",
-              },
-            },
-          }
-        else
-          return {}
-        end
-      end)(),
-    })
-  end,
+  event = { "BufReadPost", "BufNewFile" },
 }
+
+local ensure_installed = {
+  -- Web Dev
+  "typescript",
+  "html",
+  "css",
+  "markdown",
+  "markdown_inline",
+  -- High Level
+  "go",
+  "lua",
+  "python",
+  -- Low Level
+  "rust",
+  "c",
+  --Other
+  "json",
+  "bash",
+  "vim",
+  "dockerfile",
+  "gitignore",
+}
+
+function M.init()
+  vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("JazzTreesitterStart", { clear = true }),
+    callback = function(args)
+      local file = vim.api.nvim_buf_get_name(args.buf)
+
+      if file ~= "" then
+        local ok, stats = pcall(vim.uv.fs_stat, file)
+        if ok and stats and stats.size > 100 * 1024 then
+          return
+        end
+      end
+
+      pcall(vim.treesitter.start, args.buf)
+
+      local ft = vim.bo[args.buf].filetype
+      if ft ~= "yaml" then
+        vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
+    end,
+  })
+end
+
+function M.config()
+  local ok, treesitter = pcall(require, "nvim-treesitter")
+
+  if not ok then
+    vim.notify(
+      "Failed to load nvim-treesitter:\n" .. tostring(treesitter),
+      vim.log.levels.ERROR,
+      { title = "nvim-treesitter" }
+    )
+    return
+  end
+
+  local config_ok, ts_config = pcall(require, "nvim-treesitter.config")
+  if config_ok then
+    local installed = ts_config.get_installed()
+    local missing = vim
+      .iter(ensure_installed)
+      :filter(function(parser)
+        return not vim.tbl_contains(installed, parser)
+      end)
+      :totable()
+
+    if #missing > 0 then
+      treesitter.install(missing)
+    end
+  else
+    vim.notify(
+      "Failed to load nvim-treesitter.config:\n" .. tostring(ts_config),
+      vim.log.levels.WARN,
+      { title = "nvim-treesitter" }
+    )
+  end
+end
 
 return M
