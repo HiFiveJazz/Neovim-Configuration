@@ -235,9 +235,17 @@ function M.config()
       if has_cargo_project() then
         local cargo_bin = cargo_bin_name()
 
+        -- if cargo_bin == nil or cargo_bin == "" then
+        --   vim.notify("Could not determine Cargo binary name.", vim.log.levels.ERROR)
+        --   return nil
+        -- end
+
         if cargo_bin == nil or cargo_bin == "" then
-          vim.notify("Could not determine Cargo binary name.", vim.log.levels.ERROR)
-          return nil
+          return {
+            build = "cargo +nightly build",
+            run = "cargo +nightly test -- --nocapture",
+            bench = "cargo +nightly test --release -- --nocapture",
+          }
         end
 
         local release_bin = string.format("./target/release/%s", cargo_bin)
