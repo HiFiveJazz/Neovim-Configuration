@@ -1,6 +1,7 @@
 local M = {
   "mason-org/mason-lspconfig.nvim",
   dependencies = {
+    "neovim/nvim-lspconfig",
     "mason-org/mason.nvim",
     "nvim-lua/plenary.nvim",
   },
