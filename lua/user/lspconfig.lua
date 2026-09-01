@@ -272,7 +272,8 @@ function M.config()
 	})
 
 	local servers = {
-		"asm-lsp",
+    "armls",
+    "clangd",
 		"lua_ls",
 		"pyright",
 		"cssls",

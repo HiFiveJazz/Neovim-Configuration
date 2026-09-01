@@ -368,7 +368,7 @@ function M.config()
 
   function _lazygit_toggle()
     local term = Terminal:new({
-      cmd = "lazygit",
+      cmd = "lazygitrs",
       dir = git_root(),
       direction = "float",
       close_on_exit = true,

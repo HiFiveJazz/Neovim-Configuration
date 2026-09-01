@@ -25,10 +25,32 @@ function M.config()
   }
 
   require("mason").setup {
+  registries = {
+      "file:~/GitHub/mason-registry",
+    },
     ui = {
       border = "rounded",
     },
   }
+  vim.lsp.config("armls", {
+    cmd = { "armls" },
+    filetypes = { "asm" },
+
+    settings = {
+      armls = {
+        diagnostics = {
+          enable = true,
+          disableCategories = {
+            -- "invalidOperand",
+            -- "tooManyOperands",
+            -- "tooFewOperands",
+          },
+        },
+      },
+    },
+  })
+
+vim.lsp.enable("armls")
   require("mason-lspconfig").setup {
     ensure_installed = M.execs,
   }
