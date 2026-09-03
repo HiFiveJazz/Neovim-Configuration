@@ -1,5 +1,9 @@
 local M = {
   "m00qek/baleia.nvim",
+
+  cond = function()
+    return vim.env.AERC_NVIM_VIEWER == "1"
+  end,
 }
 
 M.config = function()
@@ -18,10 +22,8 @@ M.config = function()
 
   vim.api.nvim_create_autocmd("StdinReadPost", {
     callback = function(ev)
-      if vim.env.AERC_NVIM_VIEWER == "1" then
-        vim.g.baleia.once(ev.buf)
-        vim.bo[ev.buf].modified = false
-      end
+      vim.g.baleia.once(ev.buf)
+      vim.bo[ev.buf].modified = false
     end,
   })
 end

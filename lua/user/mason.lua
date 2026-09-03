@@ -25,9 +25,9 @@ function M.config()
   }
 
   require("mason").setup {
-  registries = {
-      "file:~/GitHub/mason-registry",
-    },
+  -- registries = {
+  --     "file:~/GitHub/mason-registry",
+  --   },
     ui = {
       border = "rounded",
     },
