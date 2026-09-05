@@ -71,7 +71,7 @@ function M.config()
     { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit", icon = { icon = "󰈆", color = "red"} },
     { "<leader>o", function() vim.ui.open(vim.fn.expand("<cfile>")) end, desc = "Open URL/File", icon = { icon = "", color = "blue" } },
     { "<leader>s", function() require("rip-substitute").sub() end, desc = "Search and Replace", mode = { "n", "x" }, icon = { icon = "", color = "blue" }, },
-    { "<leader>t", desc = "Triforce Stats", "<cmd>Triforce profile<CR>", icon = { icon = "󰄩", color = "blue",}, },
+    -- { "<leader>t", desc = "Triforce Stats", "<cmd>Triforce profile<CR>", icon = { icon = "󰄩", color = "blue",}, },
     { "<leader>v", desc = "Vertical Split", "<cmd>vsplit<CR>",  icon = { icon = "", color = "cyan",} },
     { "<leader>w", desc = "Toggle Wrap", "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",  icon = { icon = "󰖶 " } },
     { "<leader>/", "gcc", remap = true, desc = "Comment Line",  icon = { icon = "", color = "grey" }},
